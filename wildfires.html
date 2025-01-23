@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function myFunction() {
+        var x = document.getElementById("dropdownnav");
+        if (x.className === "dropdownnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "dropdownnav";
+        }
+    }
+</script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Climate and Atmospheric Science for Action Group</title>
+    <link rel="shortcut icon" type="image/jpg" sizes="16x16" href="cardiffuniversity.png" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <img class="cardifflogo" src="cardiffuniversity.png" alt="Cardiff University Logo">
+        <a href="main.html" ">Home</a>
+        <div class=" dropdown">
+            <button class="dropbtn">Research
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
+                <a href="remotesensing.html">Air Quality Remote Sensing</a>
+                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
+                <a href="wildfires.html">Wildfire Health Effects</a>
+                <a href="surfacepollution.html">Estimating Surface Pollution</a>
+            </div>
+    </div>
+    <a href="people.html">People</a>
+    <a href="publications.html">Publications</a>
+    <div class="dropdown">
+        <button class="dropbtn">Datasets
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+        </div>
+    </div>
+    <a href="joinus.html">Join Us</a>
+    <a href="docs/build/html/index.html" target="_blank">Group Wiki</a>
+    <a href="javascript:void(0);" class="hamburgerbutton" onclick="myFunction()">&#9776;</a>
+    </div>
+    <div class="dropdownnav" id="dropdownnav">
+        <a href="main.html" class="active">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Research
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
+                <a href="remotesensing.html">Air Quality Remote Sensing</a>
+                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
+                <a href="wildfires.html">Wildfire Health Effects</a>
+                <a href="surfacepollution.html">Estimating Surface Pollution</a>
+            </div>
+        </div>
+        <a href="people.html">People</a>
+        <a href="publications.html">Publications</a>
+        <div class="dropdown">
+            <button class="dropbtn">Datasets
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+            </div>
+        </div>
+        <a href="joinus.html">Join Us</a>
+        <a href="docs/build/html/index.html" target="_blank">Group Wiki</a>
+    </div>
+    <div class="header-container">
+        <div class="header-title">Estimating the Health Effects of Wildfires
+            <hr style="height: 5px; background-color: black; border: none;">
+        </div>
+        <p class="research-paragraph-container">
+            <b>Bottom Line:</b> Wildfires are a significant source of air pollution - primarily of PM<sub>2.5</sub> -
+            and
+            their air quality-related health impacts present a significant public health challenge. As the effects of
+            climate change are realized, it is likely that wildfires will increase in frequency and severity.
+            <br>
+            <br>
+            <b>Research:</b> We explore how wildfire emissions affect air quality and health leveraging earth-system
+            modeling, remote sensing, and adjoint sensitivity methods. We quantify the sensitivity of pollution
+            exposures in individual cities and countries and combine these with biomass burning emissions to estimate
+            how wildfires effect air quality; we then leverage health impact assessment methods to quantify the health
+            implications of wildfire smoke.
+            <br>
+            <br>
+        </p>
+        <div style="display: flex; justify-content: center;">
+            <img class="image-container" src="wildfires.jpg" alt="Santiago Climate Co-Benefits" width="70%"
+                style="margin-right: 20px; margin-left: 0px; justify-content: left; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding: 20px; background-color: white; margin-bottom: 20px;">
+        </div>
+        <p class="research-paragraph-container">
+            In the above figure, we calculate the premature deaths attributed by fires in 2019 (a) and take the
+            difference relative to contributions in 2016 (b), to quantify how fires in different areas impact
+            PM<sub>2.5</sub>-related health impacts in Brazil. We also present the total biomass burning emissions (c)
+            and difference compared to 2016 (d) for the same region.
+        <div class="welcome-container">
+            <div class="welcome-text">
+                Relevant Publications
+                <hr style="height: 5px; background-color: black; border: none;">
+            </div>
+
+        </div>
+        <p class="research-paragraph-container" style="margin-top: 5px;">
+            <b>Nawaz, M.O.</b> & Henze, D.K. Premature Deaths in Brazil Associated With Long-Term Exposure to
+            PM2.5 From Amazon Fires Between 2016 and 2019. GeoHealth 2020.
+            <a href="https://doi.org/10.1029/2020GH000268">10.1029/2020GH000268</a>
+        </p>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function myFunction() {
+        var x = document.getElementById("dropdownnav");
+        if (x.className === "dropdownnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "dropdownnav";
+        }
+    }
+</script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Climate and Atmospheric Science for Action Group</title>
+    <link rel="shortcut icon" type="image/jpg" sizes="16x16" href="cardiffuniversity.png" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <img class="cardifflogo" src="cardiffuniversity.png" alt="Cardiff University Logo">
+        <a href="main.html" ">Home</a>
+        <div class=" dropdown">
+            <button class="dropbtn">Research
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
+                <a href="remotesensing.html">Air Quality Remote Sensing</a>
+                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
+                <a href="wildfires.html">Wildfire Health Effects</a>
+                <a href="surfacepollution.html">Estimating Surface Pollution</a>
+            </div>
+    </div>
+    <a href="people.html">People</a>
+    <a href="publications.html">Publications</a>
+    <div class="dropdown">
+        <button class="dropbtn">Datasets
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+        </div>
+    </div>
+    <a href="joinus.html">Join Us</a>
+    <a href="docs/build/html/index.html" target="_blank">Group Wiki</a>
+    <a href="javascript:void(0);" class="hamburgerbutton" onclick="myFunction()">&#9776;</a>
+    </div>
+    <div class="dropdownnav" id="dropdownnav">
+        <a href="main.html" class="active">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Research
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
+                <a href="remotesensing.html">Air Quality Remote Sensing</a>
+                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
+                <a href="wildfires.html">Wildfire Health Effects</a>
+                <a href="surfacepollution.html">Estimating Surface Pollution</a>
+            </div>
+        </div>
+        <a href="people.html">People</a>
+        <a href="publications.html">Publications</a>
+        <div class="dropdown">
+            <button class="dropbtn">Datasets
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+            </div>
+        </div>
+        <a href="joinus.html">Join Us</a>
+        <a href="docs/build/html/index.html" target="_blank">Group Wiki</a>
+    </div>
+    <div class="header-container">
+        <div class="header-title">Estimating Surface Pollution
+            <hr style="height: 5px; background-color: black; border: none;">
+        </div>
+        <p class="research-paragraph-container">
+            <b>Bottom Line</b>: Estimates of surface-level pollution are vital for epidemiological, risk assessment, and
+            environmental justice studies; however, there are challenges in characterizing pollution at relevant
+            spatial and temporal resolution. Satellite-derived data can provide clues about pollution levels at the
+            surface, but additional data integrated through determinstic, statistical, and machine learning methods
+            are needed to convert columns to surface-level estimates.
+            <br>
+            <br>
+            <b>Research:</b> We estimate surface-level pollution from remote sensing data through deterministic
+            modeling, statistical methods, and machine learning approaches. Specifically, GEOS-Chem derived
+            column-to-surface concentration relationships are applied to satellite remote sensing to infer surface-level
+            pollution concentrations. Alternatively, we integrate land-use information and meteorology with
+            remote-sensing data through land-use regression modeling and machine-learning approaches to synthesize
+            surface-level pollution datasets.
+            <br>
+            <br>
+        </p>
+        <div style="display: flex; justify-content: center;">
+            <img class="image-container" src="tropomi_no2.png" alt="Santiago Climate Co-Benefits" width="70%"
+                style="margin-right: 20px; margin-left: 0px; justify-content: left; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding: 20px; background-color: white; margin-bottom: 20px;">
+        </div>
+        <p class="research-paragraph-container">
+            The above figure presents surface-level NO<sub>2</sub> concentrations derived from TROPOMI data using a
+            LASSO land-use regression approach for the continental US in 2019 as an annual average (a) and for specific
+            months (b). This dataset is available for download <a href="surface_no2.html">here</a>.
+        <div class="welcome-container">
+            <div class="welcome-text">
+                Relevant Publications
+                <hr style="height: 5px; background-color: black; border: none;">
+            </div>
+
+        </div>
+        <p class="research-paragraph-container" style="margin-top: 5px;">
+            <b>Nawaz, M.O.</b>, Goldberg, D.L., Kerr, G.H., Anenberg, S.C. TROPOMI satellite data reshape NO<sub>2</sub>
+            Air Pollution Land-Use Regression Modeling Capabilities in the United States. ES&T Air 2024.
+            <a href="https://doi.org/10.1021/acsestair.4c00153">10.1021/acsestair.4c00153</a>
+        </p>
+    </div>
+
+</body>
+
+</html>

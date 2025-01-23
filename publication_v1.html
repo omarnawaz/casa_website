@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Climate and Atmospheric Science for Action Group</title>
+    <link rel="shortcut icon" type="image/jpg" sizes="16x16" href="cardiffuniversity.png" />
+    <style>
+        body {
+            margin: 0;
+            font-family: Helvetica;
+        }
+
+
+        .header-title {
+            color: #270101;
+            text-align: center;
+            background-color: white;
+            font-size: 45px;
+            font-family: Helvetica;
+            margin-top: 30px;
+            margin-left: 10px;
+            margin-right: 10px;
+            max-width: 50%;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: Helvetica;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            font-family: Helvetica;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            font-family: Helvetica;
+        }
+
+        .dropbtn {
+            font-size: 40px;
+            font-family: Helvetica;
+        }
+
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .icon-container a {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .icon-container a:hover {
+            transform: scale(1.2);
+        }
+
+        .icon-container img {
+            width: 48px;
+            height: 48px;
+            margin: 0 10px;
+        }
+
+        .cv-link {
+            text-decoration: none;
+            color: black;
+            font-weight: 900;
+            font-style: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            font-size: 44px;
+            padding-left: 10px;
+            font-family: 'Futura';
+        }
+
+        .welcome-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .welcome-text {
+            text-align: left;
+            font-size: 44px;
+            font-family: Helvetica;
+            font-weight: bold;
+            width: 45%;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            margin-right: 40px;
+            margin-left: 40px;
+            background-color: white;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 0px;
+        }
+
+        .paragraph-container {
+            text-align: left;
+            font-size: 34px;
+            font-family: Helvetica;
+            width: 45%;
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        #dropdown-products {
+            display: none;
+        }
+
+        #menu-products:hover #dropdown-products {
+            display: block;
+        }
+
+        /* Add a black background color to the top navigation */
+        .topnav {
+            background-color: #d3374a;
+            overflow: hidden;
+        }
+
+        /* Style the links inside the navigation bar */
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        /* Add an active class to highlight the current page */
+        .active {
+            background-color: #333;
+            color: white;
+        }
+
+        /* Hide the link that should open and close the topnav on small screens */
+        .topnav .hamburgerbutton {
+            display: none;
+        }
+
+        /* Dropdown container - needed to position the dropdown content */
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        /* Style the dropdown button to fit inside the topnav */
+        .dropdown .dropbtn {
+            font-size: 17px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        /* Style the dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Style the links inside the dropdown */
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        /* Add a dark background on topnav links and the dropdown button on hover */
+        .topnav a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #555;
+            color: white;
+        }
+
+        /* Add a grey background to dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Show the dropdown menu when the user moves the mouse over the dropdown button */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* When the screen is less than 600 pixels wide, hide all links, including the first one ("Home"). Show the link that should open and close the topnav (.icon) */
+        @media screen and (max-width: 760px) {
+
+            .topnav a:not(.hamburgerbutton) {
+                display: none;
+            }
+
+            .topnav a.hamburgerbutton {
+                float: right;
+                display: block;
+            }
+
+            .active {
+                background-color: #d3374a;
+                color: white;
+            }
+
+            .dropdown {
+                display: block;
+            }
+
+            .dropdown .dropbtn {
+                display: none;
+            }
+
+            .dropdown-content {
+                display: none;
+            }
+
+            .dropdown-content.show {
+                display: block;
+            }
+
+            .dropdown:active .dropdown-content {
+                display: block;
+            }
+
+        }
+
+        /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+        @media screen and (max-width: 760px) {
+            .topnav.responsive {
+                position: relative;
+            }
+
+            .topnav.responsive a.hamburgerbutton {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            .topnav.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+
+            .topnav.responsive .dropdown {
+                float: none;
+                width: 100%;
+            }
+
+            .topnav.responsive .dropdown-content {
+                position: relative;
+            }
+
+            .topnav.responsive .dropdown .dropbtn {
+                display: block;
+                width: 100%;
+                text-align: left;
+            }
+        }
+
+
+        @media screen and (max-width: 760px) {
+
+            .header-right {
+                display: none;
+            }
+
+            .dropdown {
+                display: inline-block;
+            }
+
+            .profile-container {
+                width: 100%;
+            }
+
+            .header-title {
+                font-size: 34px;
+                max-width: 80%;
+            }
+
+            .profile-container img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .lecturer,
+            .lecturer+span,
+            .lecturer+span+span {
+                font-size: 16px;
+                margin-bottom: 0px;
+                margin-top: 0px;
+            }
+
+            .groupleader,
+            .groupleader+span {
+                font-size: 16px;
+                margin-bottom: 0px;
+            }
+
+            .icon-container img {
+                width: 30px;
+                height: 30px;
+                margin: 0 10px;
+            }
+
+            .image-container img {
+                width: 80%;
+                height: 80%;
+                margin: 0 10px;
+            }
+
+            .cv-link {
+                font-size: 30px;
+            }
+
+            .welcome-text {
+                width: 75%;
+                font-size: 34px;
+            }
+
+            .paragraph-container {
+                width: 75%;
+                font-size: 24px;
+            }
+        }
+
+        @media screen and (min-width: 900px) {
+            .profile-container {
+                width: 45%;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topnav" id="myTopnav">
+
+        <style>
+            body {
+                background-image: url("interlaced.png");
+                background-repeat: repeat;
+            }
+        </style>
+        <img src="cardiffuniversity.png" alt="Cardiff University Logo"
+            style="float: left; width: 45px; height: 45px; vertical-align: middle; margin-left: 10px; margin-right: 10px; display: flex; align-items: center; justify-content: center;">
+        <a href="main.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Research
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
+                <a href="remotesensing.html">Air Quality Remote Sensing</a>
+                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
+                <a href="wildfires.html">Wildfire Health Effects</a>
+                <a href="surfacepollution.html">Estimating Surface Pollution</a>
+            </div>
+        </div>
+        <a href="people.html">People</a>
+        <a href="publications.html" class="active">Publications</a>
+        <div class="dropdown">
+            <button class="dropbtn">Datasets
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="surface_no2.html">US Monthly Surface NO<sub>2</sub> from TROPOMI</a>
+            </div>
+        </div>
+        <a href="joinus.html">Join Us</a>
+        <a href="docs/build/html/index.html">Group Wiki</a>
+        <a href="javascript:void(0);" class="hamburgerbutton" onclick="myFunction()">&#9776;</a>
+    </div>
+    <div style="width: 70%; margin: auto; margin-top: 20px;">
+        <h1 style="text-align: left; font-weight: bold; font-size: 32px;">Publications</h1>
+        <h2 style="text-align: left;">Refereed Journal Articles</h2>
+    </div>
+    <div
+        style="width: 70%; margin: auto; background-color: #f5f5f5; border: 5px solid #000000; padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin-bottom: 50px;">
+        <p style="text-align: left; font-size: 26px; margin: 20px 0px;">
+        <ul style="list-style-type: none; padding-left: 0px; text-align: left; font-size: 20px;">
+            <h3 style="text-align: left; font-weight: bold; font-size: 28px; margin-top: 20px; margin-bottom: 10px;">
+                2024</h3>
+            <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
+            <li>16. Goldberg, D.G., de Foy, B., <b>Nawaz, M.O.</b>, Johnson, J., Yarwood, G., Judd, L., Identifying
+                Sources of Urban NOx Emissions in Houston, Texas using Remote Sensing Aircraft Measurements and Source
+                Apportionment Regression Models. ACS ES&T Air.
+                <a href="https://doi.org/10.1021/acsestair.4c00097">10.1021/acsestair.4c00097</a>
+            </li>
+            <br>
+            <li>15. Dyer, G. M. C., Khomenko, S., Adlakha, D., Anenberg, S. C., Angelova, J., Behnisch, M., Boeing, G.,
+                Chen, X., Cirach, M., de Hoogh, K., Diez-Roux, A. V., Esperon-Rodriguez, M., Flueckiger, B., Gasparrini,
+                A., Iungman, T., Khreis, H., Kondo, M., Masselot, P., McDonald, R., <b>Nawaz, M.O.</b>, Nieuwenhuijsen,
+                M. (2024). Commentary: A road map for future data-driven urban planning and environmental health
+                research. Cities 155, 105340 (2024).
+                <a href="https://doi.org/10.1016/j.cities.2024.105340">10.1016/j.cities.2024.105340</a>
+            </li>
+            <br>
+            <li>14. Choi, J., Henze, D. K., <b>Nawaz, M.O.</b>, & Malley, C. S. (2024). Source Attribution of Health
+                Burdens From Ambient PM2.5, O3, and NO2 Exposure for Assessment of South Korean National Emission
+                Control Scenarios by 2050. GeoHealth (Vol. 8, Issue 8). American Geophysical Union (AGU).
+                <a href="https://doi.org/10.1029/2024gh001042">10.1029/2024gh001042</a>
+            </li>
+            <br>
+            <li>13. Georgia M.C. Dyer, Sasha Khomenko, Deepti Adlakha, Susan Anenberg, Martin Behnisch, Geoff Boeing,
+                Manuel Esperon-Rodriguez, Antonio Gasparrini, Haneen Khreis, Michelle C. Kondo, Pierre Masselot, Robert
+                I. McDonald, Federica Montana, Rich Mitchell, Natalie Mueller, <b>Nawaz, M.O.</b>, Enrico Pisoni, Rafael
+                Prieto-Curiel, Nazanin Rezaei, Hannes Taubenböck, Cathryn Tonne, Daniel Velázquez-Cortés, Mark
+                Nieuwenhuijsen. Exploring the nexus of urban form, transport, environment and health in large-scale
+                urban studies: A state-of-the-art scoping review, Environmental Research, Volume 257, 2024,
+                <a href="https://doi.org/10.1016/j.envres.2024.119324">10.1016/j.envres.2024.119324</a>
+            </li>
+            <br>
+            <li>12. <b>Nawaz, M.O.</b>, Johnson, J., Yarwood, G., de Foy, B., Judd, L., and Goldberg, D. L.: An
+                intercomparison of satellite, airborne, and ground-level observations with WRF-CAMx simulations of NO2
+                columns over Houston, Texas, during the September 2021 TRACER-AQ campaign, Atmos. Chem. Phys., 2024,
+                6719-6741
+                <a href="https://doi.org/10.5194/acp-24-6719-2024">10.5194/acp-24-6719-2024</a>
+            </li>
+            <br>
+            <h3 style="text-align: left; font-weight: bold; font-size: 28px; margin-top: 20px; margin-bottom: 10px;">
+                2023</h3>
+            <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
+            <li>11. Gu, Y., Henze, D.K., <b>Nawaz, M.O.</b>, Wagner, U.J. Response of the ozone-related health burden in
+                Europe to changes in local anthropogenic emissions of ozone precursors. Environmental Research Letters.
+                18(11).
+                <a href="https://doi.org/10.1088/1748-9326/ad0167">10.1088/1748-9326/ad0167</a>
+            </li>
+            <br>
+            <li>10. Jo, D., Nault, B.A., Tilmes, S., Gettelman, A., McCluskey, C., Hodzic, A., Henze, D.K., <b>Nawaz,
+                    M.O.</b>, Fung, K., Jimenez, J. Global Health and Climate Effects of Organic Aerosols from Different
+                Sources. Environmental Science and Technology.
+                <a href="https://doi.org/10.1021/acs.est.3c02823">10.1021/acs.est.3c02823</a>
+            </li>
+            <br>
+            <li>9. <b>Nawaz, M.O.</b>, Henze, D.K., Huneeus, N.J., Osses, M., Álamos, N., Opazo, M., Gallardo, L.,
+                Sources of air pollution health impacts and co-benefits of carbon neutrality in Santiago, Chile Journal
+                of Geophysical Research: Atmospheres.
+                <a href="https://doi.org/10.1029/2023JD038808">10.1029/2023JD038808</a>
+            </li>
+            <br>
+            <li>8. Gu, Y., Henze, D.K., <b>Nawaz, M.O.</b>, Cao, H. Wagner, U.J., Sources of PM2.5-associated health
+                risks in Europe and corresponding emission-induced changes during 2005-2015. GeoHealth 2023. DOI:
+                <a href="https://doi.org/10.1029/2022GH000767">10.1029/2022GH000767</a>
+            </li>
+            <br>
+            <li>7. <b>Nawaz, M.O.</b>, Henze, D.K., Anenberg, S.C., Ahn, D.Y., Goldberg, D.L., Tessum, C.W., Chafe,
+                Z.A., An assessment of the sources of air pollution-related health impacts and benefits associated with
+                improvements in travel efficiency as a function of distance of policy implementation in fourteen US
+                cities. Frontiers in Sustainable Cities.
+                <a href="https://doi.org/10.3389/frsc.2023.1102493">10.3389/frsc.2023.1102493</a>
+            </li>
+            <br>
+            <li>6. <b>Nawaz, M.O.</b>, Henze, D.K., Anenberg, S.C., Braun, C., Miller, J., Pronk, E. A source
+                apportionment and emission scenario assessment of PM2.5- and O3-related health impacts in G20 countries.
+                GeoHealth.
+                <a href="https://doi.org/10.1029/2022GH000713">10.1029/2022GH000713</a>
+            </li>
+            <br>
+            <h3 style="text-align: left; font-weight: bold; font-size: 28px; margin-top: 20px; margin-bottom: 10px;">
+                2022</h3>
+            <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
+            <li>5. Cao, H., Henze, D.K., Cady-Pereira, K., McDonald, B.C., Harkins, C., Sun, K., Bowman, K.W., Fu, T.,
+                <b>Nawaz, M.O.</b> COVID-19 Lockdowns Afford the First Satellite-Based Confirmation That Vehicles Are an
+                Under-recognized Source of Urban NH3 Pollution in Los Angeles. Environmental Science & Technology
+                Letters 2022.
+                <a href="https://doi.org/10.1021/acs.estlett.1c00730">10.1021/acs.estlett.1c00730</a>
+            </li>
+            <br>
+            <h3 style="text-align: left; font-weight: bold; font-size: 28px; margin-top: 20px; margin-bottom: 10px;">
+                2021</h3>
+            <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
+            <li>4. <b>Nawaz, M.O.</b>, Henze, D.K., Harkins, C, Cao, H, Nault, B, Jo, D, Jimenez, J, Anenberg, SC,
+                Goldberg, DL, Qu, Z. Impacts of sectoral, regional, species, and day-specific emissions on air pollution
+                and public health in Washington, DC. Elementa: Science of the Anthropocene 2021.
+                <a href="https://doi.org/10.1525/elementa.2021.00043">10.1525/elementa.2021.00043</a>
+            </li>
+            <br>
+            <li>3. Malley, C.S., Hicks, W.K., Kulyenstierna, J.C., Michalopoulou, E., Molotoks, A., Slater, J., Heaps,
+                C.G., Ulloa, S., Veysey, J., Shindell, D.T., Henze, D.K., <b>Nawaz, M.O.</b>, Anenberg, S.C., Mantlana,
+                B., Robinson, T.P. Integrated assessment of global climate, air pollution, and dietary, malnutrition and
+                obesity health impacts of food production and consumption between 2014 and 2018. Environmental Research
+                Communications 2021.
+                <a href="https://doi.org/10.1088/2515-7620/ac0af9">10.1088/2515-7620/ac0af9</a>
+            </li>
+            <br>
+            <li>2. Nault, B. A., Jo, D. S., McDonald, B. C., Campuzano-Jost, P., Day, D. A., Hu, W., Schroder, J. C.,
+                Allan, J., Blake, D. R., Canagaratna, M. R., Coe, H., Coggon, M. M., DeCarlo, P. F., Diskin, G. S.,
+                Dunmore, R., Flocke, F., Fried, A., Gilman, J. B., Gkatzelis, G., Hamilton, J. F., Hanisco, T. F.,
+                Hayes, P. L., Henze, D. K., Hodzic, A., Hopkins, J., Hu, M., Huey, L. G., Jobson, B. T., Kuster, W. C.,
+                Lewis, A., Li, M., Liao, J., <b>Nawaz, M.O.</b>, Pollack, I. B., Peischl, J., Rappenglück, B., Reeves,
+                C. E., Richter, D., Roberts, J. M., Ryerson, T. B., Shao, M., Sommers, J. M., Walega, J., Warneke, C.,
+                Weibring, P., Wolfe, G. M., Young, D. E., Yuan, B., Zhang, Q., de Gouw, J. A., and Jimenez, J. L. Atmos.
+                Chem. Phys. 2021. Secondary organic aerosols from anthropogenic volatile organic compounds contribute
+                substantially to air pollution mortality.
+                <a href="https://doi.org/10.5194/acp-21-11201-2021">10.5194/acp-21-11201-2021</a>, 2021
+            </li>
+            <br>
+            <h3 style="text-align: left; font-weight: bold; font-size: 28px; margin-top: 20px; margin-bottom: 10px;">
+                2020</h3>
+            <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
+            <li>1. <b>Nawaz, M.O.</b> & Henze, D.K. Premature Deaths in Brazil Associated With Long-Term Exposure to
+                PM2.5 From Amazon Fires Between 2016 and 2019. GeoHealth 2020.
+                <a href="https://doi.org/10.1029/2020GH000268">10.1029/2020GH000268</a>
+            </li>
+        </ul>
+        </p>
+</body>
+
+</html>

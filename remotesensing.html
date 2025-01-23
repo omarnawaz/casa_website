@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function myFunction() {
+        var x = document.getElementById("dropdownnav");
+        if (x.className === "dropdownnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "dropdownnav";
+        }
+    }
+</script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Climate and Atmospheric Science for Action Group</title>
+    <link rel="shortcut icon" type="image/jpg" sizes="16x16" href="cardiffuniversity.png" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <img class="cardifflogo" src="cardiffuniversity.png" alt="Cardiff University Logo">
+        <a href="main.html" ">Home</a>
+        <div class=" dropdown">
+            <button class="dropbtn">Research
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
+                <a href="remotesensing.html">Air Quality Remote Sensing</a>
+                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
+                <a href="wildfires.html">Wildfire Health Effects</a>
+                <a href="surfacepollution.html">Estimating Surface Pollution</a>
+            </div>
+    </div>
+    <a href="people.html">People</a>
+    <a href="publications.html">Publications</a>
+    <div class="dropdown">
+        <button class="dropbtn">Datasets
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+        </div>
+    </div>
+    <a href="joinus.html">Join Us</a>
+    <a href="docs/build/html/index.html" target="_blank">Group Wiki</a>
+    <a href="javascript:void(0);" class="hamburgerbutton" onclick="myFunction()">&#9776;</a>
+    </div>
+    <div class="dropdownnav" id="dropdownnav">
+        <a href="main.html" class="active">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Research
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
+                <a href="remotesensing.html">Air Quality Remote Sensing</a>
+                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
+                <a href="wildfires.html">Wildfire Health Effects</a>
+                <a href="surfacepollution.html">Estimating Surface Pollution</a>
+            </div>
+        </div>
+        <a href="people.html">People</a>
+        <a href="publications.html">Publications</a>
+        <div class="dropdown">
+            <button class="dropbtn">Datasets
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+            </div>
+        </div>
+        <a href="joinus.html">Join Us</a>
+        <a href="docs/build/html/index.html" target="_blank">Group Wiki</a>
+    </div>
+    <div class="header-container">
+        <div class="header-title">Remote Sensing of Air Pollution
+            <hr style="height: 5px; background-color: black; border: none;">
+        </div>
+        <p class="research-paragraph-container">
+            <b>Bottom Line:</b> Remote sensing instruments measure concentrations of atmospheric
+            trace gases
+            such as NO<sub>2</sub> and aerosol optical depth with implications for PM<sub>2.5</sub> concentrations.
+            These satellite-derived data are capable of characterizing air pollution in areas where air
+            quality monitoring stations are limited (i.e., predominantly rural communities and the global south). These
+            data can also be used to validate model simulations and identify areas and sources that may be under- or
+            over-estimated.
+            <br>
+            <br>
+            <b>Research:</b> We evaluate remote sensing observations from satellite instruments such as TROPOMI and
+            TEMPO along with aircraft remote sensing from campagins such as TRACER-AQ against surface-level monitors,
+            Pandora spectrometers, meteorogology reanalysis products, and earth-system modeling to understand biases and
+            uncertainties in remote sensing data and to better understand the health and equity implications of air
+            pollution.
+            <br>
+            <br>
+        </p>
+        <div style="display: flex; justify-content: center;">
+            <img class="image-container" src="remotesensing.png" alt="Santiago Climate Co-Benefits" width="70%"
+                style="margin-right: 20px; margin-left: 0px; justify-content: left; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding: 20px; background-color: white; margin-bottom: 20px;">
+        </div>
+        <p class="research-paragraph-container">
+            In the above figure, we characterize column concentrations of NO<sub>2</sub> from airborne remote sensing
+            (a), satellite remote sensing (b), and earth-system modeling (c) and then intercompare the different
+            products (d-i).
+        <div class="welcome-container">
+            <div class="welcome-text">
+                Relevant Publications
+                <hr style="height: 5px; background-color: black; border: none;">
+            </div>
+
+        </div>
+        <p class="research-paragraph-container" style="margin-top: 5px;">
+            <b>Nawaz, M.O.</b>, Johnson, J., Yarwood, G., de Foy, B., Judd, L., and Goldberg, D. L.: An
+            intercomparison of satellite, airborne, and ground-level observations with WRF-CAMx simulations of NO2
+            columns over Houston, Texas, during the September 2021 TRACER-AQ campaign, Atmos. Chem. Phys., 2024,
+            6719-6741
+            <a href="https://doi.org/10.5194/acp-24-6719-2024">10.5194/acp-24-6719-2024</a>
+            <br><br>
+            Goldberg, D.G., de Foy, B., <b>Nawaz, M.O.</b>, Johnson, J., Yarwood, G., Judd, L., Identifying
+            Sources of Urban NOx Emissions in Houston, Texas using Remote Sensing Aircraft Measurements and Source
+            Apportionment Regression Models. ACS ES&T Air.
+            <a href="https://doi.org/10.1021/acsestair.4c00097">10.1021/acsestair.4c00097</a>
+        </p>
+    </div>
+
+</body>
+
+</html>

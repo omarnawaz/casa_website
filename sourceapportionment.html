@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function myFunction() {
+        var x = document.getElementById("dropdownnav");
+        if (x.className === "dropdownnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "dropdownnav";
+        }
+    }
+</script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Climate and Atmospheric Science for Action Group</title>
+    <link rel="shortcut icon" type="image/jpg" sizes="16x16" href="cardiffuniversity.png" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <img class="cardifflogo" src="cardiffuniversity.png" alt="Cardiff University Logo">
+        <a href="main.html" ">Home</a>
+        <div class=" dropdown">
+            <button class="dropbtn">Research
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
+                <a href="remotesensing.html">Air Quality Remote Sensing</a>
+                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
+                <a href="wildfires.html">Wildfire Health Effects</a>
+                <a href="surfacepollution.html">Estimating Surface Pollution</a>
+            </div>
+    </div>
+    <a href="people.html">People</a>
+    <a href="publications.html">Publications</a>
+    <div class="dropdown">
+        <button class="dropbtn">Datasets
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+        </div>
+    </div>
+    <a href="joinus.html">Join Us</a>
+    <a href="docs/build/html/index.html" target="_blank">Group Wiki</a>
+    <a href="javascript:void(0);" class="hamburgerbutton" onclick="myFunction()">&#9776;</a>
+    </div>
+    <div class="dropdownnav" id="dropdownnav">
+        <a href="main.html" class="active">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Research
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
+                <a href="remotesensing.html">Air Quality Remote Sensing</a>
+                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
+                <a href="wildfires.html">Wildfire Health Effects</a>
+                <a href="surfacepollution.html">Estimating Surface Pollution</a>
+            </div>
+        </div>
+        <a href="people.html">People</a>
+        <a href="publications.html">Publications</a>
+        <div class="dropdown">
+            <button class="dropbtn">Datasets
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+            </div>
+        </div>
+        <a href="joinus.html">Join Us</a>
+        <a href="docs/build/html/index.html" target="_blank">Group Wiki</a>
+    </div>
+    <div class="header-container">
+        <div class="header-title">Characterizing the Sources of Air Pollution
+            <hr style="height: 5px; background-color: black; border: none;">
+        </div>
+        <p class="research-paragraph-container">
+            <b>Bottom Line:</b> Understanding the sources that contribute to air pollution is essential for developing
+            effective action to improve air quality and remove its associated health impacts. Adjoint modeling can be
+            used to link sources of pollution to receptors to identify the most important drivers of local or regional
+            air pollution.
+            <br>
+            <br>
+            <b>Research:</b> We perform adjoint sensitivity calculations to characterize the sensitivity of pollution in
+            a predefined region of interest (e.g., a city or country) to emissions from different chemical species,
+            locations, time periods, and sectors. We then combine these sensitivities with gridded emission inventories
+            to estimate the contributions from different sources to pollution in the region of interest.
+            <br>
+            <br>
+        </p>
+        <div style="display: flex; justify-content: center;">
+            <img class="image-container" src="source_apportionment.jpg" alt="Santiago Climate Co-Benefits" width="70%"
+                style="margin-right: 20px; margin-left: 0px; justify-content: left; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding: 20px; background-color: white; margin-bottom: 20px;">
+        </div>
+        <p class="research-paragraph-container">
+            In the above figure, we identify the major sources of PM<sub>2.5</sub>-related premature deaths for each of
+            the G20 countries (a) and distinguish domestic (i.e., self-contribution) sources from those imported via
+            emissions upwind of each country. We estimate the total sectoral contributions to PM<sub>2.5</sub>-related
+            premature deaths (b) and compare the fraction of health impacts from domestic sources to CO<sub>2</sub>
+            intensity (c).
+        <div class="welcome-container">
+            <div class="welcome-text">
+                Relevant Publications
+                <hr style="height: 5px; background-color: black; border: none;">
+            </div>
+
+        </div>
+        <p class="research-paragraph-container" style="margin-top: 5px;">
+            <b>Nawaz, M.O.</b>, Henze, D.K., Harkins, C, Cao, H, Nault, B, Jo, D, Jimenez, J, Anenberg, SC,
+            Goldberg, DL, Qu, Z. Impacts of sectoral, regional, species, and day-specific emissions on air pollution
+            and public health in Washington, DC. Elementa: Science of the Anthropocene 2021.
+            <a href="https://doi.org/10.1525/elementa.2021.00043">10.1525/elementa.2021.00043</a>
+            <br><br>
+            <b>Nawaz, M.O.</b>, Henze, D.K., Anenberg, S.C., Braun, C., Miller, J., Pronk, E. A source
+            apportionment and emission scenario assessment of PM2.5- and O3-related health impacts in G20 countries.
+            GeoHealth 2022.
+            <a href="https://doi.org/10.1029/2022GH000713">10.1029/2022GH000713</a>
+            <br><br>
+            <b>Nawaz, M.O.</b>, Henze, D.K., Anenberg, S.C., Ahn, D.Y., Goldberg, D.L., Tessum, C.W., Chafe,
+            Z.A., An assessment of the sources of air pollution-related health impacts and benefits associated with
+            improvements in travel efficiency as a function of distance of policy implementation in fourteen US
+            cities. Frontiers in Sustainable Cities 2023.
+            <a href="https://doi.org/10.3389/frsc.2023.1102493">10.3389/frsc.2023.1102493</a>
+            <br><br>
+            <b>Nawaz, M.O.</b>, Henze, D.K., Huneeus, N.J., Osses, M., Álamos, N., Opazo, M., Gallardo, L.,
+            Sources of air pollution health impacts and co-benefits of carbon neutrality in Santiago, Chile Journal
+            of Geophysical Research: Atmospheres 2023.
+            <a href="https://doi.org/10.1029/2023JD038808">10.1029/2023JD038808</a>
+        </p>
+    </div>
+
+</body>
+
+</html>

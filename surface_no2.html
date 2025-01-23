@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function myFunction() {
+        var x = document.getElementById("dropdownnav");
+        if (x.className === "dropdownnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "dropdownnav";
+        }
+    }
+    function openProtectedLink() {
+        var password = prompt("Please enter the password:");
+        if (password === "casa16091987") {
+            tab.open("docs/build/html/index.html");
+        } else {
+            alert("Incorrect password.");
+        }
+    }    
+</script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Climate and Atmospheric Science for Action Group</title>
+    <link rel="shortcut icon" type="image/jpg" sizes="16x16" href="cardiffuniversity.png" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <img class="cardifflogo" src="cardiffuniversity.png" alt="Cardiff University Logo">
+        <a href="main.html" ">Home</a>
+        <div class=" dropdown">
+            <button class="dropbtn">Research
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
+                <a href="remotesensing.html">Air Quality Remote Sensing</a>
+                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
+                <a href="wildfires.html">Wildfire Health Effects</a>
+                <a href="surfacepollution.html">Estimating Surface Pollution</a>
+            </div>
+    </div>
+    <a href="people.html">People</a>
+    <a href="publications.html">Publications</a>
+    <div class="dropdown">
+        <button class="dropbtn">Datasets
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+        </div>
+    </div>
+    <a href="joinus.html">Join Us</a>
+    <a href="docs/build/html/index.html" target="_blank">Group Wiki</a>
+    <a href="javascript:void(0);" class="hamburgerbutton" onclick="myFunction()">&#9776;</a>
+    </div>
+    <div class="dropdownnav" id="dropdownnav">
+        <a href="main.html" class="active">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Research
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
+                <a href="remotesensing.html">Air Quality Remote Sensing</a>
+                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
+                <a href="wildfires.html">Wildfire Health Effects</a>
+                <a href="surfacepollution.html">Estimating Surface Pollution</a>
+            </div>
+        </div>
+        <a href="people.html">People</a>
+        <a href="publications.html">Publications</a>
+        <div class="dropdown">
+            <button class="dropbtn">Datasets
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+            </div>
+        </div>
+        <a href="joinus.html">Join Us</a>
+        <a href="docs/build/html/index.html" target="_blank">Group Wiki</a>
+    </div>
+    <div class="header-container">
+        <div class="header-title">US Surface NO<sub>2</sub> from TROPOMI
+            <hr style="height: 5px; background-color: black; border: none;">
+        </div>
+        <p class="research-paragraph-container">
+            This dataset provides estimates of monthly and annual average surface-leve nitrogen dioxide
+            (NO<sub>2</sub>) levels across the
+            continental United States. These estimates are derived using a LASSO land-use regression built by
+            integrating remote-sensing
+            observations from the TROPOspheric Monitoring Instrument (TROPOMI) on the Sentinel-5
+            Precursor satellite, land-use data from Open Street Maps and Google Earth Engine, and meterological
+            reanalysis data from ERA-5.
+            <br><br>
+            <b>Annual and Monthly 24-hour average US Surface NO<sub>2</sub> (v1.US.D.01):</b> <a
+                href="https://zenodo.org/records/14646034">Download Here</a><br>
+        </p>
+        </p>
+        <div style="display: flex; justify-content: center;">
+            <img class="image-container" src="surface_no2.gif" alt="Santiago Climate Co-Benefits" width=90%"
+                style="margin-right: 20px; margin-left: 0px; justify-content: left; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding: 0px; background-color: white; margin-bottom: 20px;">
+        </div>
+        <div class="welcome-container">
+            <div class="welcome-text">
+                Relevant Publications
+                <hr style="height: 5px; background-color: black; border: none;">
+            </div>
+
+        </div>
+        <p class="research-paragraph-container" style="margin-top: 5px;">
+            <b>Nawaz, M.O.</b>, Goldberg, D.L., Kerr, G.H., Anenberg, S.C. TROPOMI satellite data reshape
+            NO<sub>2</sub>
+            Air Pollution Land-Use Regression Modeling Capabilities in the United States. ES&T Air 2024.
+            <a href="https://doi.org/10.1021/acsestair.4c00153">10.1021/acsestair.4c00153</a>
+        </p>
+    </div>
+
+</body>
+
+</html>
