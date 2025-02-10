@@ -9,7 +9,7 @@ body {
 .header-title {
     color: #270101;
     text-align: center;
-    font-size: 45px;
+    font-size: 30px;
     justify-content: center;
     font-family: Helvetica;
     word-wrap: break-word;
@@ -20,7 +20,7 @@ body {
 }
 
 .pub-list {
-    font-size: 23px;
+    font-size: 24px;
 }
 
 .email {
@@ -28,8 +28,8 @@ body {
 }
 
 .profile-photo {
-    width: 40%;
-    height: 40%;
+    width: 30%;
+    height: 30%;
     margin-right: 10px;
     margin-left: 10px;
     border-radius: 0px;
@@ -96,6 +96,17 @@ body {
     margin-top: 0px;
     margin-left: auto;
     margin-right: 10px;
+}
+
+.profile-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0px;
+    margin-left: 20px;
+    font-size: 24px;
+    padding-right: 50px;
+    font-family: Helvetica;
 }
 
 .icon-container a {
@@ -293,6 +304,14 @@ body {
     visibility: hidden;
 }
 
+.join-title {
+    text-align: left;
+    font-weight: bold;
+    font-size: 28px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 /* Add a grey background to dropdown links on hover */
 .dropdown-content a:hover {
     background-color: #ddd;
@@ -363,15 +382,17 @@ body {
     }
 
     .icon-container img {
-        width: 25px;
+        width: 18px;
+        margin: 2px 0px;
     }
 
     .cv-link {
-        font-size: 22px;
+        font-size: 18px;
     }
 
     .profile-photo {
         width: 100px;
+        margin: 2px 2px;
     }
 
     .topnav a.hamburgerbutton {
@@ -382,6 +403,10 @@ body {
     .active {
         background-color: #d3374a;
         color: white;
+    }
+
+    .join-title {
+        font-size: 24px;
     }
 
     .dropdown {
@@ -408,6 +433,12 @@ body {
         bottom: 0;
         top: 0px;
 
+    }
+
+    .pub-list,
+    .research-paragraph-container,
+    .join-paragraph-container {
+        font-size: 18px;
     }
 
     /* .dropdown-content.show {
@@ -524,11 +555,10 @@ body {
         opacity: 1;
     }
 
+    .profile-text {
+        font-size: 15px;
+        padding-right: 10px;
 
-
-    .lecturer,
-    .groupleader {
-        font-size: 18px;
     }
 
     .email {
@@ -545,6 +575,27 @@ body {
 
     .paragraph-container {
         font-size: 18px;
+    }
+
+    .featured-image {
+        padding: 10px;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+
+    .profile-text {
+        padding-right: 10px;
+        font-size: 12px;
+    }
+
+    .paragraph-container {
+        width: 100%;
+    }
+
+    .welcome-text {
+        width: 100%;
     }
 
 }
