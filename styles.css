@@ -162,6 +162,7 @@ body {
 
 .dropdownnav a,
 .dropdownnav .dropdown {
+    color: black;
     visibility: hidden;
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -501,7 +502,6 @@ body {
     .join-paragraph-container {
         font-size: 18px;
     }
-
 
 
     .profile-text {
