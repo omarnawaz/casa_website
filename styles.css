@@ -347,26 +347,6 @@ body {
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that should open and close the topnav (.icon) */
 @media screen and (max-width: 860px) {
 
-    .dropdownnav {
-        opacity: 0;
-        visibility: hidden;
-    }
-
-    .dropdownnav .dropdown {
-        visibility: visible;
-    }
-
-    .dropdownnav a {
-        opacity: 0;
-        visibility: hidden;
-        transition: visibility 0.2s, opacity 0.2s linear;
-    }
-
-    .dropdownnav.responsive a {
-        opacity: 1;
-        visibility: visible;
-    }
-
     .header-container {
         width: 80%;
         min-width: 0px;
@@ -409,8 +389,28 @@ body {
         font-size: 24px;
     }
 
-    .dropdown {
+    /* .dropdown {
         display: block;
+    } */
+
+    /* .dropdownnav {
+        opacity: 0;
+        visibility: hidden;
+    } */
+
+    /* .dropdownnav .dropdown {
+        visibility: visible;
+    } */
+    /* 
+    .dropdownnav a {
+        opacity: 0;
+        visibility: hidden;
+        } */
+
+    .dropdownnav.responsive a {
+        opacity: 1;
+        visibility: visible;
+        transition: visibility 0.2s, opacity 0.2s linear;
     }
 
     .topnav .dropdown .dropbtn {
@@ -419,66 +419,30 @@ body {
 
     .dropdownnav .dropdown-content {
         display: none;
-        visibility: hidden;
-        opacity: 0;
-        transition: visibility 0.2s, opacity 0.2s linear;
-        z-index: 50;
-
-    }
-
-    .dropdownnav .dropdown-content {
         position: absolute;
         left: -185px;
         right: 550px;
         bottom: 0;
         top: 0px;
-
+        z-index: 50;
     }
-
-    .pub-list,
-    .research-paragraph-container,
-    .join-paragraph-container {
-        font-size: 18px;
-    }
-
-    /* .dropdown-content.show {
-        display: block;
-    } */
-
-    /* .dropdown:active .dropdown-content {
-        display: block;
-
-    } */
-
-
-    /* .topnav.responsive {
-        position: relative;
-    } */
 
     .dropdownnav a not a.hamburgerbutton {
         opacity: 0;
         transition: visibility 3s, opacity 3s linear;
-        /* transition: visibility 3s, opacity 3s linear; */
     }
 
-
     .dropdownnav {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        right: 0;
-        top: 49px;
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* right: 0; */
+        /* top: 49px; */
         position: absolute;
-        opacity: 0;
-        transition: visibility 0.2s, opacity 0.2s, height 0.2s linear;
-    }
-
-    .dropdownnav {
-        opacity: 0;
-        visibility: hidden;
-        /* height: 0px; */
-        transition: visibility 0.2s, opacity 0.2s, height 0.2s linear;
+        /* opacity: 0;
+        visibility: hidden; */
+        /* transition: visibility 0.2s, opacity 0.2s, height 0.2s linear; */
     }
 
     .dropdownnav .dropdown {
@@ -490,9 +454,6 @@ body {
     }
 
     .dropdownnav.responsive {
-        /* height: 200px;
-        width: 2000px;
-        background-color: green; */
         display: flex;
         flex-direction: column;
         right: 0;
@@ -500,7 +461,7 @@ body {
         position: absolute;
         z-index: 10000;
         opacity: 1;
-        transition: visibility 0.2s, opacity 0.2s, height 0.2s linear;
+        /* transition: visibility 0.2s, opacity 0.2s, height 0.2s linear; */
     }
 
     .dropdownnav a,
@@ -518,42 +479,30 @@ body {
         float: left;
     }
 
-    /* 
-    .dropdownnav .dropdown,
-    .dropdownnav .dropbtn {
-        display: block;
-        background-color: #f1f1f1;
-        color: black;
-        padding: 7px 16px;
-        margin: 0px;
-        float: left;
-        display: block;
-        text-align: center;
-        text-decoration: none;
-        font-size: 17px;
-        font-family: Helvetica;
-        width: 150px;
-    } */
 
     .dropdown {
         position: relative;
         overflow: visible;
     }
 
-    .dropdown-content {
+    /* .dropdown-content {
         visibility: hidden;
         opacity: 0;
         transition: visibility 0s, opacity 0.3s linear;
-    }
-
-    /* .dropdown:hover {
-        display: block;
     } */
 
-    .dropdown:hover .dropdown-content {
+    /* .dropdown:hover .dropdown-content {
         display: block;
         opacity: 1;
+    } */
+
+    .pub-list,
+    .research-paragraph-container,
+    .join-paragraph-container {
+        font-size: 18px;
     }
+
+
 
     .profile-text {
         font-size: 15px;
