@@ -273,6 +273,19 @@ body {
     max-width: 1000px;
 }
 
+/* Center featured figures on index.html */
+.image-container {
+    justify-content: center;
+    gap: 30px;
+    /* Adjust spacing between images */
+    padding-left: 0;
+    /* Remove any left padding */
+    margin-left: auto;
+    /* Center the container */
+    margin-right: auto;
+    /* Center the container */
+}
+
 .dropdownnav a,
 .dropdownnav .dropdown {
     color: black;
@@ -472,14 +485,15 @@ body {
 .image-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center; /* center images horizontally */
     align-items: center;
-    margin: 12px auto 0;
-    /* reduced spacing to sit closer to text */
-    gap: 20px;
-    width: 85%;
+    margin: 12px auto 0; /* keep top margin and horizontal centering */
+    gap: 30px; /* slightly larger gap between images */
+    width: 90%; /* match paragraph width */
     max-width: 1000px;
+    padding-left: 0; /* remove any left padding */
 }
+
 
 .featured-image {
     width: auto;
