@@ -1,0 +1,1 @@
+Kyla's project assesses the impact of London's Ultra-Low Emission Zone (ULEZ) on surface-level nitrogen dioxide (NO2) concentrations and associated health effects. It integrates ground-based LAQN measurements, satellite observations, and machine learning techniques to analyse spatial and temporal changes in air quality following the ULEZ implementation.
