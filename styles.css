@@ -28,8 +28,9 @@ body {
 }
 
 .profile-photo {
-    width: 30%;
-    height: 30%;
+    width: 180px;
+    height: 230px;
+    object-fit: cover;
     margin-right: 10px;
     margin-left: 10px;
     border-radius: 0px;
@@ -52,15 +53,10 @@ body {
 }
 
 .cardifflogo {
-    float: left;
     width: 46px;
     height: 46px;
-    vertical-align: middle;
     margin-left: 10px;
     margin-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .dropdown-content a {
@@ -167,10 +163,6 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.profile-container img {
-    max-width: 230px;
-    max-height: 230px;
-}
 
 .paragraph-container {
     text-align: left;
@@ -211,6 +203,8 @@ body {
 .topnav {
     background-color: #d3374a;
     overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
 /* .dropdownnav .dropdown {
@@ -288,7 +282,7 @@ body {
 
 /* Add a dark background on topnav links and the dropdown button on hover */
 .topnav a:hover not .hamburgerbutton,
-.dropdownnav a:hover,
+.dropdownnav>a:hover,
 .dropdownnav .dropdown:hover {
     background-color: #555;
     color: white;
@@ -373,12 +367,17 @@ body {
 
     .profile-photo {
         width: 100px;
+        height: 128px;
         margin: 2px 2px;
     }
 
+    .profile-text .lecturer[style*="font-size: 14px"] {
+        font-size: 11px !important;
+    }
+
     .topnav a.hamburgerbutton {
-        float: right;
         display: block;
+        margin-left: auto;
     }
 
     .active {
@@ -421,11 +420,12 @@ body {
     .dropdownnav .dropdown-content {
         display: none;
         position: absolute;
-        left: -185px;
-        right: 550px;
-        bottom: 0;
+        right: 150px;
         top: 0px;
         z-index: 50;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     }
 
     .dropdownnav a not a.hamburgerbutton {
@@ -458,15 +458,15 @@ body {
         display: flex;
         flex-direction: column;
         right: 0;
-        top: 49px;
+        top: 48px;
         position: absolute;
         z-index: 10000;
         opacity: 1;
         /* transition: visibility 0.2s, opacity 0.2s, height 0.2s linear; */
     }
 
-    .dropdownnav a,
-    .dropdownnav .dropdown {
+    .dropdownnav>a,
+    .dropdownnav .dropdown .dropbtn {
         font-size: 17px;
         color: black;
         padding: 14px 16px;
@@ -475,9 +475,15 @@ body {
         font-family: Helvetica;
         display: block;
         width: 150px;
+        box-sizing: border-box;
         text-align: center;
         text-decoration: none;
-        float: left;
+    }
+
+    .dropdownnav .dropdown {
+        padding: 0;
+        width: 150px;
+        background-color: #f1f1f1;
     }
 
 
