@@ -29,7 +29,81 @@
                 button.classList.add('active');
             }
         });
+
+        // Click-to-toggle dropdown functionality
+        dropdowns.forEach(dropdown => {
+            const button = dropdown.querySelector('.dropbtn');
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdowns.forEach(other => {
+                    if (other !== dropdown) {
+                        other.classList.remove('open');
+                    }
+                });
+                dropdown.classList.toggle('open');
+            });
+        });
+
+        document.addEventListener('click', function() {
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('open');
+            });
+        });
+
+        // Initialize gallery
+        initGallery();
     });
+
+    // Gallery data and functions
+    const galleryItems = [
+        {
+            image: 'gallery/cloud_bias/image.png',
+            description: 'Goldberg et al. 2025 characterizes the bias in TROPOMI from missing observations on cloudy days',
+            link: 'https://acp.copernicus.org/articles/25/16287/2025/#&gid=1&pid=1'
+        },
+        {
+            image: 'gallery/port_talbot/image.png',
+            description: 'Read about the closure of the blast furnace in Port Talbot featuring commentary by Omar',
+            link: 'https://www.bbc.co.uk/news/articles/cjdr0zp273vo'
+        },
+        {
+            image: 'gallery/tempo_canada/image.jpg',
+            description: 'Siu et al. 2025 explores tropospheric nitrogen dioxide in Canada using TEMPO',
+            link: 'https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JD044757'
+        }
+    ];
+
+    let currentSlide = 0;
+
+    function initGallery() {
+        if (galleryItems.length > 0) {
+            showSlide(currentSlide);
+        }
+    }
+
+    function showSlide(index) {
+        const imageEl = document.getElementById('gallery-image');
+        const descEl = document.getElementById('gallery-description');
+        const linkEl = document.getElementById('gallery-link');
+        const descLinkEl = document.getElementById('gallery-description-link');
+
+        if (imageEl && descEl && linkEl && descLinkEl) {
+            imageEl.src = galleryItems[index].image;
+            descEl.textContent = galleryItems[index].description;
+            linkEl.href = galleryItems[index].link;
+            descLinkEl.href = galleryItems[index].link;
+        }
+    }
+
+    function changeSlide(direction) {
+        currentSlide += direction;
+        if (currentSlide >= galleryItems.length) {
+            currentSlide = 0;
+        } else if (currentSlide < 0) {
+            currentSlide = galleryItems.length - 1;
+        }
+        showSlide(currentSlide);
+    }
 </script>
 
 <head>
@@ -97,82 +171,117 @@
         <a href="joinus.html">Join Us</a>
         <a href="https://groupwiki.readthedocs.io/en/latest/" target="_blank">Group Wiki</a>
     </div>
-    <div class="header-container">
-        <div class="header-title"><b>C</b>limate and <b>A</b>tmospheric <b>S</b>cience for <b>A</b>ction Group (CASA)
-            <hr style="height: 5px; background-color: black; border: none;">
-        </div>
-        <div class="profile-container">
-            <img class="profile-photo" src="profile_photo.jpg">
-            <div class="profile-text">
-                <span class="groupleader">Group Leader</span>
-                <span class="groupleader">M. Omar Nawaz, PhD</span>
-                <span class="lecturer" style="color: black; font-style: italic; margin-bottom: 8%;">Lecturer in
-                    Climate
-                    Change</span>
-                <span class="lecturer" style="color: #d3374a;">School of Earth and Environmental Sciences<br> Cardiff
-                    University</span>
+    <main class="homepage">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero-title">
+                <span class="hero-acronym">CASA</span>
+                <span class="casa-letter">C</span>limate and <span class="casa-letter">A</span>tmospheric <span class="casa-letter">S</span>cience for <span class="casa-letter">A</span>ction
+            </h1>
+            <p class="hero-tagline">
+                Interdisciplinary research at the intersection of
+                <span class="keyword">climate change</span>,
+                <span class="keyword">air pollution</span>,
+                <span class="keyword">health</span>,
+                <span class="keyword">equity</span>, and
+                <span class="keyword">policy</span>.
+            </p>
+            <p class="hero-affiliation">
+                School of Earth and Environmental Sciences, Cardiff University
+            </p>
+        </section>
+
+        <!-- Card Grid -->
+        <section class="card-grid">
+            <!-- Row 1: About Us + Group Leader (stacked) | Recent News -->
+            <div class="card-stack">
+                <article class="card card-about">
+                    <h2 class="card-title">About Us</h2>
+                    <p class="card-content">
+                        We investigate how human activities influence atmospheric composition and how climate action could affect health and equity. Our work integrates earth-system modeling, remote sensing, and health impact assessments.
+                    </p>
+                </article>
+
+                <article class="card card-contact">
+                    <h2 class="card-title">Group Leader</h2>
+                    <div class="contact-mini">
+                        <img class="contact-mini-photo" src="profile_photo.jpg" alt="M. Omar Nawaz">
+                        <div class="contact-mini-info">
+                            <strong>M. Omar Nawaz, PhD</strong>
+                            <span class="title">Lecturer in Climate Change</span>
+                            <span>Cardiff University</span>
+                        </div>
+                    </div>
+                    <div class="contact-mini-icons">
+                        <a href="mailto:nawazm3@cardiff.ac.uk" target="_blank">
+                            <img src="email_icon.svg" alt="Email">
+                        </a>
+                        <a href="https://www.linkedin.com/in/omar-nawaz-65660b397" target="_blank">
+                            <img src="linkedin.svg" alt="LinkedIn" style="filter: grayscale(100%);">
+                        </a>
+                        <a href="https://scholar.google.co.uk/citations?user=6_oxg9EAAAAJ&hl=en&oi=ao" target="_blank">
+                            <img src="googlescholar_icon.svg" alt="Google Scholar">
+                        </a>
+                        <a href="https://github.com/OmarNawaz" target="_blank">
+                            <img src="github_icon.svg" alt="GitHub">
+                        </a>
+                        <a href="public.curriculum_vitae.monawaz.pdf" target="_blank" class="cv-link-mini">CV</a>
+                    </div>
+                    <a href="people.html" class="card-link">Meet the Team</a>
+                </article>
             </div>
-            <div class="icon-container">
-                <a href="mailto:nawazm3@cardiff.ac.uk" target="_blank">
-                    <img src="email_icon.svg" alt="Email Icon">
-                </a>
-                <a href="https://www.linkedin.com/in/omar-nawaz-65660b397" target="_blank">
-                    <img src="linkedin.svg" alt="LinkedIn Icon" style="filter: grayscale(100%);">
-                </a>
-                <a href="https://scholar.google.co.uk/citations?user=6_oxg9EAAAAJ&hl=en&oi=ao" target="_blank">
-                    <img src="googlescholar_icon.svg" alt="Google Scholar Icon">
-                </a>
-                <a href="https://github.com/OmarNawaz" target="_blank">
-                    <img src="github_icon.svg" alt="GitHub Icon">
-                </a>
-                <a href="public.curriculum_vitae.monawaz.pdf" target="_blank" class="cv-link">CV</a>
-            </div>
-        </div>
-        <div class="welcome-container">
-            <div class="welcome-text">
-                Welcome to CASA —
-            </div>
-        </div>
-        <p class="paragraph-container">
-            We are the Climate and Atmospheric Science for Action (CASA) group in the School of Earth and Environmental
-            Science at Cardiff University. Our research is positioned at the intersection of <span
-                style="font-weight: bold; color: #d3374a;">climate change</span>,
-            <span style="font-weight: bold; color: #d3374a;">air pollution</span>, <span
-                style="font-weight: bold; color: #d3374a;">health</span>,
-            <span style="font-weight: bold; color: #d3374a;">equity</span>, and <span
-                style="font-weight: bold; color: #d3374a;">policy</span>.<br><br>Our group
-            investigates how human activities, specifically those linked to the emission of air pollutants and
-            greenhouse
-            gases, influence atmospheric composition. Additionally, we consider how action designed to mitigate and
-            adapt to
-            climate
-            change could affect health and equity. <br><br> Through
-            integrating
-            <span style="font-weight: bold; color: #d3374a;">adjoint approaches</span>, <span
-                style="font-weight: bold; color: #d3374a;">earth-system modeling</span>, <span
-                style="font-weight: bold; color: #d3374a;">remote sensing</span>, <span
-                style="font-weight: bold; color: #d3374a;">statistical and machine learning methods</span>, and <span
-                style="font-weight: bold; color: #d3374a;">health impact assessments</span> we conduct interdisciplinary
-            research that motivates scientifically informed action.
-        </p>
-        <div class="welcome-container">
-            <div class="welcome-text">
-                Featured Figures —
-            </div>
-        </div>
-        <p class="paragraph-container" style="margin-top: 25px;">
-            Forward (left) and adjoint (right) simulations of the GEOS-Chem chemical transport model in the South
-            American domain from
-            <a href="https://doi.org/10.1029/2023JD038808" target="_blank" style="color: blue; text-decoration: none;">
-                Nawaz et al. 2023.
-            </a>
-            <br><br>
-        </p>
-        <div class="image-container">
-            <img class="featured-image" src="fwd_sim.gif">
-            <img class="featured-image" src="adj_sim.gif">
-        </div>
-    </div>
+
+            <article class="card card-news">
+                <h2 class="card-title">Recent News</h2>
+                <div class="gallery-container">
+                    <button class="gallery-arrow gallery-arrow-left" onclick="changeSlide(-1)">&#10094;</button>
+                    <div class="gallery-content">
+                        <div class="gallery-image-wrapper">
+                            <a id="gallery-link" href="#" target="_blank">
+                                <img id="gallery-image" class="gallery-image" src="" alt="News image">
+                            </a>
+                        </div>
+                        <a id="gallery-description-link" href="#" target="_blank" class="gallery-description-link">
+                            <div class="gallery-description" id="gallery-description"></div>
+                        </a>
+                    </div>
+                    <button class="gallery-arrow gallery-arrow-right" onclick="changeSlide(1)">&#10095;</button>
+                </div>
+            </article>
+
+            <!-- Row 2: Research Spotlight (full width) -->
+            <article class="card card-spotlight">
+                <h2 class="card-title">Research Spotlight</h2>
+                <div class="spotlight-images">
+                    <img src="fwd_sim.gif" alt="Forward simulation">
+                    <img src="adj_sim.gif" alt="Adjoint simulation">
+                </div>
+                <p class="spotlight-caption">
+                    Forward (left) and adjoint (right) simulations of the GEOS-Chem chemical transport model.
+                    <a href="https://doi.org/10.1029/2023JD038808" target="_blank">Nawaz et al. 2023</a>
+                </p>
+            </article>
+
+            <!-- Row 3: Join Our Team | Explore -->
+            <article class="card card-cta">
+                <h2 class="card-title">Join Our Team</h2>
+                <p class="card-content">
+                    Interested in climate science, air quality, or health impacts research? We're always looking for motivated researchers.
+                </p>
+                <a href="joinus.html" class="card-link">View Opportunities</a>
+            </article>
+
+            <article class="card card-links">
+                <h2 class="card-title">Explore</h2>
+                <ul class="quick-links-list">
+                    <li><a href="cobenefits.html">Co-Benefits of Climate Action</a></li>
+                    <li><a href="remotesensing.html">Air Quality Remote Sensing</a></li>
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="https://groupwiki.readthedocs.io/en/latest/" target="_blank">Group Wiki</a></li>
+                </ul>
+            </article>
+        </section>
+    </main>
 
 </body>
 

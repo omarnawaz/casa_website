@@ -1,0 +1,1 @@
+Goldberg et al. 2025 characterizes the bias in TROPOMI from missing observations on cloudy days

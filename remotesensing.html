@@ -29,6 +29,29 @@
                 button.classList.add('active');
             }
         });
+
+        // Click-to-toggle dropdown functionality
+        dropdowns.forEach(dropdown => {
+            const button = dropdown.querySelector('.dropbtn');
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                // Close other dropdowns
+                dropdowns.forEach(other => {
+                    if (other !== dropdown) {
+                        other.classList.remove('open');
+                    }
+                });
+                // Toggle current dropdown
+                dropdown.classList.toggle('open');
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function() {
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('open');
+            });
+        });
     });
 </script>
 
