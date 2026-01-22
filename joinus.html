@@ -11,12 +11,12 @@
     }
 
     // Click-to-toggle dropdown functionality
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const dropdowns = document.querySelectorAll('.dropdown');
 
         dropdowns.forEach(dropdown => {
             const button = dropdown.querySelector('.dropbtn');
-            button.addEventListener('click', function(e) {
+            button.addEventListener('click', function (e) {
                 e.stopPropagation();
                 // Close other dropdowns
                 dropdowns.forEach(other => {
@@ -30,7 +30,7 @@
         });
 
         // Close dropdowns when clicking outside
-        document.addEventListener('click', function() {
+        document.addEventListener('click', function () {
             dropdowns.forEach(dropdown => {
                 dropdown.classList.remove('open');
             });
@@ -107,7 +107,7 @@
         <div class="header-title">Join the Group
             <hr style="height: 5px; background-color: black; border: none;">
         </div>
-
+        <br>
         <div class="job-container">
             <span class="job-title">Current Job Opening(s):</span><br>
             <ol>
@@ -128,7 +128,7 @@
                 My focus when working with postdocs is career development and providing feedback on scientific writing,
                 presentations, and research. Whether your next step is as a researcher, lecturer, or outside academia,
                 I'm committed to supporting your career development. I'm also interested in collaborating on fellowship
-                proposals. If you'd like to work with me, please <a href="mailto:nawazm3@cardiff.ac.uk">reach out</a>!
+                proposals. If you'd like to work with me, please <a href="mailto:nawazm3@cardiff.ac.uk">reach out</a>.
             </p>
             <br>
             <h3 class="join-title">
@@ -141,7 +141,7 @@
                 modeling on high-performance computing systems, satellite remote sensing applications, and quantifying
                 health and equity impacts of pollution and climate change. My priority is mentoring your scientific
                 writing, presenting, and research skills while tailoring your PhD towards your career goals. If
-                interested, please <a href="mailto:nawazm3@cardiff.ac.uk">email me</a>! Further details about
+                interested, please <a href="mailto:nawazm3@cardiff.ac.uk">reach out</a>. Further details about
                 postgraduate research can be found <a
                     href="https://www.cardiff.ac.uk/earth-environmental-sciences/courses/postgraduate-research">here</a>.
             </p>
@@ -151,7 +151,7 @@
             <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
             <p class="join-paragraph-container">
                 Interested in exploring how climate change, air pollution, health, policy, and equity interact? Please
-                <a href="mailto:nawazm3@cardiff.ac.uk">email me</a>! I'll provide guidance on scientific research and
+                <a href="mailto:nawazm3@cardiff.ac.uk">email me</a>. I'll provide guidance on scientific research and
                 writing, support you in learning high-performance computing, data analysis and visualization, and
                 developing scientific communication skills. Depending on your interests, you could work on climate
                 science, earth system modeling, remote sensing, data science, machine learning, or environmental justice
@@ -172,6 +172,7 @@
                 who would like to join.
             </p>
             </p>
+            <br>
             <div class="image-container">
                 <img class="featured-image" src="urge.png">
                 <img class="featured-image" style="width: 20%;" src="youbelonghere.png">

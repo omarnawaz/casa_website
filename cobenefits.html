@@ -33,7 +33,7 @@
         // Click-to-toggle dropdown functionality
         dropdowns.forEach(dropdown => {
             const button = dropdown.querySelector('.dropbtn');
-            button.addEventListener('click', function(e) {
+            button.addEventListener('click', function (e) {
                 e.stopPropagation();
                 // Close other dropdowns
                 dropdowns.forEach(other => {
@@ -47,7 +47,7 @@
         });
 
         // Close dropdowns when clicking outside
-        document.addEventListener('click', function() {
+        document.addEventListener('click', function () {
             dropdowns.forEach(dropdown => {
                 dropdown.classList.remove('open');
             });

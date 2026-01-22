@@ -11,7 +11,7 @@
     }
 
     // Highlight Research/Datasets buttons when on their sub-pages
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
         const researchPages = ['cobenefits.html', 'remotesensing.html', 'sourceapportionment.html', 'wildfires.html', 'surfacepollution.html'];
@@ -33,7 +33,7 @@
         // Click-to-toggle dropdown functionality
         dropdowns.forEach(dropdown => {
             const button = dropdown.querySelector('.dropbtn');
-            button.addEventListener('click', function(e) {
+            button.addEventListener('click', function (e) {
                 e.stopPropagation();
                 dropdowns.forEach(other => {
                     if (other !== dropdown) {
@@ -44,7 +44,7 @@
             });
         });
 
-        document.addEventListener('click', function() {
+        document.addEventListener('click', function () {
             dropdowns.forEach(dropdown => {
                 dropdown.classList.remove('open');
             });
@@ -58,7 +58,7 @@
     const galleryItems = [
         {
             image: 'gallery/cloud_bias/image.png',
-            description: 'Goldberg et al. 2025 characterizes the bias in TROPOMI from missing observations on cloudy days',
+            description: 'Goldberg et al. 2025 characterizes the TROPOMI bias from missing observations on cloudy days',
             link: 'https://acp.copernicus.org/articles/25/16287/2025/#&gid=1&pid=1'
         },
         {
@@ -176,7 +176,8 @@
         <section class="hero">
             <h1 class="hero-title">
                 <span class="hero-acronym">CASA</span>
-                <span class="casa-letter">C</span>limate and <span class="casa-letter">A</span>tmospheric <span class="casa-letter">S</span>cience for <span class="casa-letter">A</span>ction
+                <span class="casa-letter">C</span>limate and <span class="casa-letter">A</span>tmospheric <span
+                    class="casa-letter">S</span>cience for <span class="casa-letter">A</span>ction
             </h1>
             <p class="hero-tagline">
                 Interdisciplinary research at the intersection of
@@ -198,7 +199,11 @@
                 <article class="card card-about">
                     <h2 class="card-title">About Us</h2>
                     <p class="card-content">
-                        We investigate how human activities influence atmospheric composition and how climate action could affect health and equity. Our work integrates earth-system modeling, remote sensing, and health impact assessments.
+                        Our research investigates how atmospheric composition, public health, and equity are affected
+                        by human activities and decision-making. We explore topics ranging from the influence of
+                        present-day
+                        fossil-fuel combustion to the future co-benefits of climate mitigation policy through
+                        earth-system modeling, remote sensing, and risk assessment.
                     </p>
                 </article>
 
@@ -257,7 +262,7 @@
                     <img src="adj_sim.gif" alt="Adjoint simulation">
                 </div>
                 <p class="spotlight-caption">
-                    Forward (left) and adjoint (right) simulations of the GEOS-Chem chemical transport model.
+                    Forward and adjoint simulations of the GEOS-Chem chemical transport model.
                     <a href="https://doi.org/10.1029/2023JD038808" target="_blank">Nawaz et al. 2023</a>
                 </p>
             </article>
@@ -266,7 +271,8 @@
             <article class="card card-cta">
                 <h2 class="card-title">Join Our Team</h2>
                 <p class="card-content">
-                    Interested in climate science, air quality, or health impacts research? We're always looking for motivated researchers.
+                    Interested in climate science, air quality, or health impacts research? We're always looking for
+                    motivated researchers.
                 </p>
                 <a href="joinus.html" class="card-link">View Opportunities</a>
             </article>
