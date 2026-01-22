@@ -315,7 +315,7 @@ body {
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
-    font-family: Helvetica;
+    font-family: Poppins, sans-serif;
 }
 
 /* Add an active class to highlight the current page */
@@ -343,7 +343,7 @@ body {
     outline: none;
     padding: 0px 0px;
     background-color: inherit;
-    font-family: Helvetica;
+    font-family: Poppins, sans-serif;
     margin: 0;
     color: inherit;
     cursor: pointer;
@@ -357,7 +357,7 @@ body {
     transition: visibility 0s, opacity 0.3s linear;
     position: absolute;
     background-color: #f9f9f9;
-    top: 48px;
+    top: 54px;
     left: auto;
     margin-left: -15px;
     min-width: 160px;
@@ -373,7 +373,7 @@ body {
     text-decoration: none;
     display: block;
     text-align: left;
-    font-family: Helvetica;
+    font-family: Poppins, sans-serif;
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.15s ease, transform 0.15s ease, background-color 0s;
@@ -574,7 +574,7 @@ body {
         display: flex;
         flex-direction: column;
         right: 0;
-        top: 50px;
+        top: 55px;
         position: absolute;
         z-index: 10000;
         opacity: 1;
@@ -588,7 +588,7 @@ body {
         padding: 14px 16px;
         margin: 0px;
         background-color: #f1f1f1;
-        font-family: Helvetica;
+        font-family: Poppins, sans-serif;
         display: block;
         width: 150px;
         box-sizing: border-box;
