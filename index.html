@@ -57,18 +57,23 @@
     // Gallery data and functions
     const galleryItems = [
         {
+            image: 'gallery/port_talbot_radio/image.png',
+            description: '<b>From BBC News Radio:</b><br>Listen about the closure of the blast furnace in Port Talbot featuring an interview by Omar',
+            link: 'https://www.bbc.co.uk/sounds/play/p0mq8hsb'
+        },
+        {
             image: 'gallery/cloud_bias/image.png',
-            description: 'Goldberg et al. 2025 characterizes the TROPOMI bias from missing observations on cloudy days',
+            description: '<b>From Goldberg et al. 2025 published in <i>Atmospheric Chemistry and Physics</i>:</b><br>This study characterizes the TROPOMI bias from missing observations on cloudy days',
             link: 'https://acp.copernicus.org/articles/25/16287/2025/#&gid=1&pid=1'
         },
         {
             image: 'gallery/port_talbot/image.png',
-            description: 'Read about the closure of the blast furnace in Port Talbot featuring commentary by Omar',
+            description: '<b>From BBC News:</b><br>Read about the closure of the blast furnace in Port Talbot featuring commentary by Omar',
             link: 'https://www.bbc.co.uk/news/articles/cjdr0zp273vo'
         },
         {
             image: 'gallery/tempo_canada/image.jpg',
-            description: 'Siu et al. 2025 explores tropospheric nitrogen dioxide in Canada using TEMPO',
+            description: '<b>From Siu et al. 2025 published in <i>JGR-Atmospheres</i>:</b><br>This study explores tropospheric nitrogen dioxide in Canada using TEMPO',
             link: 'https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JD044757'
         }
     ];
@@ -89,7 +94,7 @@
 
         if (imageEl && descEl && linkEl && descLinkEl) {
             imageEl.src = galleryItems[index].image;
-            descEl.textContent = galleryItems[index].description;
+            descEl.innerHTML = galleryItems[index].description;
             linkEl.href = galleryItems[index].link;
             descLinkEl.href = galleryItems[index].link;
         }
