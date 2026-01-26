@@ -11,12 +11,12 @@
     }
 
     // Click-to-toggle dropdown functionality
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const dropdowns = document.querySelectorAll('.dropdown');
 
         dropdowns.forEach(dropdown => {
             const button = dropdown.querySelector('.dropbtn');
-            button.addEventListener('click', function(e) {
+            button.addEventListener('click', function (e) {
                 e.stopPropagation();
                 // Close other dropdowns
                 dropdowns.forEach(other => {
@@ -30,7 +30,7 @@
         });
 
         // Close dropdowns when clicking outside
-        document.addEventListener('click', function() {
+        document.addEventListener('click', function () {
             dropdowns.forEach(dropdown => {
                 dropdown.classList.remove('open');
             });
@@ -62,20 +62,20 @@
                 <a href="wildfires.html">Wildfire Health Effects</a>
                 <a href="surfacepollution.html">Estimating Surface Pollution</a>
             </div>
-    </div>
-    <a href="people.html" class="active">People</a>
-    <a href="publications.html">Publications</a>
-    <div class="dropdown">
-        <button class="dropbtn">Datasets
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
         </div>
-    </div>
-    <a href="joinus.html">Join Us</a>
-    <a href="https://groupwiki.readthedocs.io/en/latest/" target="_blank">Group Wiki</a>
-    <a href="javascript:void(0);" class="hamburgerbutton" onclick="myFunction()">&#9776;</a>
+        <a href="people.html" class="active">People</a>
+        <a href="publications.html">Publications</a>
+        <div class="dropdown">
+            <button class="dropbtn">Datasets
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+            </div>
+        </div>
+        <a href="joinus.html">Join Us</a>
+        <a href="https://groupwiki.readthedocs.io/en/latest/" target="_blank">Group Wiki</a>
+        <a href="javascript:void(0);" class="hamburgerbutton" onclick="myFunction()">&#9776;</a>
     </div>
     <div class="dropdownnav" id="dropdownnav">
         <a href="index.html" class="active">Home</a>
@@ -155,11 +155,32 @@
                 </a>
             </div>
             <div class="profile-description">Kyla's project assesses the impact of London's Ultra-Low Emission Zone
-                (ULEZ) on surface-level nitrogen dioxide (NO<sub>2</sub>) concentrations and associated health effects. It
+                (ULEZ) on surface-level nitrogen dioxide (NO<sub>2</sub>) concentrations and associated health effects.
+                It
                 integrates ground-based LAQN measurements, satellite observations, and machine learning techniques to
                 analyse spatial and temporal changes in air quality following the ULEZ implementation.</div>
         </div>
-    </div>
+        <div class="profile-container">
+            <img class="profile-photo" src="people/feichi_hu/headshot.jpg">
+            <div class="profile-text">
+                <span class="groupleader">Feichi Hu</span>
+                <span class="groupleader">Postgraduate Researcher</span>
+                <br>
+                <span class="lecturer" style="color: black; font-style: italic;">PhD
+                    Student</span>
+            </div>
+            <div class="icon-container">
+                <a href="mailto:Hu1@cardiff.ac.uk" target="_blank">
+                    <img src="email_icon.svg" alt="Email Icon">
+                </a>
+                <a href="https://www.linkedin.com/in/feichi-hu-3a7270299/" target="_blank">
+                    <img src="linkedin.svg" alt="LinkedIn Icon" style="filter: grayscale(100%);">
+                </a>
+            </div>
+            <div class="profile-description">Feichi's PhD project explores methods for high-precision estimation method
+                of methane concentration by integrating remote sensing and machine learning. She is co-supervised by <a
+                    href="https://profiles.cardiff.ac.uk/staff/zhuol" target="_blank">Dr. Lu Zhuo</a> and Omar.
+            </div>
 
 </body>
 
