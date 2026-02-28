@@ -468,13 +468,13 @@ body {
     }
 
     .profile-container {
-        max-width: 400px;
+        max-width: 650px;
         width: 90%;
     }
 
     .icon-container img {
-        width: 18px;
-        margin: 2px 0px;
+        width: 28px;
+        margin: 3px 0px;
     }
 
     .cv-link {
@@ -625,7 +625,7 @@ body {
 
 
     .profile-text {
-        font-size: 15px;
+        font-size: 20px;
         padding-right: 10px;
 
     }
