@@ -19,7 +19,7 @@
     }
 
     // Highlight Research/Datasets buttons when on their sub-pages
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
         const researchPages = ['cobenefits.html', 'remotesensing.html', 'sourceapportionment.html', 'wildfires.html', 'surfacepollution.html'];
@@ -41,7 +41,7 @@
         // Click-to-toggle dropdown functionality
         dropdowns.forEach(dropdown => {
             const button = dropdown.querySelector('.dropbtn');
-            button.addEventListener('click', function(e) {
+            button.addEventListener('click', function (e) {
                 e.stopPropagation();
                 // Close other dropdowns
                 dropdowns.forEach(other => {
@@ -55,7 +55,7 @@
         });
 
         // Close dropdowns when clicking outside
-        document.addEventListener('click', function() {
+        document.addEventListener('click', function () {
             dropdowns.forEach(dropdown => {
                 dropdown.classList.remove('open');
             });
@@ -87,20 +87,20 @@
                 <a href="wildfires.html">Wildfire Health Effects</a>
                 <a href="surfacepollution.html">Estimating Surface Pollution</a>
             </div>
-    </div>
-    <a href="people.html">People</a>
-    <a href="publications.html">Publications</a>
-    <div class="dropdown">
-        <button class="dropbtn">Datasets
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
         </div>
-    </div>
-    <a href="joinus.html">Join Us</a>
-    <a href="https://groupwiki.readthedocs.io/en/latest/" target="_blank">Group Wiki</a>
-    <a href="javascript:void(0);" class="hamburgerbutton" onclick="myFunction()">&#9776;</a>
+        <a href="people.html">People</a>
+        <a href="publications.html">Publications</a>
+        <div class="dropdown">
+            <button class="dropbtn">Datasets
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+            </div>
+        </div>
+        <a href="joinus.html">Join Us</a>
+        <a href="https://groupwiki.readthedocs.io/en/latest/" target="_blank">Group Wiki</a>
+        <a href="javascript:void(0);" class="hamburgerbutton" onclick="myFunction()">&#9776;</a>
     </div>
     <div class="dropdownnav" id="dropdownnav">
         <a href="index.html" class="active">Home</a>
@@ -142,12 +142,12 @@
             Precursor satellite, land-use data from Open Street Maps and Google Earth Engine, and meterological
             reanalysis data from ERA-5.
             <br><br>
-            <b>Annual and Monthly 24-hour average US Surface NO<sub>2</sub> (v1.US.D.01):</b> <a
+            <b>Annual and Monthly 24-hour average US Surface NO<sub>2</sub> (v2.US.D.01):</b> <a
                 href="https://zenodo.org/records/14646034">Download Here</a><br>
         </p>
         </p>
         <div style="display: flex; justify-content: center;">
-            <img class="image-container" src="CONUS_surface_no2.gif" alt="Santiago Climate Co-Benefits" width=80%"
+            <img class="image-container" src="surface_no2.gif" alt="Santiago Climate Co-Benefits" width=80%"
                 style="margin-right: 20px; margin-left: 0px; justify-content: left; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding: 0px; background-color: white; margin-bottom: 20px;">
         </div>
         <div class="welcome-container">
