@@ -1,0 +1,1 @@
+Using ERA5 data and machine learning techniques to analyse the atmospheric conditions necessary for fire tornado generation, compared against conventional tornadoes and wildfires, as well as predict future prevalence of the phenomenon to discuss localised impacts on regions.
