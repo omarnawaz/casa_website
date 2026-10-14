@@ -1,280 +1,257 @@
-<!DOCTYPE html>
-<html>
-<script>
-    function myFunction() {
-        var x = document.getElementById("dropdownnav");
-        if (x.className === "dropdownnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "dropdownnav";
-        }
-    }
-
-    // Click-to-toggle dropdown functionality
-    document.addEventListener('DOMContentLoaded', function () {
-        const dropdowns = document.querySelectorAll('.dropdown');
-
-        dropdowns.forEach(dropdown => {
-            const button = dropdown.querySelector('.dropbtn');
-            button.addEventListener('click', function (e) {
-                e.stopPropagation();
-                // Close other dropdowns
-                dropdowns.forEach(other => {
-                    if (other !== dropdown) {
-                        other.classList.remove('open');
-                    }
-                });
-                // Toggle current dropdown
-                dropdown.classList.toggle('open');
-            });
-        });
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function () {
-            dropdowns.forEach(dropdown => {
-                dropdown.classList.remove('open');
-            });
-        });
-    });
-</script>
-
+<!doctype html>
+<html lang="en-GB" class="no-js">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Climate and Atmospheric Science for Action Group</title>
-    <link rel="shortcut icon" type="image/jpg" sizes="16x16" href="cardiffuniversity.png" />
-    <link rel="stylesheet" href="styles.css?v=21">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>People · Omar Nawaz and the CASA group</title>
+<meta name="description" content="The people in CASA, the research group led by Omar Nawaz at Cardiff University, and how to join them.">
+<link rel="canonical" href="https://omarnawaz.com/people.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Omar Nawaz and the CASA group">
+<meta property="og:title" content="People · Omar Nawaz and the CASA group">
+<meta property="og:description" content="The people in CASA, the research group led by Omar Nawaz at Cardiff University, and how to join them.">
+<meta property="og:url" content="https://omarnawaz.com/people.html">
+<meta property="og:image" content="https://omarnawaz.com/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2337e6">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>document.documentElement.className = 'js' + (window.matchMedia && matchMedia('(hover: hover) and (pointer: fine) and (min-width: 620px)').matches ? ' flip' : '');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
 </head>
+<body class="page-people hero-cobalt">
 
-<body>
-    <div class="topnav" id="myTopnav">
-        <img class="cardifflogo" src="cardiffuniversity.png" alt="Cardiff University Logo">
-        <a href="index.html">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">Research
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
-                <a href="remotesensing.html">Air Quality Remote Sensing</a>
-                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
-                <a href="wildfires.html">Wildfire Health Effects</a>
-                <a href="surfacepollution.html">Estimating Surface Pollution</a>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top__in">
+    <a class="top__mark" href="index.html">CASA</a>
+    <nav aria-label="Main">
+      <ul class="top__nav">
+        <li><a href="research.html" data-text="Research">Research</a></li>
+        <li><a href="publications.html" data-text="Publications">Publications</a></li>
+        <li><a href="surface_no2.html" data-text="Data">Data</a></li>
+        <li><a href="people.html" data-text="People" aria-current="page">People</a></li>
+        <li><a href="https://groupwiki.readthedocs.io/en/latest/" data-text="Wiki" target="_blank" rel="noopener">Wiki</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <svg class="inks" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="blue-ink" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%">
+      <feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0"/>
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="0.082 0.220 0.541 0.862 1"/>
+        <feFuncG type="table" tableValues="0.118 0.251 0.541 0.831 0.961"/>
+        <feFuncB type="table" tableValues="0.620 0.663 0.757 0.847 0.890"/>
+      </feComponentTransfer>
+    </filter>
+  </svg>
+
+  <section class="hero hero--group" aria-labelledby="hello">
+    <canvas class="hero__air" aria-hidden="true"></canvas>
+    <div class="hero__in">
+      <h1 class="hello" id="hello" data-air="lines">People</h1>
+
+      <div class="intro" data-air="block">
+        <p>The Climate and Atmospheric Science for Action (CASA) group is based at Cardiff University and led by Dr&nbsp;Omar&nbsp;Nawaz.</p>
+        <p class="intro__cue">Select a card to read about each member’s&nbsp;research.</p>
+      </div>
+
+      <ul class="people" aria-label="Current members" style="--cols: 4">
+        <li class="person person--one" data-air="solid">
+          <button class="person__turn" type="button" aria-labelledby="omar_nawaz" aria-describedby="omar_nawaz-words" aria-pressed="false" hidden></button>
+          <div class="person__card">
+            <div class="person__front">
+              <span class="person__photo"><img src="people/omar_nawaz.jpg" alt="" width="800" height="800" style="--fx: 45.45%; --fy: 44.58%; --zoom: 1.1638; --tone: contrast(1.05);"></span>
+              <h2 class="person__name" id="omar_nawaz">Omar Nawaz</h2>
+              <ul class="person__links" aria-label="Omar Nawaz">
+                <li><a href="mailto:nawazm3@cardiff.ac.uk" title="Email"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 4.5h18A1.5 1.5 0 0 1 22.5 6v12a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 18V6A1.5 1.5 0 0 1 3 4.5Zm.9 2.1 8.1 6.3 8.1-6.3H3.900ZM20.400 8.250l-8.400 6.540-8.400-6.540V17.400h16.800V8.250Z"/></svg><span class="sr-only">Email</span></a></li>
+                <li><a href="https://www.linkedin.com/in/omar-nawaz-65660b397" title="LinkedIn"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span class="sr-only">LinkedIn</span></a></li>
+                <li><a href="https://scholar.google.co.uk/citations?user=6_oxg9EAAAAJ" title="Google Scholar"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg><span class="sr-only">Google Scholar</span></a></li>
+                <li><a href="https://github.com/OmarNawaz" title="GitHub"><svg class="icon" viewBox="0 0 16 16" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span class="sr-only">GitHub</span></a></li>
+                <li><a href="public.curriculum_vitae.monawaz.pdf" title="CV"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M5 1h9.500L20 6.500V22a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Zm1 2v18h12V7.500h-4.500V3H6Zm2 8h8v1.800H8V11Zm0 3.600h8v1.800H8v-1.800Zm0-7.200h3.500v1.800H8V7.400Z"/></svg><span class="sr-only">CV</span></a></li>
+              </ul>
             </div>
-        </div>
-        <a href="people.html" class="active">People</a>
-        <a href="publications.html">Publications</a>
-        <div class="dropdown">
-            <button class="dropbtn">Datasets
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+            <div class="person__back" id="omar_nawaz-words">
+              <p>Omar Nawaz leads the group and is a Lecturer in Climate Change Science at Cardiff&nbsp;University.</p>
             </div>
-        </div>
-        <a href="joinus.html">Join Us</a>
-        <a href="https://groupwiki.readthedocs.io/en/latest/" target="_blank">Group Wiki</a>
-        <a href="javascript:void(0);" class="hamburgerbutton" onclick="myFunction()">&#9776;</a>
+          </div>
+        </li>
+        <li class="person" data-air="solid">
+          <button class="person__turn" type="button" aria-labelledby="lucas_ngo" aria-describedby="lucas_ngo-words" aria-pressed="false" hidden></button>
+          <div class="person__card">
+            <div class="person__front">
+              <span class="person__photo"><img src="people/lucas_ngo.jpg" alt="" width="640" height="902" style="--fx: 50%; --fy: 33.02%; --zoom: 1; --tone: contrast(1.22) brightness(.9);"></span>
+              <h2 class="person__name" id="lucas_ngo">Lucas Ngo</h2>
+              <ul class="person__links" aria-label="Lucas Ngo">
+                <li><a href="mailto:NgoKL@cardiff.ac.uk" title="Email"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 4.5h18A1.5 1.5 0 0 1 22.5 6v12a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 18V6A1.5 1.5 0 0 1 3 4.5Zm.9 2.1 8.1 6.3 8.1-6.3H3.900ZM20.400 8.250l-8.400 6.540-8.400-6.540V17.400h16.800V8.250Z"/></svg><span class="sr-only">Email</span></a></li>
+                <li><a href="https://www.linkedin.com/in/lucas-khoi-ngo-9848871bb/" title="LinkedIn"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span class="sr-only">LinkedIn</span></a></li>
+                <li><a href="https://www.researchgate.net/profile/Khoi_Ngo6" title="ResearchGate"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M3 0h18a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3Zm2.200 6.500v11h2.100v-4.200h1.500l2.300 4.200h2.400l-2.600-4.550c1.350-.45 2.150-1.550 2.150-3.050 0-2.100-1.450-3.400-3.900-3.400H5.200Zm2.100 1.800h1.700c1.250 0 1.950.6 1.950 1.650S10.250 11.600 9 11.600H7.300V8.300Zm11.500 5.200h-3.200v1.500h1.400v1.050c-.3.150-.7.250-1.150.250-1.400 0-2.250-1.050-2.250-2.800h-1.900c0 2.900 1.550 4.550 4.050 4.550 1.150 0 2.200-.35 3.050-.950V13.500Z"/></svg><span class="sr-only">ResearchGate</span></a></li>
+              </ul>
+            </div>
+            <div class="person__back" id="lucas_ngo-words">
+              <p>Lucas Ngo is a postdoctoral research assistant.</p>
+              <p>His research quantifies the air quality and health impacts of emissions from Mexico’s oil and gas&nbsp;sector.</p>
+            </div>
+          </div>
+        </li>
+        <li class="person" data-air="solid">
+          <button class="person__turn" type="button" aria-labelledby="diya_wang" aria-describedby="diya_wang-words" aria-pressed="false" hidden></button>
+          <div class="person__card">
+            <div class="person__front">
+              <span class="person__photo"><img src="people/diya_wang.jpg" alt="" width="319" height="400" style="--fx: 67.23%; --fy: 0%; --zoom: 1.595; --tone: brightness(1.38) contrast(1.04);"></span>
+              <h2 class="person__name" id="diya_wang">Diya Wang</h2>
+              <ul class="person__links" aria-label="Diya Wang">
+                <li><a href="mailto:WangD62@cardiff.ac.uk" title="Email"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 4.5h18A1.5 1.5 0 0 1 22.5 6v12a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 18V6A1.5 1.5 0 0 1 3 4.5Zm.9 2.1 8.1 6.3 8.1-6.3H3.900ZM20.400 8.250l-8.400 6.540-8.400-6.540V17.400h16.800V8.250Z"/></svg><span class="sr-only">Email</span></a></li>
+              </ul>
+            </div>
+            <div class="person__back" id="diya_wang-words">
+              <p>Diya Wang is a PhD student.</p>
+              <p>Diya’s research focuses on air pollution, public health, environmental policy and equity, using data-driven methods to understand how policies affect different communities.</p>
+            </div>
+          </div>
+        </li>
+        <li class="person" data-air="solid">
+          <button class="person__turn" type="button" aria-labelledby="feichi_hu" aria-describedby="feichi_hu-words" aria-pressed="false" hidden></button>
+          <div class="person__card">
+            <div class="person__front">
+              <span class="person__photo"><img src="people/feichi_hu.jpg" alt="" width="428" height="549" style="--fx: 56.03%; --fy: 29.39%; --zoom: 1.937; --tone: contrast(1.22) brightness(1.1);"></span>
+              <h2 class="person__name" id="feichi_hu">Feichi Hu</h2>
+              <ul class="person__links" aria-label="Feichi Hu">
+                <li><a href="mailto:Hu1@cardiff.ac.uk" title="Email"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 4.5h18A1.5 1.5 0 0 1 22.5 6v12a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 18V6A1.5 1.5 0 0 1 3 4.5Zm.9 2.1 8.1 6.3 8.1-6.3H3.900ZM20.400 8.250l-8.400 6.540-8.400-6.540V17.400h16.800V8.250Z"/></svg><span class="sr-only">Email</span></a></li>
+                <li><a href="https://www.linkedin.com/in/feichi-hu-3a7270299/" title="LinkedIn"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span class="sr-only">LinkedIn</span></a></li>
+              </ul>
+            </div>
+            <div class="person__back" id="feichi_hu-words">
+              <p>Feichi Hu is a PhD student developing high-precision methods for estimating methane concentrations by integrating remote sensing and machine&nbsp;learning.</p>
+              <p>She is co-supervised by Dr&nbsp;Lu&nbsp;Zhuo and&nbsp;Omar.</p>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
-    <div class="dropdownnav" id="dropdownnav">
-        <a href="index.html" class="active">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">Research
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
-                <a href="remotesensing.html">Air Quality Remote Sensing</a>
-                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
-                <a href="wildfires.html">Wildfire Health Effects</a>
-                <a href="surfacepollution.html">Estimating Surface Pollution</a>
+  </section>
+
+  <section class="former" aria-labelledby="former-line">
+    <div class="former__in">
+      <h2 class="former__line" id="former-line">Alumni</h2>
+      <ul class="people" aria-label="Former members">
+        <li class="person person--one" data-air="solid">
+          <button class="person__turn" type="button" aria-labelledby="mia_petts" aria-describedby="mia_petts-words" aria-pressed="false" hidden></button>
+          <div class="person__card">
+            <div class="person__front">
+              <span class="person__photo"><img src="people/mia_petts.jpg" alt="" width="640" height="853" style="--fx: 41.39%; --fy: 24.74%; --zoom: 1.36; --tone: contrast(1.2) brightness(.95);"></span>
+              <h3 class="person__name" id="mia_petts"><span>Mia</span> <span>Petts</span></h3>
+              <ul class="person__links" aria-label="Mia Petts">
+                <li><a href="https://www.linkedin.com/in/mia-kate-petts/" title="LinkedIn"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span class="sr-only">LinkedIn</span></a></li>
+              </ul>
             </div>
-        </div>
-        <a href="people.html">People</a>
-        <a href="publications.html">Publications</a>
-        <div class="dropdown">
-            <button class="dropbtn">Datasets
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
+            <div class="person__back" id="mia_petts-words">
+              <p>Mia Petts’s MSci project used ERA5 reanalysis data and machine learning to analyse the atmospheric conditions required for fire tornado&nbsp;formation.</p>
             </div>
-        </div>
-        <a href="joinus.html">Join Us</a>
-        <a href="https://groupwiki.readthedocs.io/en/latest/" target="_blank">Group Wiki</a>
+          </div>
+        </li>
+        <li class="person person--one" data-air="solid">
+          <button class="person__turn" type="button" aria-labelledby="mohammed_alsuwayh" aria-describedby="mohammed_alsuwayh-words" aria-pressed="false" hidden></button>
+          <div class="person__card">
+            <div class="person__front">
+              <span class="person__photo"><img src="people/mohammed_alsuwayh.jpg" alt="" width="400" height="400" style="--fx: 39%; --fy: 53.87%; --zoom: 1.75; --tone: contrast(1.1) brightness(.92);"></span>
+              <h3 class="person__name" id="mohammed_alsuwayh"><span>Mohammed</span> <span>Alsuwayh</span></h3>
+              <ul class="person__links" aria-label="Mohammed Alsuwayh">
+                <li><a href="https://www.linkedin.com/in/mohammed-alsuwayh-2a55791b5" title="LinkedIn"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span class="sr-only">LinkedIn</span></a></li>
+              </ul>
+            </div>
+            <div class="person__back" id="mohammed_alsuwayh-words">
+              <p>Mohammed Alsuwayh’s MSci project examined how rising temperatures are changing drought risk in Riyadh, Saudi&nbsp;Arabia.</p>
+            </div>
+          </div>
+        </li>
+        <li class="person person--one" data-air="solid">
+          <button class="person__turn" type="button" aria-labelledby="kyla_camama" aria-describedby="kyla_camama-words" aria-pressed="false" hidden></button>
+          <div class="person__card">
+            <div class="person__front">
+              <span class="person__photo"><img src="people/kyla_camama.jpg" alt="" width="640" height="819" style="--fx: 46.42%; --fy: 0%; --zoom: 1.53; --tone: contrast(1.1) brightness(.95);"></span>
+              <h3 class="person__name" id="kyla_camama"><span>Kyla</span> <span>Camama</span></h3>
+              <ul class="person__links" aria-label="Kyla Camama">
+                <li><a href="https://www.linkedin.com/in/kylacamama/" title="LinkedIn"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span class="sr-only">LinkedIn</span></a></li>
+              </ul>
+            </div>
+            <div class="person__back" id="kyla_camama-words">
+              <p>Kyla Camama’s MSci project assessed the impact of London’s Ultra Low Emission Zone on surface-level nitrogen dioxide.</p>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
-    <div class="header-container">
-        <div class="header-title">Current Members
-            <hr style="height: 5px; background-color: black; border: none;">
-        </div>
-        <div class="profile-container">
-            <img class="profile-photo" src="profile_photo.jpg">
-            <div class="profile-text">
-                <span class="groupleader">Omar Nawaz, PhD</span>
-                <span class="groupleader">Group Leader</span>
-                <br>
-                <span class="lecturer" style="color: black; font-style: italic;">Lecturer in Climate Change
-                    Science</span>
-            </div>
-            <div class="icon-container">
-                <a href="mailto:nawazm3@cardiff.ac.uk" target="_blank">
-                    <img src="email_icon.svg" alt="Email Icon">
-                </a>
-                <a href="https://www.linkedin.com/in/omar-nawaz-65660b397" target="_blank">
-                    <img src="linkedin.svg" alt="LinkedIn Icon" style="filter: grayscale(100%);">
-                </a>
-                <a href="https://scholar.google.co.uk/citations?user=6_oxg9EAAAAJ&hl=en&oi=ao" target="_blank">
-                    <img src="googlescholar_icon.svg" alt="Google Scholar Icon">
-                </a>
-                <a href="https://github.com/OmarNawaz" target="_blank">
-                    <img src="github_icon.svg" alt="GitHub Icon">
-                </a>
-                <a href="public.curriculum_vitae.monawaz.pdf" target="_blank" class="cv-link">CV</a>
-            </div>
-            <div class="profile-description">My research program applies atmospheric science tools such as chemical
-                transport modeling, remote sensing, and inverse methods to public health questions. I explore how
-                climate mitigation and air pollution control could benefit public health and ameliorate global
-                inequalities.</div>
-        </div>
-        <div class="profile-container">
-            <img class="profile-photo" src="people/diya_wang/headshot.jpg">
-            <div class="profile-text">
-                <span class="groupleader">Diya Wang</span>
-                <span class="groupleader">Postgraduate Researcher</span>
-                <br>
-                <span class="lecturer" style="color: black; font-style: italic;">PhD
-                    Student</span>
-            </div>
-            <div class="icon-container">
-                <a href="mailto:DiyaWang0425@outlook.com" target="_blank">
-                    <img src="email_icon.svg" alt="Email Icon">
-                </a>
-            </div>
-            <div class="profile-description">Diya's research focuses on air pollution, public health, environmental
-                policy, and equity, using data-driven methods to understand how policies affect different
-                communities.</div>
-        </div>
-        <div class="profile-container">
-            <img class="profile-photo" src="people/feichi_hu/headshot.jpg">
-            <div class="profile-text">
-                <span class="groupleader">Feichi Hu</span>
-                <span class="groupleader">Postgraduate Researcher</span>
-                <br>
-                <span class="lecturer" style="color: black; font-style: italic;">PhD
-                    Student</span>
-            </div>
-            <div class="icon-container">
-                <a href="mailto:Hu1@cardiff.ac.uk" target="_blank">
-                    <img src="email_icon.svg" alt="Email Icon">
-                </a>
-                <a href="https://www.linkedin.com/in/feichi-hu-3a7270299/" target="_blank">
-                    <img src="linkedin.svg" alt="LinkedIn Icon" style="filter: grayscale(100%);">
-                </a>
-            </div>
-            <div class="profile-description">Feichi's PhD project explores methods for high-precision estimation method
-                of methane concentration by integrating remote sensing and machine learning. She is co-supervised by <a
-                    href="https://profiles.cardiff.ac.uk/staff/zhuol" target="_blank">Dr. Lu Zhuo</a> and Omar.
-            </div>
-        </div>
-        <div class="profile-container">
-            <img class="profile-photo" src="people/lucas_ngo/headshot.jpg">
-            <div class="profile-text">
-                <span class="groupleader">Lucas Ngo</span>
-                <span class="groupleader">Postdoctoral Researcher</span>
-                <br>
-                <span class="lecturer" style="color: black; font-style: italic;">Research Assistant</span>
-            </div>
-            <div class="icon-container">
-                <a href="mailto:NgoKL@cardiff.ac.uk" target="_blank">
-                    <img src="email_icon.svg" alt="Email Icon">
-                </a>
-                <a href="https://www.linkedin.com/in/lucas-khoi-ngo-9848871bb/" target="_blank">
-                    <img src="linkedin.svg" alt="LinkedIn Icon" style="filter: grayscale(100%);">
-                </a>
-                <a href="https://www.researchgate.net/profile/Khoi_Ngo6" target="_blank">
-                    <img src="researchgate.png" alt="ResearchGate Icon" style="filter: grayscale(100%);">
-                </a>
-            </div>
-            <div class="profile-description">Lucas is an environmental scientist specialising in data science,
-                atmospheric dispersion modelling, and GIS. His research focuses on quantifying emissions and evaluating
-                their impacts on air quality and human health in data-constrained settings. He is currently working with
-                Omar to research the air quality impacts of the oil and gas industry in Mexico.
-            </div>
-        </div>
-        <div class="profile-container">
-            <img class="profile-photo" src="people/mia_petts/headshot.jpg">
-            <div class="profile-text">
-                <span class="groupleader">Mia Petts</span>
-                <span class="groupleader">Postgraduate Researcher</span>
-                <br>
-                <span class="lecturer" style="color: black; font-style: italic;">MSci Environmental Hazards and
-                    Disaster Risk Reduction Student</span>
-            </div>
-            <div class="icon-container">
-                <a href="mailto:PettsM@cardiff.ac.uk" target="_blank">
-                    <img src="email_icon.svg" alt="Email Icon">
-                </a>
-                <a href="https://www.linkedin.com/in/mia-kate-petts/" target="_blank">
-                    <img src="linkedin.svg" alt="LinkedIn Icon" style="filter: grayscale(100%);">
-                </a>
-            </div>
-            <div class="profile-description">Using ERA5 data and machine learning techniques to analyse the
-                atmospheric conditions necessary for fire tornado generation, compared against conventional
-                tornadoes and wildfires, as well as predict future prevalence of the phenomenon to discuss localised
-                impacts on regions.</div>
-        </div>
-        <div class="profile-container">
-            <img class="profile-photo" src="people/mohammed_alsuwayh/headshot.jpg">
-            <div class="profile-text">
-                <span class="groupleader">Mohammed Alsuwayh</span>
-                <span class="groupleader">Postgraduate Researcher</span>
-                <br>
-                <span class="lecturer" style="color: black; font-style: italic;">MSci Water, Climate Change and
-                    Sustainability Student</span>
-            </div>
-            <div class="icon-container">
-                <a href="mailto:AlsuwayhM@cardiff.ac.uk" target="_blank">
-                    <img src="email_icon.svg" alt="Email Icon">
-                </a>
-                <a href="https://www.linkedin.com/in/mohammed-alsuwayh-2a55791b5" target="_blank">
-                    <img src="linkedin.svg" alt="LinkedIn Icon" style="filter: grayscale(100%);">
-                </a>
-            </div>
-            <div class="profile-description">Mohammed's research examines how rising temperatures are changing
-                drought risk in Riyadh, Saudi Arabia, and evaluates whether current drought governance and policy
-                reforms are equipped to address these changes. It combines climate data analysis with a policy
-                assessment based on the OECD Principles on Water Governance.</div>
-        </div>
+  </section>
+
+<section class="door door--welcome" id="join" aria-labelledby="door-title">
+  <div class="door__in">
+    <h2 class="door__title door__title--line" id="door-title">If you are curious about how climate and air quality policymaking can contribute to a sustainable, healthy, and equitable future, write to&nbsp;me.</h2>
+    <div class="door__more">
+      <p>That goes whether you are interested in collaborating, joining the group, or want guidance on environmental policymaking or air pollution exposure datasets. I am always glad to&nbsp;talk!</p>
+      <div class="door__actions">
+        <a class="door__button" href="mailto:nawazm3@cardiff.ac.uk">Write to me</a>
+      </div>
     </div>
-    <div class="header-container">
-        <div class="header-title">Alumni
-            <hr style="height: 5px; background-color: black; border: none;">
-        </div>
-        <div class="profile-container">
-            <img class="profile-photo" src="people/kyla_camama/headshot.jpeg">
-            <div class="profile-text">
-                <span class="groupleader">Kyla Camama</span>
-                <span class="groupleader">Postgraduate Researcher</span>
-                <br>
-                <span class="lecturer" style="color: black; font-style: italic;">MSci Environmental Geosciences
-                    Student</span>
-            </div>
-            <div class="icon-container">
-                <a href="mailto:CamamaKG@cardiff.ac.uk" target="_blank">
-                    <img src="email_icon.svg" alt="Email Icon">
-                </a>
-                <a href="https://www.linkedin.com/in/kylacamama/" target="_blank">
-                    <img src="linkedin.svg" alt="LinkedIn Icon" style="filter: grayscale(100%);">
-                </a>
-            </div>
-            <div class="profile-description">Kyla's project assesses the impact of London's Ultra-Low Emission Zone
-                (ULEZ) on surface-level nitrogen dioxide (NO<sub>2</sub>) concentrations and associated health effects.
-                It
-                integrates ground-based LAQN measurements, satellite observations, and machine learning techniques to
-                analyse spatial and temporal changes in air quality following the ULEZ implementation.</div>
-        </div>
+    <div class="welcome">
+      <p class="welcome__line">Everyone is welcome in CASA.</p>
+      <p>I am committed to maintaining an inclusive and respectful research environment within CASA and within the School of Physical, Chemical and Environmental Sciences at Cardiff University, where I serve as Equality, Diversity, Inclusion and Anti&#8209;Racism&nbsp;Lead.</p>
+      <ul class="welcome__badges">
+        <li><img src="img/urge.png" alt="URGE: Unlearning Racism in Geoscience" width="600" height="181"></li>
+        <li><img src="img/youbelonghere.png" alt="The intersex-inclusive Progress Pride flag" width="233" height="148"></li>
+      </ul>
     </div>
+    <div class="door__extra">
+            <div class="asks__tiles asks__tiles--rows">
+        <details class="ask tone-cobalt" name="openings">
+          <summary><h3>Prospective PhD students</h3><span class="ask__plus" aria-hidden="true"></span></summary>
+          <p>I am keen to mentor PhD students interested in understanding how human activities affect climate and air quality, and in using this knowledge to improve health and progress towards sustainability. You will learn atmospheric modelling on high-performance computing systems, satellite remote sensing applications, and methods for quantifying the health and equity impacts of pollution and climate change. My priority is mentoring your scientific writing, presenting and research skills while tailoring your PhD towards your career goals. Further details are available on Cardiff University’s <a href="https://www.cardiff.ac.uk/study/postgraduate/research/programmes/programme/earth-sciences">postgraduate research pages</a>.</p>
+        </details>
+        <details class="ask tone-ink" name="openings">
+          <summary><h3>Prospective postdoctoral researchers</h3><span class="ask__plus" aria-hidden="true"></span></summary>
+          <p>My focus when working with postdoctoral researchers is career development, including feedback on scientific writing, presentations and research. Whether your next step is in research, lecturing or outside academia, I am committed to supporting it, and I am keen to collaborate on fellowship proposals.</p>
+        </details>
+        <details class="ask tone-cream" name="openings">
+          <summary><h3>Masters and undergraduate students</h3><span class="ask__plus" aria-hidden="true"></span></summary>
+          <p>If you are interested in exploring how climate change, air pollution, health, policy and equity interact, please get in touch. I provide guidance on scientific research and writing, and support students in learning high-performance computing, data analysis and visualisation, and scientific communication. Depending on your interests, projects can span climate science, earth system modelling, remote sensing, data science, machine learning and environmental justice.</p>
+        </details>
+      </div>
+      <p>The <a href="https://groupwiki.readthedocs.io/en/latest/">group wiki</a> contains our code of conduct, getting-started guides and documentation on the models and data we use.</p>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot__in">
+    <div class="foot__id">
+      <a class="foot__mark" href="index.html">CASA</a>
+      <p>Climate and Atmospheric Science for Action</p>
+    </div>
+    <ul class="foot__links" aria-label="Links">
+      <li><a href="mailto:nawazm3@cardiff.ac.uk"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 4.5h18A1.5 1.5 0 0 1 22.5 6v12a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 18V6A1.5 1.5 0 0 1 3 4.5Zm.9 2.1 8.1 6.3 8.1-6.3H3.900ZM20.400 8.250l-8.400 6.540-8.400-6.540V17.400h16.800V8.250Z"/></svg>Email</a></li>
+      <li><a href="https://www.linkedin.com/in/omar-nawaz-65660b397"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></li>
+      <li><a href="https://scholar.google.co.uk/citations?user=6_oxg9EAAAAJ"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>Google Scholar</a></li>
+      <li><a href="https://github.com/OmarNawaz"><svg class="icon" viewBox="0 0 16 16" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></li>
+      <li><a href="public.curriculum_vitae.monawaz.pdf"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M5 1h9.500L20 6.500V22a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Zm1 2v18h12V7.500h-4.500V3H6Zm2 8h8v1.800H8V11Zm0 3.600h8v1.800H8v-1.800Zm0-7.200h3.500v1.800H8V7.400Z"/></svg>CV</a></li>
+      <li><a href="https://groupwiki.readthedocs.io/en/latest/">Group wiki</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+<script src="js/cards.js" defer></script>
 </body>
-
 </html>

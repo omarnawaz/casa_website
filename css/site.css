@@ -1,0 +1,2497 @@
+/* CASA: the one stylesheet that every page shares.
+   Five flat colours. No gradients, no shadows.
+
+   1. Tokens          colours, sizes of type, corners, gutters
+   2. Base            reset, focus, containers
+   3. Shared pieces   3.1 navigation   3.2 hero        3.3 pills      3.4 buttons and links
+                      3.5 plate        3.6 film        3.7 bands, headings and text
+                      3.8 tiles        3.9 invitation  3.10 foot
+   4. Home page       the first screen and the atlas
+   5. People page     the people
+   6. Less motion
+
+   A page's own rules go in css/<page>.css, which is loaded after this file. */
+
+
+/* ==================== 1. Tokens ==================== */
+
+:root {
+  --cobalt: #2337e6;
+  --yellow: #ffc72e;
+  --pink: #ff9ec6;
+  --cream: #fff5e3;
+  --ink: #14133a;
+
+  --font: "Bricolage Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-large: "Bricolage Grotesque", "Bricolage stand-in", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --gutter: clamp(16px, 3.4vw, 48px);     /* the margin at each side of the page */
+  --page: 1344px;                          /* the widest the content runs */
+  --round: clamp(22px, 2.6vw, 38px);       /* the corners of tiles and cards */
+  --big-round: clamp(26px, 4.4vw, 64px);   /* the corners of the largest blocks */
+  --ease: cubic-bezier(.3, .9, .3, 1);
+
+  --t-title: clamp(42px, 7.8vw, 112px);    /* a section's heading */
+  --t-sub: clamp(30px, 4.3vw, 62px);       /* a smaller heading, or a sentence set as one */
+  --t-tile: clamp(29px, 3.8vw, 55px);      /* the question on a tile that opens */
+  --t-lead: clamp(19px, 1.7vw, 24px);      /* opening sentences and running text */
+  --t-text: 18px;                          /* ordinary text */
+  --t-small: 16px;                         /* captions */
+
+  --band: clamp(64px, 9vw, 132px);         /* the space above a section */
+  --band-end: clamp(56px, 8vw, 120px);     /* the space below the last section of a page */
+}
+
+/* Until Bricolage Grotesque arrives (or if it never does), a page's main heading is set in bold Helvetica or
+   Arial. Those run wider, so here they are drawn a little smaller: the heading then breaks into the same
+   lines, nothing runs off a phone's screen, and nothing jumps when the real lettering comes. */
+@font-face {
+  font-family: "Bricolage stand-in";
+  src: local("Helvetica Neue Bold"), local("HelveticaNeue-Bold"), local("Arial Bold"), local("Arial-BoldMT");
+  font-weight: 700 900;
+  size-adjust: 92%;
+}
+
+/* The colour of the block at the top of a page. It comes from the page's "hero" in data/site.yaml
+   and arrives as a class on <body>. The navigation over the block and the dots of air in it follow. */
+.hero-cobalt { --hero-bg: var(--cobalt); --hero-fg: var(--cream);  --air-1: var(--yellow); --air-2: var(--pink); }
+.hero-ink    { --hero-bg: var(--ink);    --hero-fg: var(--cream);  --air-1: var(--yellow); --air-2: var(--pink); }
+.hero-yellow { --hero-bg: var(--yellow); --hero-fg: var(--ink);    --air-1: var(--cobalt); --air-2: var(--pink); }
+.hero-pink   { --hero-bg: var(--pink);   --hero-fg: var(--ink);    --air-1: var(--cobalt); --air-2: var(--yellow); }
+.hero-cream  { --hero-bg: var(--cream);  --hero-fg: var(--cobalt); --air-1: var(--pink);   --air-2: var(--yellow); }
+
+/* The colour of a tile, a band or a tile that opens: add one of these classes to it. */
+.tone-cobalt { --tile: var(--cobalt); --on: var(--cream); --hover: var(--yellow); }
+.tone-ink    { --tile: var(--ink);    --on: var(--cream); --hover: var(--yellow); }
+.tone-yellow { --tile: var(--yellow); --on: var(--ink);   --hover: var(--cobalt); }
+.tone-pink   { --tile: var(--pink);   --on: var(--ink);   --hover: var(--ink); }      /* cobalt words on pink are too faint to read */
+.tone-cream  { --tile: var(--cream);  --on: var(--ink);   --hover: var(--cobalt); }
+.tone-white  { --tile: #fff;          --on: var(--ink);   --hover: var(--cobalt); }
+
+
+/* ==================== 2. Base ==================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--t-text);
+  line-height: 1.42;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; }
+p { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
+h1 { font-family: var(--font-large); }
+[hidden] { display: none !important; }
+sub {                     /* the 2 of NO2: small, and without pushing its line away from the next */
+  font-size: .68em;
+  line-height: 0;
+}
+
+:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 4px;
+}
+
+.skip {
+  position: absolute;
+  left: 12px;
+  top: -80px;
+  z-index: 50;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--ink);
+  font-weight: 700;
+}
+.skip:focus { top: 12px; }
+.skip:focus-visible { outline-color: var(--hero-fg, var(--cream)); }   /* a ring that shows on the block of colour behind it */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.inks { position: absolute; }
+.icon { display: block; flex: none; }
+
+.top__in,
+.hero__in,
+.atlas__in,
+.asks__in,
+.door__in,
+.band__in,
+.former__in,
+.foot__in {
+  max-width: calc(var(--page) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* A short page still fills the window: its last section grows to meet the foot. */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+main {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+main > :last-child { flex-grow: 1; }
+
+
+/* ==================== 3. Shared pieces ==================== */
+
+/* ---------- 3.1 navigation: it lies over the top of the hero and takes its colour ---------- */
+
+.top {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  color: var(--hero-fg, var(--cream));
+}
+.top__in {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 24px;
+  padding-block: 12px;
+}
+.top__mark {
+  padding: 6px 0;
+  color: inherit;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  text-decoration: none;
+}
+.top nav {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.top__nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* A link turns bold the moment it is pointed at. The bold word is already there, unseen,
+   holding the width, so the neighbours never move. Anything else that turns bold can do the same:
+   give it the class holds-bold and its own words again in data-text. */
+.top__nav a {
+  position: relative;
+  display: inline-grid;
+  justify-items: start;
+  align-content: center;
+  min-height: 42px;
+  padding: 10px 0;
+  color: inherit;
+  font-size: clamp(13px, 3.75vw, 15px);
+  font-weight: 500;
+  text-decoration: none;
+}
+.holds-bold { display: grid; }
+.top__nav a::after,
+.holds-bold::after {
+  content: attr(data-text);
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  font-weight: 800;
+  pointer-events: none;
+  user-select: none;
+}
+.top__nav a:hover,
+.top__nav a:focus-visible,
+.top__nav a[aria-current="page"] { font-weight: 800; }
+.top__nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+.top__mark:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+.top__nav a::before {     /* a short word such as "Group" is a little wider to press than it looks */
+  content: "";
+  position: absolute;
+  inset: 0 -2px;
+}
+/* With a sixth item (the maps tool, once it is switched on in data/site.yaml) the words no longer fit across
+   a phone, so there they run on to a second line, and the block of colour below starts lower to make room. */
+@media (max-width: 619.98px) {
+  .nav-long .top__nav {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0 16px;
+  }
+  .nav-long .hero__in { padding-top: 154px; }
+}
+
+@media (min-width: 620px) {
+  .top__in { padding-block: 16px; }
+  .top nav { flex: 0 1 auto; }
+  .top__nav { gap: clamp(18px, 2.4vw, 36px); }
+  .top__nav a { font-size: 16px; }
+}
+
+/* ---------- 3.2 hero: a field of flat colour with a few dots of air ----------
+   The canvas is drawn by js/site.js. Mark what stands in the field so that no dot shows on top of it:
+   data-air="lines" on large type, "block" on a paragraph or a row of buttons, "solid" on a picture. */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  overflow: clip;
+  --ring: var(--hero-fg, var(--cream));     /* focus rings, pills and buttons in the field take its colours */
+  --button-bg: var(--cream);
+  --button-fg: var(--ink);
+  --button-hover: var(--yellow);
+  --hover: var(--yellow);
+  background: var(--hero-bg, var(--cobalt));
+  color: var(--hero-fg, var(--cream));
+}
+.hero__air {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.hero__in {
+  position: relative;
+  padding-top: 112px;
+  padding-bottom: 44px;
+}
+.hero-yellow .hero,
+.hero-pink .hero {
+  --button-bg: var(--ink);
+  --button-fg: var(--cream);
+  --button-hover: var(--cobalt);
+  --hover: var(--cobalt);
+}
+.hero-yellow .hero { --pill-hover: var(--pink); }
+.hero-cream .hero {
+  --pill: #fff;
+  --button-bg: var(--cobalt);
+  --button-fg: var(--cream);
+  --button-hover: var(--ink);
+  --hover: var(--ink);
+}
+
+/* An inner page's hero (the hero macro): one very large heading, then whatever the page puts under it.
+   A one-word heading is sized from the width of the page, and every inner page uses the same size.
+   A page may set --hero-size on its hero to change it. */
+.hero--page .hero__in { container-type: inline-size; }
+.hero__title {
+  margin: 0;
+  font-size: var(--hero-size, 17cqw);
+  font-weight: 800;
+  line-height: .88;
+  letter-spacing: -.03em;
+  white-space: nowrap;
+}
+.hero__title--line {      /* a heading that is a sentence, set on several lines */
+  max-width: 13em;
+  font-size: var(--hero-size, clamp(38px, 10.6cqw, 54px));
+  line-height: .92;
+  letter-spacing: -.025em;
+  white-space: normal;
+}
+.page-404 .hero { --hero-size: clamp(38px, 10cqw, 100px); }     /* the one sentence on the page: it can be larger */
+.hero__lead {             /* the sentences under the heading */
+  max-width: 30em;
+  margin-top: 24px;
+  font-size: clamp(19px, 1.72vw, 25px);
+  font-weight: 500;
+  line-height: 1.3;
+}
+.hero__lead p { margin: 0; }
+.hero__lead p + p { margin-top: .5em; }
+.hero__lead a:not([class]) {
+  color: inherit;
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.hero__actions {          /* a row of buttons under them */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: 28px;
+}
+
+@media (min-width: 620px) {
+  .hero--page .hero__in {
+    padding-top: 88px;
+    padding-bottom: clamp(40px, 7vh, 64px);
+  }
+  .hero__title { font-size: var(--hero-size, min(17cqw, 30vh)); }
+  .hero__title--line { font-size: var(--hero-size, clamp(54px, 7.4cqw, 100px)); }
+  .hero__lead { margin-top: clamp(24px, 3vw, 40px); }
+}
+
+/* ---------- 3.3 pills: Omar's links, each an icon with its name ---------- */
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 19px 0 15px;
+  border-radius: 999px;
+  background: var(--pill, var(--cream));
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.pill .icon {
+  width: 20px;
+  height: 20px;
+}
+@media (hover: hover) {
+  .pill:hover { background: var(--pill-hover, var(--yellow)); }
+}
+.pill:focus-visible {
+  outline-color: var(--ring, var(--ink));
+  outline-offset: 3px;
+}
+@media (min-width: 620px) {
+  .pill {
+    min-height: 48px;
+    font-size: 18px;
+  }
+}
+
+/* ---------- 3.4 buttons and links ----------
+   .button        a pill to press: cobalt on a pale ground, and in a hero the hero's own colours
+   .button--big   the large one in the invitation (see 3.9)
+   .more          a bold, underlined link, as under a picture
+   .step, .film__play   the small pills in the atlas and beside a film
+   .film__play--large   the same, a size up, where a film has a frame of its own */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  margin: 0;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--button-bg, var(--cobalt));
+  color: var(--button-fg, var(--cream));
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color .2s ease;
+}
+@media (hover: hover) {
+  .button:hover { background: var(--button-hover, var(--ink)); }
+}
+.button:focus-visible {
+  outline-color: var(--ring, var(--ink));
+  outline-offset: 3px;
+}
+.more {
+  display: inline-block;
+  margin-inline: -5px;      /* room at each side for the ring that shows when it is reached by keyboard */
+  padding: 9px 5px;
+  border-radius: 8px;
+  color: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+.more:hover { color: var(--hover, var(--cobalt)); }
+.more:focus-visible,
+.plate__link:focus-visible { outline-offset: -3px; }
+/* on pink the words keep their colour, and the line under them thickens instead */
+.tone-pink .more:hover,
+.tone-pink .prose a:not([class]):hover { text-decoration-thickness: 4px; }
+
+.film__play,
+.step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 42px;
+  margin: 0;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.film--frame .film__play,
+.film__play.film__play--large {      /* wide enough for "Pause", so nothing moves when the word changes */
+  min-width: 122px;
+  min-height: 48px;
+  padding: 0 22px;
+  font-size: 18px;
+}
+.step {
+  background: var(--cream);
+  color: var(--ink);
+}
+@media (hover: hover) {
+  .step:hover { background: var(--yellow); }
+}
+.step:focus-visible {
+  outline-color: var(--cream);
+  outline-offset: 3px;
+}
+.step::before,
+.step::after {
+  width: 8px;
+  height: 8px;
+  border: solid currentColor;
+  border-width: 2.5px 2.5px 0 0;
+}
+.step[data-step="-1"]::before {
+  content: "";
+  rotate: -135deg;
+}
+.step[data-step="1"]::after {
+  content: "";
+  rotate: 45deg;
+}
+
+/* ---------- 3.5 plate: a picture in a white frame, with its caption and link (the plate macro) ---------- */
+
+/* The map keeps its own colours. Its sea is white, and so is the frame, so the caption sits in open water. */
+.plate {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border-radius: var(--big-round);
+  background: #fff;
+  color: var(--ink);
+}
+.plate__map img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.plate__words {
+  padding: 4px clamp(20px, 5vw, 30px) clamp(18px, 4.6vw, 26px);
+}
+.plate__words p {
+  max-width: 30em;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.38;
+}
+.plate__link {
+  display: inline-block;
+  margin: 2px -5px 0;
+  padding: 9px 5px;
+  border-radius: 8px;
+  color: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+.plate__link:hover { color: var(--cobalt); }
+.plate__link:not(:last-child) { margin-right: 17px; }
+
+/* A dense figure from a paper is shown whole, with room around it, and opens larger when it is chosen
+   (plate(..., zoom=true)). The plus sits in the corner of the frame, beside the caption. */
+.plate--figure {
+  --room: clamp(14px, 2.4vw, 30px);
+  border-radius: var(--round);
+}
+.plate--figure .plate__map { padding: var(--room) var(--room) 0; }
+.plate--figure .plate__words { padding: 14px calc(var(--room) + 56px) calc(var(--room) - 6px) var(--room); }
+.plate__open {
+  display: block;
+  color: inherit;
+  cursor: zoom-in;
+}
+.plate__open:focus-visible {
+  outline-color: var(--ink);
+  outline-offset: 4px;
+}
+.plate__plus,
+.viewer__close {
+  position: absolute;
+  right: var(--room);
+  bottom: var(--room);
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--cream);
+  cursor: pointer;
+  transition: rotate .45s var(--ease), background-color .2s ease;
+}
+.plate__plus::before,
+.plate__plus::after,
+.viewer__close::before,
+.viewer__close::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: calc(50% - 1.5px);
+  height: 3px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.plate__plus::after,
+.viewer__close::after { rotate: 90deg; }
+@media (hover: hover) {
+  .plate__open:hover .plate__plus {
+    rotate: 90deg;
+    background: var(--cobalt);
+  }
+  .viewer__close:hover { background: var(--cobalt); }
+}
+
+/* the larger view: a white sheet over the page (js/site.js makes it, once, when a figure is first opened).
+   The figure is as wide as the sheet, whatever the height of the window, and scrolls inside it when it is
+   taller; the caption and the cross stay where they are. */
+.viewer {
+  --room: clamp(14px, 2.4vw, 30px);
+  width: min(calc(100vw - 2 * var(--gutter)), 1200px);
+  max-width: none;
+  height: fit-content;
+  max-height: calc(100vh - 2 * var(--gutter));
+  max-height: calc(100dvh - 2 * var(--gutter));
+  padding: var(--room);
+  overflow: hidden;
+  overscroll-behavior: contain;
+  border: 0;
+  border-radius: var(--round);
+  background: #fff;
+  color: var(--ink);
+}
+.viewer[open] {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 14px;
+}
+.viewer::backdrop { background: rgba(20, 19, 58, .88); }
+html:has(.viewer[open]) { overflow: hidden; }      /* the page behind stays where it is */
+.viewer__pan {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.viewer__pan:focus-visible { outline-offset: -3px; }
+.viewer__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.viewer__words {
+  max-width: 46em;
+  min-height: 44px;
+  margin: 0;
+  padding-right: 60px;
+  font-size: var(--t-small);
+  font-weight: 500;
+  line-height: 1.38;
+}
+.viewer__close { rotate: 45deg; }       /* the plus, turned: a cross */
+.viewer__close:focus-visible {
+  outline-color: var(--ink);
+  outline-offset: 3px;
+}
+
+/* ---------- 3.6 film: a video that is never stretched and never starts by itself (the film macro) ----------
+   js/site.js gives it the Play button and the thin bar that shows how far it has run.
+   Without JavaScript the browser's own controls show. */
+
+.film {
+  display: grid;
+  gap: 10px 16px;
+  margin: 2px 0 0;
+}
+.film__frame {
+  position: relative;
+  overflow: hidden;
+  max-width: 430px;
+  aspect-ratio: var(--r);
+  border-radius: 12px;
+  background: #fff;
+}
+.film__frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+.film__bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--cobalt);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+.film figcaption {
+  max-width: 430px;
+  font-size: 14px;
+  line-height: 1.36;
+}
+.film__play {
+  justify-self: start;
+  min-width: 98px;
+  background: var(--cobalt);
+  color: var(--cream);
+}
+@media (hover: hover) {
+  .film__play:hover { background: var(--ink); }
+}
+.film__play:focus-visible {
+  outline-color: var(--ink);
+  outline-offset: 3px;
+}
+.film__play::before { /* a drawn triangle, or two bars while playing */
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 10px solid currentColor;
+  border-top: 6.5px solid transparent;
+  border-bottom: 6.5px solid transparent;
+}
+.is-playing .film__play::before {
+  width: 10px;
+  height: 13px;
+  border: 0;
+  border-left: 3.5px solid currentColor;
+  border-right: 3.5px solid currentColor;
+}
+.film__words p { margin: 0; }
+.film__words .more:not(:last-child) { margin-right: 17px; }
+/* film(..., large=true): the film fills its column */
+.film--large .film__frame { max-width: none; }
+.film--large figcaption {
+  max-width: 34em;
+  font-size: var(--t-small);
+  font-weight: 500;
+  line-height: 1.38;
+}
+/* film(..., frame=true): the film stands in a white frame of its own, like a picture in a plate. It is shown
+   whole, with room around it, so no corner of the map is cut off; the bar that shows how far it has run lies
+   under the film instead of across its foot; and the Play button stands beside the caption and its links. */
+.film--frame {
+  --room: clamp(12px, 2.4vw, 30px);
+  --hover: var(--cobalt);
+  gap: clamp(12px, 1.5vw, 20px) clamp(14px, 1.8vw, 24px);
+  align-items: start;
+  margin: 0;
+  padding: var(--room);
+  border-radius: var(--round);
+  background: #fff;
+  color: var(--ink);
+}
+.film--frame .film__frame {
+  overflow: visible;
+  border-radius: 0;
+}
+.film--frame .film__bar {
+  top: calc(100% + 3px);
+  bottom: auto;
+  height: 5px;
+  border-radius: 3px;
+}
+.film--frame .film__words { max-width: none; }
+.film--frame .film__words p { max-width: 34em; }
+.js .film--frame .film__words { min-height: 48px; }        /* the room the Play button takes, kept from the start */
+@media (min-width: 620px) {
+  .film--frame { grid-template-columns: auto minmax(0, 1fr); }
+  .film--frame .film__frame,
+  .film--frame .film__play[hidden] + .film__words { grid-column: 1 / -1; }   /* no button without JavaScript */
+}
+
+/* ---------- 3.7 bands, headings and text ----------
+   .band            a section of the page: cream unless it has a tone class
+   .band--end       the last band before a block of another colour, or before the foot
+   .band__in        keeps the content to the width of the page
+   .band__in--beside   from 900px the heading stands at the left and what follows sits beside it
+   .band__title     the big cobalt heading
+   .subhead         a smaller heading, or a sentence set as one, in the colour of the text around it
+   .prose           running text
+   .band__action    a paragraph that holds a button under it */
+
+.band {
+  background: var(--tile, var(--cream));
+  color: var(--on, var(--ink));
+  padding-block: var(--band) 0;
+}
+.band--end,
+.band[class*="tone-"] { padding-bottom: var(--band-end); }
+
+/* Section headings are all one size. The longest on the home page is 11.6 em wide, so 7.8vw keeps it
+   on one line with a little to spare from 960 up, in any browser. */
+.atlas__title,
+.asks__title,
+.band__title {
+  margin: 0 0 clamp(26px, 4vw, 56px);
+  color: var(--cobalt);
+  font-size: var(--t-title);
+  font-weight: 800;
+  line-height: .92;
+  letter-spacing: -.025em;
+}
+.band[class*="tone-"] .band__title { color: inherit; }
+.subhead {
+  margin: 0;
+  font-size: var(--t-sub);
+  font-weight: 800;
+  line-height: .98;
+  letter-spacing: -.022em;
+  text-wrap: balance;
+}
+
+.prose {
+  max-width: 34em;
+  font-size: var(--t-lead);
+  font-weight: 500;
+  line-height: 1.36;
+}
+.prose p { margin: 0; }
+.prose p + p { margin-top: .55em; }
+.prose a:not([class]) {
+  color: inherit;
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.prose a:not([class]):hover { color: var(--hover, var(--cobalt)); }
+.band__action {            /* a button or a link under the text of a band, with room under it for its keyboard ring */
+  margin: clamp(22px, 2.6vw, 36px) 0 0;
+  padding-bottom: 8px;
+}
+
+/* The heading at the left and the text beside it, on the twelve columns that the tiles stand on:
+   five for the heading and seven for the rest. */
+@media (min-width: 900px) {
+  .band__in--beside {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 16px;
+    align-items: start;
+  }
+  .band__in--beside > .band__title {
+    grid-column: span 5;
+    margin-bottom: 0;
+  }
+  .band__in--beside > :not(.band__title) { grid-column: span 7; }
+}
+
+/* ---------- 3.8 tiles ----------
+   .ask     a tile that opens: a <details> with a question and its answer (the ask macro).
+            Tiles that share a name="" open one at a time. Put them in .asks__tiles.
+   .tile    a tile that does not open: a heading, a sentence or two, perhaps a link. Put them in .tiles
+            (three to a row), or in .tiles.tiles--rhythm for the wide-and-narrow rows of the tiles that open.
+   Both take their colour from a tone class. */
+
+.asks {
+  background: var(--cream);
+  padding-block: clamp(64px, 9vw, 132px) clamp(56px, 8vw, 120px);
+}
+.asks__tiles {
+  display: grid;
+  gap: 12px;
+}
+.ask {
+  --pad: clamp(22px, 2.6vw, 38px);
+  --plus: clamp(30px, 3vw, 44px);
+  position: relative;
+  min-height: clamp(172px, 21vw, 304px);
+  border-radius: var(--round);
+  background: var(--tile);
+  color: var(--on);
+}
+.ask summary {
+  display: block;
+  padding: var(--pad) calc(var(--pad) + var(--plus) + 8px) var(--pad) var(--pad);
+  border-radius: inherit;
+  cursor: pointer;
+  list-style: none;
+}
+.ask summary::-webkit-details-marker { display: none; }
+/* the whole tile opens it, not only the words */
+.ask summary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.ask summary:focus-visible { outline-color: var(--ink); }
+@supports selector(:has(a)) {
+  .ask summary:focus-visible { outline: none; }
+  .ask:has(summary:focus-visible) {
+    outline: 3px solid var(--ink);
+    outline-offset: 4px;
+  }
+}
+.ask h3 {
+  margin: 0;
+  max-width: 15em;
+  font-size: clamp(29px, 3.8vw, 55px); /* the narrower tiles hold their question in three lines from a small laptop up */
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.022em;
+}
+.ask__plus {
+  position: absolute;
+  top: var(--pad);
+  right: var(--pad);
+  width: var(--plus);
+  aspect-ratio: 1;
+  transition: rotate .45s var(--ease);
+}
+.ask__plus::before,
+.ask__plus::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - 2.5px);
+  height: 5px;
+  border-radius: 3px;
+  background: currentColor;
+}
+.ask__plus::after { rotate: 90deg; }
+.ask summary:hover .ask__plus { rotate: 90deg; }
+.ask[open] .ask__plus,
+.ask[open] summary:hover .ask__plus { rotate: 45deg; }
+.ask > p {
+  position: relative;
+  max-width: 31em;
+  margin: calc(var(--pad) * -.3) 0 0;
+  padding: 0 var(--pad) var(--pad);
+  font-size: clamp(18px, 1.62vw, 23px);
+  font-weight: 500;
+  line-height: 1.34;
+}
+
+/* where the browser can, the answer slides open */
+@supports (interpolate-size: allow-keywords) {
+  .ask { interpolate-size: allow-keywords; }
+  .ask::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size .45s var(--ease), content-visibility .45s allow-discrete;
+  }
+  .ask[open]::details-content { block-size: auto; }
+}
+
+@media (min-width: 760px) {
+  .asks__tiles {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .ask:nth-child(4n+1),
+  .ask:nth-child(4n+4),
+  .tiles--rhythm > :nth-child(4n+1),
+  .tiles--rhythm > :nth-child(4n+4) { grid-column: span 7; }
+  .ask:nth-child(4n+2),
+  .ask:nth-child(4n+3),
+  .tiles--rhythm > :nth-child(4n+2),
+  .tiles--rhythm > :nth-child(4n+3) { grid-column: span 5; }
+  .ask:last-child:nth-child(odd),
+  .tiles--rhythm > :last-child:nth-child(odd) { grid-column: 1 / -1; }      /* an odd one out has the whole row */
+  .asks__tiles--rows .ask:nth-child(n) { grid-column: 1 / -1; }
+}
+.ask > p a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+/* .asks__tiles--rows: one tile to a row at every width, each only as tall as its question until it is opened,
+   so that an answer has the width to be read and nothing beside it has to stretch (the People page) */
+.asks__tiles--rows .ask { min-height: 0; }
+.asks__tiles--rows .ask h3 {
+  max-width: none;
+  font-size: clamp(27px, 3.1vw, 44px);
+}
+.asks__tiles--rows .ask > p { max-width: 34em; }
+
+.tiles {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tile {
+  --pad: clamp(22px, 2.6vw, 38px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--pad);
+  border-radius: var(--round);
+  background: var(--tile, #fff);
+  color: var(--on, var(--ink));
+}
+.tile h3 {
+  margin: 0;
+  font-size: clamp(25px, 2.7vw, 38px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -.02em;
+}
+.tile p {
+  max-width: 31em;
+  margin: .7em 0 0;
+  font-size: clamp(17px, 1.45vw, 20px);
+  font-weight: 500;
+  line-height: 1.36;
+}
+.tile > :first-child { margin-top: 0; }
+.tile .tile__foot {       /* a link or a button that sits at the foot of the tile, however tall its neighbours */
+  margin-top: auto;
+  padding-top: 12px;
+}
+@media (min-width: 620px) {
+  .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+@media (min-width: 960px) {
+  .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.tiles--rhythm { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 760px) {
+  .tiles--rhythm { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+}
+
+/* ---------- 3.9 the invitation: a yellow block that ends a page (the door macro) ----------
+   Three sizes of type and no more:
+     the heading    a word or two ("Contact") is set like any section's heading, at --t-title.
+                    A sentence is set one step smaller, at --door-head, and runs to four lines on a laptop.
+     --door-mid     half of that: the words on the button, the heading of the pink block, the tiles that open
+     --t-lead       every sentence, and the link beside the button */
+
+.door {
+  --pill-hover: var(--pink);            /* a pill on the yellow turns pink when it is pointed at */
+  --welcome-pad: clamp(22px, 2.6vw, 38px);   /* the room inside the pink block */
+  /* seven tenths of a section's heading; on a phone, where that would be too small, 32 to 38px */
+  --door-head: max(clamp(32px, 9.1vw, 38px), var(--t-title) * .7);
+  --door-mid: max(27px, var(--t-title) * .35);     /* half of --door-head, and never under 27px */
+  background: var(--yellow);
+  color: var(--ink);
+  padding-block: clamp(64px, 9vw, 136px);
+}
+.door__in {
+  display: grid;
+  gap: clamp(30px, 4vw, 60px) clamp(28px, 5vw, 80px);
+}
+.door__title {                          /* a word or two */
+  margin: 0;
+  font-size: var(--t-title);
+  font-weight: 800;
+  line-height: .92;
+  letter-spacing: -.025em;
+}
+.door__title--line {                    /* a sentence: the door macro adds this class to a long heading */
+  font-size: var(--door-head);
+  line-height: .95;
+}
+.door__more p {
+  max-width: 27em;
+  margin: 0;
+  font-size: var(--t-lead);
+  font-weight: 500;
+  line-height: 1.36;
+}
+.door__more p + p { margin-top: .55em; }
+.door__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;                /* the words on the button and the link beside it stand on one line */
+  gap: 14px clamp(20px, 2.4vw, 34px);
+  margin-top: clamp(26px, 3vw, 44px);
+}
+.door__button,
+.button--big {
+  display: inline-block;
+  padding: .58em 1.2em .66em;
+  border-radius: 999px;
+  background: var(--cobalt);
+  color: var(--cream);
+  font-size: clamp(27px, 3.3vw, 48px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.02em;
+  text-decoration: none;
+  transition: background-color .2s ease;
+}
+.door__button { font-size: var(--door-mid); }      /* .button--big, used on other pages, keeps the size above */
+@media (hover: hover) {
+  .door__button:hover,
+  .button--big:hover { background: var(--ink); }
+}
+.door__button:focus-visible,
+.button--big:focus-visible,
+.door__second:focus-visible { outline-color: var(--ink); }
+.door__second {
+  display: inline-block;
+  padding: 10px 0;
+  color: inherit;
+  font-size: var(--t-lead);
+  font-weight: 800;
+  letter-spacing: -.015em;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+.door__second:hover { color: var(--cobalt); }
+
+.welcome {
+  padding: var(--welcome-pad);
+  border-radius: var(--round);
+  background: var(--pink);
+}
+.welcome p {                            /* the same size, weight and line height as the paragraph beside it */
+  max-width: 27em;
+  margin: .6em 0 0;
+  font-size: var(--t-lead);
+  font-weight: 500;
+  line-height: 1.36;
+}
+.welcome .welcome__line {
+  max-width: 9em;                       /* two lines */
+  margin: 0;
+  font-size: var(--door-mid);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+.welcome__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.welcome__badges li {
+  display: flex;
+  align-items: center;
+  height: 46px;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #fff;
+}
+.welcome__badges li:first-child { padding: 9px 12px; }
+.welcome__badges img {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
+@media (min-width: 900px) {
+  .door__in { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); }
+  .door__title { grid-column: 1 / -1; }
+  /* Beside the pink block, the words on the left stand level with the words inside it: the first line
+     with its first line, and the foot of the button with the foot of the badges. Whichever side is
+     the shorter takes up the difference above its last row. */
+  .door--welcome .door__more {
+    display: flex;
+    flex-direction: column;
+    padding-block: var(--welcome-pad);
+  }
+  .door--welcome .door__more p { max-width: 23em; }      /* five lines, so that the button follows closely */
+  .door--welcome .door__actions {
+    margin-top: auto;
+    padding-top: clamp(26px, 3vw, 44px);
+  }
+  .welcome {
+    display: flex;
+    flex-direction: column;
+  }
+  /* The pink heading is larger than the paragraph beside it and set tighter, so two things keep them level.
+     Its capitals would stand 2px higher in their line than the paragraph's, so it starts 2px lower.
+     And it is given the room of exactly three lines of the paragraph (1.36 is their line height), so the
+     sentence under it runs on the same lines as the paragraph's fourth and fifth. */
+  .welcome .welcome__line {
+    min-height: calc(var(--t-lead) * 1.36 * 3);
+    padding-top: 2px;
+  }
+  .welcome .welcome__line + p { margin-top: 0; }
+  .welcome__badges {
+    margin-top: auto;
+    padding-top: 22px;
+  }
+}
+
+/* whatever a page adds under the invitation (on the People page: three tiles that open, and a sentence) */
+.door__extra {
+  display: grid;
+  gap: clamp(22px, 2.6vw, 34px);
+}
+.door__extra > p {
+  max-width: 34em;
+  margin: 0;
+  font-size: var(--t-lead);
+  font-weight: 500;
+  line-height: 1.36;
+}
+.door__extra > p a {
+  padding-block: 9px;                   /* more to press (41px at least); the line does not move */
+  color: inherit;
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.door__extra > p a:hover { color: var(--cobalt); }
+.door__extra .ask h3 { font-size: var(--door-mid); }      /* the tiles that open: the size of the button above them */
+@media (min-width: 900px) {
+  .door__extra { grid-column: 1 / -1; }
+}
+
+/* ---------- 3.10 foot ---------- */
+
+.foot {
+  background: var(--ink);
+  color: var(--cream);
+  padding-block: 44px 64px;
+}
+.foot__in {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px 48px;
+}
+.foot__mark {
+  display: inline-block;
+  padding: 4px 0;
+  color: inherit;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  text-decoration: none;
+}
+.foot__mark:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+.foot__id p {
+  max-width: 21em;
+  margin: 4px 0 0;
+  font-size: 16.5px;
+  line-height: 1.4;
+}
+.foot__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px clamp(18px, 2.2vw, 30px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.foot__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  color: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.foot__links .icon {
+  width: 19px;
+  height: 19px;
+}
+.foot__links a:hover { color: var(--yellow); }
+
+
+/* ==================== 4. Home page ==================== */
+
+/* ---------- the first screen: the question, its answer, who is asking, and a map ---------- */
+
+.hero--home .hero__in {
+  display: grid;
+  gap: 34px;
+}
+.lead {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+/* The question wraps as it will, in lines of about the same length. Its size comes from the width of
+   the column: --q is that size as a share of the column, and is the one number to change when the
+   question changes (a longer question needs a smaller number; aim for four or five lines on a laptop). */
+.question {
+  --q: 8.4cqw;
+  margin: 0;
+  font-size: clamp(26px, var(--q), 40px);
+  font-weight: 800;
+  font-variation-settings: "opsz" 96; /* the display cut at every size, so the lines keep their proportions */
+  line-height: 1.02;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+.question em {                 /* a word the question stresses: yellow, and upright, as the typeface has no italic */
+  color: var(--yellow);
+  font-style: normal;
+}
+@media (min-width: 620px) {
+  .question {
+    font-size: var(--q);
+    line-height: .95;
+  }
+}
+.answer {
+  max-width: 27em;
+  margin-top: 1.05em;
+  font-size: clamp(19px, 1.72vw, 25px);
+  font-weight: 500;
+  line-height: 1.3;
+}
+.answer p { margin: 0; }
+.answer p + p { margin-top: .5em; }
+
+/* Who is asking: a small portrait, one sentence and the links. The portrait is the block of colour,
+   arched window and blue ink of the people on the People page, at a fraction of the size. */
+.me {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 14px clamp(14px, 1.6vw, 22px);
+  margin-top: 30px;
+}
+.me__card {
+  --w: clamp(64px, 6vw, 88px);
+  width: var(--w);
+  padding: calc(var(--w) * .072);
+  border-radius: calc(var(--w) * .12);
+  background: var(--yellow);
+  rotate: -3deg;
+}
+.me p {
+  max-width: 31em;
+  margin: 0;
+  font-size: clamp(16.5px, 1.3vw, 19px);
+  line-height: 1.4;
+}
+.me .pills { grid-column: 1 / -1; }
+
+@media (min-width: 620px) {
+  .hero--home .hero__in { padding-top: 100px; }
+}
+
+/* 960+: the words on the left, the map standing beside them, all on the first screen */
+@media (min-width: 960px) {
+  .hero--home .hero__in {
+    grid-template-columns: minmax(0, 1fr) minmax(0, .64fr);
+    gap: 0 clamp(30px, 3.6vw, 56px);
+    min-height: min(100svh, 980px);
+    padding-top: clamp(78px, 11vh, 104px);
+    padding-bottom: clamp(64px, 7.8vh, 76px);
+  }
+  .question {
+    margin-top: -.05em; /* the capitals stand level with the top of the map */
+    font-size: min(var(--q), 9.4vh);
+  }
+  .answer {
+    margin-top: clamp(16px, 3.2vh, 34px);
+    font-size: clamp(18px, min(1.72vw, 2.9vh), 25px);
+  }
+  .me {
+    margin-top: auto;
+    padding-top: 20px;
+  }
+  /* The one picture on the site that is cropped: the map fills its frame, and its caption sits in open water. */
+  .hero--home .plate__map {
+    position: absolute;
+    inset: 0;
+  }
+  .hero--home .plate__map img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 45% 46%;
+  }
+  .hero--home .plate__words {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: min(100%, 19.5em);
+    padding: 20px clamp(20px, 2vw, 30px) clamp(14px, 1.6vw, 22px) 24px;
+    border-top-left-radius: 28px;
+    background: #fff;
+  }
+  .hero--home .plate__words p { font-size: clamp(14.5px, 1.12vw, 16px); }
+}
+
+/* ---------- the atlas (drawn by js/atlas.js from data/places.yaml) ---------- */
+
+.atlas {
+  background: var(--cream);
+  padding-block: clamp(64px, 9vw, 132px) 0;
+}
+.atlas__title { margin-bottom: clamp(14px, 1.8vw, 26px); }
+.atlas__lead { margin: 0 0 clamp(24px, 3vw, 42px); }
+.atlas__lead p {
+  max-width: 34em;
+  margin: 0;
+  font-size: clamp(19px, 1.7vw, 24px);
+  font-weight: 500;
+  line-height: 1.32;
+  text-wrap: balance; /* never two words left alone on a second line */
+}
+.atlas__lead .atlas__cue { font-weight: 800; }
+
+/* One big block of ink: the world, the inset, the legend, the names and the story.
+   Small screens stack them; from 1200 the names stand in a column beside the map. */
+.globe {
+  --pad: clamp(12px, 2.2vw, 30px);
+  --row: 44px;
+  --key: var(--ink);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(0, 1fr);
+  grid-template-areas:
+    "world world"
+    "inset legend"
+    "index index"
+    "steps steps"
+    "card card";
+  gap: 14px;
+  padding: var(--pad);
+  border-radius: var(--big-round);
+  background: var(--ink);
+  color: var(--cream);
+}
+.index-wrap { display: contents; }
+.world {
+  grid-area: world;
+  position: relative;
+  aspect-ratio: 809 / 437.4;
+  margin-top: 8px;
+}
+.world svg,
+.inset svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.inset {
+  --key: var(--cobalt);
+  grid-area: inset;
+  position: relative;
+  aspect-ratio: 300 / 316.7;   /* the inset viewBox in tools/world.json */
+  overflow: hidden;
+  border-radius: clamp(12px, 1.4vw, 18px);
+  background: var(--cobalt);
+}
+.inset::after { /* its frame: the same thin line as the small frame on the world */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--cream);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.globe.is-near .inset::after {
+  border-width: 3px;
+  border-color: var(--yellow);
+}
+
+.land {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.inset .land { stroke-width: 2.2; }
+.coast { fill: rgba(255, 245, 227, .2); }
+.frame { fill: var(--cobalt); }
+.frame-line {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 1.5px;
+  vector-effect: non-scaling-stroke;
+}
+.globe.is-near .frame-line {
+  stroke: var(--yellow);
+  stroke-width: 3px;
+}
+.arc {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 1.2px;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  opacity: .48;
+}
+.arc.is-on {
+  stroke: var(--yellow);
+  stroke-width: 2.6px;
+  opacity: 1;
+}
+.arc--ring.is-on { stroke: var(--pink); }
+
+/* marks: a solid dot for a place studied, a ring for a talk. Each keeps a thin gap of
+   background around it, so it reads clearly against the dots of land. */
+.marks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.mark {
+  --m: 11px;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.mark i,
+.dot {
+  display: block;
+  width: var(--m);
+  height: var(--m);
+  border-radius: 50%;
+  background: var(--yellow);
+}
+.mark i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: calc(var(--m) / -2);
+  box-shadow: 0 0 0 2.5px var(--key); /* a flat ring of background, not a shadow */
+  transition: scale .2s var(--ease);
+}
+.mark--ring i,
+.dot--ring {
+  border: 3px solid var(--pink);
+  background: var(--key);
+}
+.mark::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(var(--m) * 2.4);
+  height: calc(var(--m) * 2.4);
+  margin: calc(var(--m) * -1.2);
+  border: 2.5px solid var(--yellow);
+  border-radius: 50%;
+  opacity: 0;
+  scale: .4;
+  transition: scale .25s var(--ease), opacity .1s linear;
+}
+.mark--ring::after { border-color: var(--pink); }
+.mark.is-on { z-index: 2; }
+.mark.is-on i { scale: 1.3; }
+.mark.is-on::after {
+  opacity: 1;
+  scale: 1;
+}
+
+/* the key: each kind of mark with its own label, side by side (one above the other where there is no room) */
+.legend {
+  grid-area: legend;
+  align-self: center; /* beside the inset: level with its middle */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+.dot { --m: 12px; }
+
+/* the names: on a phone, a row to swipe */
+.index {
+  grid-area: index;
+  display: flex;
+  gap: 0 22px;
+  min-width: 0;
+  margin: -4px calc(var(--pad) * -1);
+  padding: 4px var(--pad); /* room for the focus ring, which a scrolling row would otherwise clip */
+  overflow-x: auto;
+  list-style: none;
+  scrollbar-width: none;
+  scroll-padding-inline: var(--pad);
+  -webkit-overflow-scrolling: touch;
+}
+.index::-webkit-scrollbar { display: none; }
+.index li { flex: none; }
+.name {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: var(--row);
+  margin: 0;
+  padding: 0 3px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 450;
+  line-height: 1.1;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.name .dot {
+  --m: 11px;
+  flex: none;
+}
+/* the bold name is already there, unseen, holding the width: nothing moves when a name turns bold */
+.name__text {
+  display: inline-grid;
+  justify-items: start;
+}
+.name__text::after {
+  content: attr(data-name);
+  content: attr(data-name) / "";
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  font-weight: 800;
+  pointer-events: none;
+  user-select: none;
+}
+.name:focus-visible,
+.name.is-shown,
+.name[aria-pressed="true"] { font-weight: 800; }
+@media (hover: hover) {
+  .name:hover { font-weight: 800; }
+}
+.name[aria-pressed="true"] { color: var(--yellow); }
+.name:focus-visible {
+  outline: 3px solid var(--cream);
+  outline-offset: 0;
+}
+
+.stepper {
+  grid-area: steps;
+  display: flex;
+  gap: 8px;
+}
+
+/* the story of the chosen place, on a cream card */
+.card {
+  --cp: clamp(18px, 2vw, 26px);
+  grid-area: card;
+  container: card / inline-size;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--cp);
+  border-radius: var(--round);
+  background: var(--cream);
+  color: var(--ink);
+}
+.story {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+}
+.story__coords {
+  margin: 0 0 .5em;
+  color: var(--cobalt);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+.story__name {
+  margin: 0;
+  font-size: clamp(38px, 12.4cqw, 58px);
+  font-weight: 800;
+  line-height: .92;
+  letter-spacing: -.025em;
+  text-wrap: wrap;
+  overflow-wrap: break-word;
+}
+.story__name span { display: block; }
+.story__name span + span { color: var(--cobalt); }
+.story__words p {
+  max-width: 31em;
+  margin: 0;
+  font-size: var(--t-text);
+  font-weight: 500;
+  line-height: 1.38;
+}
+.story__words .story__more { margin-top: .3em; }
+.story__more a {
+  display: inline-block;
+  padding: 8px 0;
+  color: inherit;
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+.story__more a:hover { color: var(--cobalt); }
+
+/* as the card widens: the name beside the sentence, and a film beside both */
+@container card (min-width: 600px) {
+  /* Every story lies in the same place and only one is seen, so the card is always as tall
+     as the longest of them and nothing moves when the story changes. */
+  .stories { display: grid; }
+  .story {
+    grid-area: 1 / 1;
+    grid-template-columns: minmax(0, 38%) minmax(0, 1fr);
+    align-content: center;     /* a shorter story stands in the middle of the card, not at its top */
+    gap: 0 28px;
+  }
+  .story[hidden] {
+    display: grid !important;
+    visibility: hidden;
+  }
+  .story__name { font-size: clamp(34px, 6.3cqw, 62px); }
+  .story__words p {
+    font-size: clamp(18px, 3.05cqw, 30px);
+    line-height: 1.26;
+    letter-spacing: -.01em;
+  }
+  .story__words .story__more a { font-size: clamp(17px, 1.9cqw, 20px); }
+
+  /* A story with a picture or a film (image or film in data/places.yaml) has one layout for both:
+     the coordinates, the name and the sentence on the left, and the picture or film on the right: always
+     the same distance from the words, its right edge on the card's right edge, and centred on the words
+     from top to bottom, with its caption under it. Every picture and film is held to the same height,
+     --vis-h, and to no more than --vis-w across, so the cards stay steady. */
+  .story--visual {
+    --vis-h: clamp(150px, 23cqw, 210px);      /* image_size: medium (a picture or film with a caption) */
+    --vis-w: 42cqw;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    column-gap: clamp(32px, 4.5cqw, 56px);
+  }
+  .story--visual .story__name { font-size: clamp(34px, 5.4cqw, 54px); }
+  .story--visual .story__words {
+    grid-area: 2 / 1;
+    margin-top: 14px;
+  }
+  .story--visual .story__words p {
+    font-size: clamp(16px, 2.15cqw, 20px);   /* text_size: medium (a sentence of 140 to 220 letters) */
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
+  /* The other sizes. The page chooses them (see js/atlas.js); text_size and image_size in data/places.yaml overrule it. */
+  .story--text-small .story__words p { font-size: clamp(15px, 1.9cqw, 17px); }
+  .story--text-large .story__words p {
+    font-size: clamp(18px, 2.75cqw, 25px);
+    line-height: 1.32;
+    letter-spacing: -.005em;
+  }
+  .story--image-small { --vis-h: clamp(110px, 17cqw, 160px); --vis-w: 30cqw; }
+  .story--image-large { --vis-h: clamp(180px, 29cqw, 265px); --vis-w: 46cqw; }
+  .story--visual .story__words .story__more { margin: 4px 0 -8px; }
+  .story--visual .story__words .story__more a { font-size: inherit; }
+  .story--visual .story__visual {
+    grid-area: 1 / 2 / 3 / 3;
+    align-self: center;
+  }
+  .story--visual .story__picture img {
+    max-width: var(--vis-w);
+    max-height: var(--vis-h);
+  }
+
+  /* a film: as large as --vis-h and --vis-w allow. Under it, never on it (it would hide what the film
+     shows), a round Play button and the caption beside it. The button keeps its word "Play" or "Pause"
+     for screen readers, and shows only the triangle or the two bars. */
+  .story--visual .film {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px 12px;
+    width: min(var(--vis-w), calc(var(--vis-h) * var(--r)));
+    margin: 0;
+  }
+  .story--visual .film__frame {
+    flex: 1 0 100%;
+    max-width: none;
+  }
+  .story--visual .film__play {
+    order: 1;
+    flex: none;
+    width: 42px;
+    min-width: 0;
+    height: 42px;
+    padding: 0;
+    gap: 0;
+    font-size: 0;
+  }
+  .story--visual .film:not(.is-playing) .film__play::before { margin-left: 3px; }  /* a triangle looks centred a little right of centre */
+  .story--visual .film figcaption {
+    order: 2;
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: 13.5px;
+  }
+}
+
+/* a picture in a story, on any card: as large as it can be within --vis-h, with its caption under it and no wider */
+.story__picture {
+  display: table;
+  margin: 4px 0 0;
+}
+.story__picture img {
+  display: block;
+  max-width: 100%;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+}
+.story__picture a[data-zoom] { display: block; cursor: zoom-in; }
+.story__picture a[data-zoom]:focus-visible { outline-offset: 3px; }
+.story__picture figcaption {
+  display: table-caption;
+  caption-side: bottom;
+  padding-top: 10px;
+  font-size: 13.5px;
+  line-height: 1.35;
+}
+
+/* 620+: the names in columns under the map */
+/* a name too long for one line (js/atlas.js marks those of more than 24 letters) runs on to a second */
+.name--long .name__text,
+.name--long .name__text::after { overflow-wrap: anywhere; }
+
+@media (min-width: 620px) {
+  .globe {
+    --row: 40px;
+    grid-template-columns: minmax(0, 310px) minmax(0, 1fr);
+    column-gap: 22px;
+  }
+  .name--long {
+    padding-block: 6px;
+    white-space: normal;
+  }
+  .legend { font-size: 15px; }
+  .mark { --m: 13px; }
+  .index {
+    display: block;
+    columns: 2;
+    column-gap: 22px;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+  .index li { break-inside: avoid; }
+  .name { width: 100%; }
+}
+@media (min-width: 760px) {
+  .index { columns: 3; }
+}
+
+/* 900+: the inset moves into the empty Pacific, the way a printed atlas tucks one into a corner */
+@media (min-width: 900px) {
+  .globe {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "world"
+      "legend"
+      "index"
+      "steps"
+      "card";
+  }
+  .world {
+    aspect-ratio: 932 / 437.4;
+    margin-top: 0;
+  }
+  .inset {
+    grid-area: world;
+    align-self: end;
+    justify-self: start;
+    z-index: 1;
+    width: 25.5%;
+  }
+}
+
+/* 1200+: the names in one column beside the map, the key in a row under the map, and the story in a band
+   beneath them, all in one block that fits a laptop screen. */
+@media (min-width: 1200px) {
+  .globe {
+    --row: clamp(30px, 4.45vh, 40px);
+    grid-template-columns: minmax(0, 232px) minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "index world"
+      "index legend"
+      "index card";
+    gap: 14px 22px;
+  }
+  .index-wrap {
+    grid-area: index;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .index { columns: auto; }
+  /* Nineteen names stand as tall as the map and the story together. With more than that the list keeps
+     about that height and scrolls, so that the story does not have to stretch to match it. It stops
+     half way down a name, which shows that there are more below. */
+  .index:has(> li:nth-child(20)) {
+    max-height: calc(19.5 * var(--row) + 3px);
+    margin: -3px;
+    padding: 3px;         /* room for the ring round a name, which a scrolling list would otherwise clip */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 245, 227, .5) transparent;
+  }
+  .name { font-size: clamp(15.5px, min(1.3vw, 2.1vh), 18px); }
+  .stepper {
+    margin-top: auto;
+    padding-top: 14px;
+  }
+  .legend { font-size: 14px; }
+
+  .card { min-height: clamp(258px, 31vh, 292px); }
+  .stories { flex: 1; }
+}
+@media (min-width: 1200px) and (pointer: coarse) {
+  .globe { --row: 42px; }
+}
+
+/* without JavaScript (or if js/atlas.js or its data cannot be read): the places as a plain list */
+.no-js .globe,
+.globe.is-plain { display: block; }
+.no-js .world,
+.no-js .inset,
+.no-js .legend,
+.no-js .card,
+.no-js .atlas__cue,
+.is-plain .world,
+.is-plain .inset,
+.is-plain .legend,
+.is-plain .card { display: none; }
+.atlas__in:has(.is-plain) .atlas__cue { display: none; } /* on its own, so a browser that does not know :has() keeps the rule above */
+.no-js .index,
+.is-plain .index {
+  display: block;
+  columns: 17em;
+  column-gap: 34px;
+  margin: 0;
+  padding: clamp(8px, 1.4vw, 18px);
+  overflow: visible;
+}
+.no-js .index li,
+.is-plain .index li {
+  break-inside: avoid;
+  padding-bottom: 20px;
+}
+.no-js .index h3,
+.is-plain .index h3 {
+  margin: 0;
+  color: var(--yellow);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.01em;
+}
+.no-js .index p,
+.is-plain .index p {
+  margin: 5px 0 0;
+  font-size: 16.5px;
+  line-height: 1.38;
+}
+.no-js .index a,
+.is-plain .index a {
+  display: inline-block;
+  padding-block: 9px;
+  color: inherit;
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+.no-js .index a:hover,
+.is-plain .index a:hover { color: var(--yellow); }
+.is-plain .stepper { display: none; }
+
+/* the lines draw out from Cardiff as the map comes into view */
+@media (prefers-reduced-motion: no-preference) {
+  .globe.will-arrive .arc {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  .globe.will-arrive .mark {
+    opacity: 0;
+    scale: 0;
+  }
+  .globe.will-arrive.is-seen .arc {
+    animation: draw .9s cubic-bezier(.55, 0, .2, 1) forwards;
+    animation-delay: calc(var(--i) * 40ms + 150ms);
+  }
+  .globe.will-arrive.is-seen .mark {
+    animation: pop .5s cubic-bezier(.2, .9, .3, 1.25) forwards;
+    animation-delay: calc(var(--i) * 40ms + 650ms);
+  }
+  .globe.will-arrive.is-seen .mark--hub { animation-delay: 60ms; }
+  .arc.is-run {
+    stroke-dasharray: 1;
+    animation: draw .6s cubic-bezier(.45, 0, .2, 1);
+  }
+  .mark.is-chosen::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(var(--m) * 2.4);
+    height: calc(var(--m) * 2.4);
+    margin: calc(var(--m) * -1.2);
+    border: 2px solid var(--yellow);
+    border-radius: 50%;
+    opacity: 0;
+    animation: ping 2.8s cubic-bezier(.2, .6, .3, 1) infinite 1s;
+  }
+  .mark--ring.is-chosen::before { border-color: var(--pink); }
+}
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes pop { from { opacity: 0; scale: 0; } to { opacity: 1; scale: 1; } }
+@keyframes ping {
+  0% { opacity: .9; scale: 1; }
+  70%, 100% { opacity: 0; scale: 2.2; }
+}
+
+
+/* ==================== 5. People page==================== */
+
+/* ---------- the heading, three sentences and the people ---------- */
+
+.hero--group .hero__in { container-type: inline-size; }
+
+.hello {
+  margin: 0;
+  font-size: 23cqw;
+  font-weight: 800;
+  line-height: .88;
+  letter-spacing: -.03em;
+  white-space: nowrap;
+}
+
+.intro {
+  max-width: 23em;
+  margin-top: 24px;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.36;
+}
+.intro__cue { display: none; }
+.flip .intro__cue { display: block; }
+.intro p { margin: 0; }
+.intro p + p { margin-top: .6em; }
+
+/* people: one block of colour each.
+   --paper is the block, --turned is its other side; no two neighbours ever show the same colour. */
+
+.people {
+  display: grid;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.person {
+  position: relative;
+  container-type: inline-size;
+  margin: var(--down, 0px) var(--right, 0px) 0 var(--left, 0px);
+}
+/* The colours and the tilt go by position, so a new person needs nothing here.
+   On the cobalt of the first screen the blocks run yellow, ink, pink, cream; */
+.person:nth-child(4n+1) { --paper: var(--yellow); --on: var(--ink);   --turned: var(--pink);   --on-turned: var(--ink);   --tilt: -2deg; }
+.person:nth-child(4n+2) { --paper: var(--ink);    --on: var(--cream); --turned: var(--cream);  --on-turned: var(--ink);   --tilt: 1.5deg; }
+.person:nth-child(4n+3) { --paper: var(--pink);   --on: var(--ink);   --turned: var(--yellow); --on-turned: var(--ink);   --tilt: -1.2deg; }
+.person:nth-child(4n+4) { --paper: var(--cream);  --on: var(--ink);   --turned: var(--ink);    --on-turned: var(--cream); --tilt: 2.2deg; }
+/* on the cream below it, cobalt, yellow, pink. */
+.former .person:nth-child(3n+1) { --paper: var(--cobalt); --on: var(--cream); --turned: var(--pink);   --on-turned: var(--ink);   --tilt: -1.8deg; }
+.former .person:nth-child(3n+2) { --paper: var(--yellow); --on: var(--ink);   --turned: var(--ink);    --on-turned: var(--cream); --tilt: 1.4deg; }
+.former .person:nth-child(3n+3) { --paper: var(--pink);   --on: var(--ink);   --turned: var(--cobalt); --on-turned: var(--cream); --tilt: -1deg; }
+/* They stand three to a row, so a second row and a third each begin one colour further on:
+   no block then stands under another of its own colour. */
+.former .person:nth-child(9n+6),
+.former .person:nth-child(9n+8) { --paper: var(--cobalt); --on: var(--cream); --turned: var(--pink);   --on-turned: var(--ink); }
+.former .person:nth-child(9n+4),
+.former .person:nth-child(9n+9) { --paper: var(--yellow); --on: var(--ink);   --turned: var(--ink);    --on-turned: var(--cream); }
+.former .person:nth-child(9n+5),
+.former .person:nth-child(9n+7) { --paper: var(--pink);   --on: var(--ink);   --turned: var(--cobalt); --on-turned: var(--cream); }
+
+/* one column: each block steps a little to one side and tucks under the last */
+.person:nth-child(odd) { --right: 16px; }
+.person:nth-child(even) { --left: 16px; }
+.person + .person { --down: -8px; }
+
+.person__card {
+  --fg: var(--on);
+  --bg: var(--paper);
+  display: grid;
+  grid-template-columns: minmax(96px, 36%) 1fr;
+  gap: 0 16px;
+  padding: 16px;
+  border-radius: 26px;
+  background: var(--paper);
+  color: var(--on);
+  rotate: calc(var(--tilt) * .4);
+}
+.person__front { display: contents; }
+.person__photo { grid-area: 1 / 1 / 3 / 2; }
+.person__name {
+  grid-area: 1 / 2;
+  align-self: end;
+  margin: 0;
+  font-size: clamp(28px, 9.6cqw, 40px);
+  font-weight: 800;
+  line-height: .95;
+  letter-spacing: -.015em;
+}
+.person__name span { display: block; }
+@media (max-width: 359.98px) {
+  .person__name { font-size: 25px; }   /* the longest surname still fits beside its portrait */
+}
+.person__links {
+  grid-area: 2 / 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin: 6px 0 -4px -10px;
+  padding: 0;
+  list-style: none;
+}
+.person__links a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: inherit;
+}
+.person__links .icon {
+  width: 21px;
+  height: 21px;
+}
+.person__links a:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+.person__links a:focus-visible { outline-offset: -1px; }
+.person__links--back { display: none; }
+.person__back {
+  grid-column: 1 / -1;
+  margin-top: 14px;
+  font-size: 16.5px;
+  line-height: 1.38;
+}
+.person__back p { margin: 0; }
+.person__back p + p { margin-top: .5em; }
+
+/* portraits: an arched window, every photograph printed in the same blue ink.
+   The photograph fills the window. --fx and --fy say where the face is, and --zoom how far to move in on it;
+   they come from photo_focus and photo_zoom in data/people.yaml, and --tone from photo_tone. */
+
+.person__photo {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 7 / 8;
+  border-radius: 50% 50% 14px 14px / 43.75% 43.75% 14px 14px;
+  background: #8a8ac1;
+}
+.person__photo img {
+  position: absolute;
+  left: calc((1 - var(--zoom, 1)) * var(--fx, 50%));
+  top: calc((1 - var(--zoom, 1)) * var(--fy, 30%));
+  width: calc(100% * var(--zoom, 1));
+  max-width: none;
+  height: calc(100% * var(--zoom, 1));
+  object-fit: cover;
+  object-position: var(--fx, 50%) var(--fy, 30%);
+  filter: var(--tone, contrast(1)) url(#blue-ink);
+}
+
+/* The one button that turns a block over. It lies over the portrait and the name, and stops
+   above the row of links, so those stay ordinary links. js/cards.js shows it only where blocks can turn. */
+.person__turn {
+  position: absolute;
+  inset: 0 0 var(--foot, 0px) 0;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 9.6cqw 9.6cqw 0 0;
+  background: none;
+  color: var(--cream);
+  cursor: pointer;
+}
+
+/* 620+: two by two */
+@media (min-width: 620px) {
+  .hero--group .hero__in {
+    padding-top: 88px;
+    padding-bottom: clamp(36px, 6vh, 60px);
+  }
+  .hello { font-size: min(23cqw, 24vh); }
+
+  .intro {
+    max-width: 30em;
+    font-size: 20px;
+  }
+
+  .people {
+    grid-template-columns: repeat(2, minmax(0, 258px));
+    justify-content: center;
+    align-items: start;
+    margin-top: 40px;
+  }
+  .person:nth-child(odd) { --right: 0px; }
+  .person:nth-child(even) { --left: -10px; --down: 34px; }
+  .person:nth-child(2n+3) { --down: -6px; }
+  .person:nth-child(2n+4) { --down: 26px; }
+
+  .person__card {
+    display: block;
+    padding: 7.2cqw 7.2cqw 5.4cqw;
+    border-radius: 9.6cqw;
+  }
+  .person__front { display: block; }
+  .person__name {
+    margin: 5cqw 0 0;
+    font-size: clamp(22px, 11.4cqw, 30px);
+    line-height: 1;
+  }
+  .person__links { margin: 2.2cqw 0 0 -10px; }
+  .person__back {
+    margin-top: 6px;
+    font-size: clamp(14.5px, 6.7cqw, 17px);
+    line-height: 1.32;
+  }
+}
+
+/* 860+: the sentences sit beside the heading, the people in one overlapping row.
+   --cols is how many stand in a row; people.html works it out from how many people there are. */
+@media (min-width: 860px) {
+  .hero--group .hero__in {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 36%);
+    column-gap: 28px;
+    align-items: end;
+  }
+  .hello { font-size: min(13.4vw, 26vh); }
+  .intro {
+    display: block;
+    max-width: none;
+    margin: 0 0 .4em;
+    font-size: clamp(17px, 1.9vw, 20px);
+  }
+  .intro p + p { margin-top: .6em; }
+
+  .hero--group .people {
+    --lap: 12px;
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 26px;
+  }
+  .hero--group .person {
+    flex: 0 0 auto;
+    width: calc((100% + (var(--cols, 4) - 1) * var(--lap)) / var(--cols, 4));
+    max-width: 258px;
+  }
+  .hero--group .person:nth-child(n) { --left: calc(-1 * var(--lap)); }
+  .hero--group .person:first-child { --left: 0px; }
+  .hero--group .person:nth-child(4n+1) { --down: 5vh; }
+  .hero--group .person:nth-child(4n+2) { --down: .6vh; }
+  .hero--group .person:nth-child(4n+3) { --down: 6.4vh; }
+  .hero--group .person:nth-child(4n+4) { --down: 2vh; }
+  /* more than five people: they stand in two rows */
+  .hero--group .people--rows {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 10px;
+  }
+  .hero--group .people--rows .person { width: calc((100% + (var(--cols, 4) - 1) * var(--lap)) / var(--cols, 4) - 1px); }
+}
+
+/* 1180+: the heading runs across the page; beneath it the sentences sit beside the people,
+   who stand in one overlapping row. Everything is sized from the window so it all fits the first screen. */
+@media (min-width: 1180px) {
+  .hero--group .hero__in {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(22px, 2.4vw, 36px);
+    align-items: start;
+    min-height: min(100svh, 980px);
+    padding-top: clamp(52px, 8.2vh, 80px);
+    padding-bottom: clamp(62px, 7.4vh, 76px);
+  }
+  .hello {
+    grid-column: 1 / -1;
+    font-size: min(23.4cqw, 31vh);
+    line-height: .84;
+  }
+  .intro {
+    grid-area: 2 / 1;
+    max-width: 19em;
+    margin: calc(clamp(4px, 1vh, 20px) + 3.8vh) 0 0; /* level with the top of the first block */
+    font-size: clamp(18px, 1.56vw, 22px);
+  }
+  .hero--group .people {
+    --lap: 7px;
+    grid-area: 2 / 2;
+    align-self: end;
+    justify-content: flex-end;
+    margin-top: clamp(4px, 1vh, 20px);
+  }
+  .hero--group .person {
+    width: min(258px, 28.5vh, calc((100cqw - 270px + (var(--cols, 4) - 1) * var(--lap)) / var(--cols, 4)));
+    max-width: none;
+  }
+  .hero--group .person:nth-child(4n+1) { --down: 3.8vh; }
+  .hero--group .person:nth-child(4n+2) { --down: 0vh; }
+  .hero--group .person:nth-child(4n+3) { --down: 4.4vh; }
+  .hero--group .person:nth-child(4n+4) { --down: 1.3vh; }
+  .hero--group .people--rows {      /* two rows, in the room beside the sentences */
+    width: min(100cqw - 300px, var(--cols, 4) * 252px);
+    justify-content: flex-end;
+  }
+
+  /* where the blocks turn they are all one height, and the sentences sit level with their middle */
+  html.flip .intro {
+    align-self: center;
+    margin-top: clamp(4px, 1vh, 20px);
+  }
+}
+
+/* turning: only where a pointer can hover, and only once js/cards.js has said so (html.flip).
+   Without it the sentences simply sit under each portrait, as above. */
+
+html.flip .person {
+  --foot: calc(42px + 5.4cqw + 2px);
+  perspective: 1100px;
+}
+html.flip .person__card {
+  position: relative;
+  display: block;
+  padding: 0;
+  background: none;
+  rotate: var(--tilt);
+  transform-style: preserve-3d;
+  transition: transform .7s var(--ease), rotate .5s var(--ease);
+}
+html.flip .person__front,
+html.flip .person__back {
+  border-radius: 9.6cqw;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+html.flip .person__front {
+  position: relative;
+  display: block;
+  padding: 7.2cqw 7.2cqw 5.4cqw;
+  background: var(--paper);
+  color: var(--on);
+}
+html.flip .person__back {
+  --fg: var(--on-turned);
+  --bg: var(--turned);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 7.2cqw 7.2cqw 5.4cqw;
+  background: var(--turned);
+  color: var(--on-turned);
+  font-size: clamp(14px, 7.1cqw, 18.5px);
+  font-weight: 500;
+  line-height: 1.3;
+  transform: rotateY(180deg);
+}
+/* one sentence has the whole block to itself, so it is set a little larger and fills it */
+html.flip .person--one .person__back {
+  font-size: clamp(17px, 8.6cqw, 22.5px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+html.flip .former .person__back {
+  font-size: clamp(15.5px, 9.2cqw, 19px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+/* the same links again on the other side, in the same place, so they can be reached whichever side is showing */
+html.flip .person__links--back {
+  display: flex;
+  flex: none;
+}
+/* the same plus as on the question tiles: it sits in the corner the arch leaves free, and reads as a cross once turned */
+html.flip .person__front::before,
+html.flip .person__front::after,
+html.flip .person__back::before,
+html.flip .person__back::after {
+  content: "";
+  position: absolute;
+  top: calc(5.4cqw + 3.1cqw - 1.5px);
+  right: 5.4cqw;
+  width: 6.2cqw;
+  height: 3px;
+  border-radius: 2px;
+  background: currentColor;
+}
+html.flip .person__front::after { rotate: 90deg; }
+html.flip .person__back::before { rotate: 45deg; }
+html.flip .person__back::after { rotate: -45deg; }
+html.flip .person:hover,
+html.flip .person.is-keyed,
+html.flip .person.is-open { z-index: 5; }
+html.flip .person:hover .person__card,
+html.flip .person.is-keyed .person__card,
+html.flip .person.is-open .person__card {
+  transform: rotateY(180deg);
+  rotate: 0deg;
+}
+html.flip .person.is-shut .person__card {
+  transform: none;
+  rotate: var(--tilt);
+}
+html.flip .person__turn:focus-visible { outline: none; }
+html.flip .person:has(.person__turn:focus-visible) .person__card {
+  outline: 3px solid var(--ring, var(--cream));
+  outline-offset: 4px;
+  border-radius: 9.6cqw;
+}
+
+/* ---------- people who have moved on ---------- */
+
+.former {
+  background: var(--cream);
+  padding-block: clamp(56px, 8vw, 116px) clamp(64px, 9vw, 128px);
+}
+.former__in {
+  display: grid;
+  gap: 8px;
+}
+.former__line {
+  max-width: 11.5em;
+  margin: 0;
+  color: var(--cobalt);
+  font-size: clamp(30px, 4.3vw, 62px);
+  font-weight: 800;
+  line-height: .98;
+  letter-spacing: -.022em;
+  text-wrap: balance;
+}
+.former .people { margin-top: 24px; }
+.former .person { --ring: var(--ink); }
+
+@media (min-width: 620px) {
+  .former .people {
+    grid-template-columns: repeat(3, minmax(0, 198px));
+    justify-content: start;
+    margin-top: 30px;
+  }
+  .former .person:nth-child(n) { --left: 0px; --right: 0px; --down: 0px; }
+  .former .person:nth-child(3n+2) { --left: 2px; --down: 22px; }
+  .former .person:nth-child(3n+3) { --left: 4px; --down: 6px; }
+  .former .person__name { font-size: clamp(20px, 11.6cqw, 25px); line-height: .98; }
+}
+@media (min-width: 1000px) {
+  .former__in {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 48px;
+  }
+  .former .people { margin-top: 0; }
+}
+
+
+/* ==================== 6. Less motion ==================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,285 +1,363 @@
-<!DOCTYPE html>
-<html>
-<script>
-    function myFunction() {
-        var x = document.getElementById("dropdownnav");
-        if (x.className === "dropdownnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "dropdownnav";
-        }
-    }
-
-    // Click-to-toggle dropdown functionality
-    document.addEventListener('DOMContentLoaded', function () {
-        const dropdowns = document.querySelectorAll('.dropdown');
-
-        dropdowns.forEach(dropdown => {
-            const button = dropdown.querySelector('.dropbtn');
-            button.addEventListener('click', function (e) {
-                e.stopPropagation();
-                // Close other dropdowns
-                dropdowns.forEach(other => {
-                    if (other !== dropdown) {
-                        other.classList.remove('open');
-                    }
-                });
-                // Toggle current dropdown
-                dropdown.classList.toggle('open');
-            });
-        });
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function () {
-            dropdowns.forEach(dropdown => {
-                dropdown.classList.remove('open');
-            });
-        });
-    });
-</script>
-
+<!doctype html>
+<html lang="en-GB" class="no-js">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Climate and Atmospheric Science for Action Group</title>
-    <link rel="shortcut icon" type="image/jpg" sizes="16x16" href="cardiffuniversity.png" />
-    <link rel="stylesheet" href="styles.css?v=8">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publications · Omar Nawaz and the CASA group</title>
+<meta name="description" content="Peer-reviewed papers by Omar Nawaz, who leads the CASA group at Cardiff University.">
+<link rel="canonical" href="https://omarnawaz.com/publications.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Omar Nawaz and the CASA group">
+<meta property="og:title" content="Publications · Omar Nawaz and the CASA group">
+<meta property="og:description" content="Peer-reviewed papers by Omar Nawaz, who leads the CASA group at Cardiff University.">
+<meta property="og:url" content="https://omarnawaz.com/publications.html">
+<meta property="og:image" content="https://omarnawaz.com/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#14133a">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>document.documentElement.className = 'js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/publications.css">
 </head>
+<body class="page-publications hero-ink">
 
-<body>
-    <div class="topnav" id="myTopnav">
-        <img class="cardifflogo" src="cardiffuniversity.png" alt="Cardiff University Logo">
-        <a href="index.html">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">Research
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
-                <a href="remotesensing.html">Air Quality Remote Sensing</a>
-                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
-                <a href="wildfires.html">Wildfire Health Effects</a>
-                <a href="surfacepollution.html">Estimating Surface Pollution</a>
-            </div>
-        </div>
-        <a href="people.html">People</a>
-        <a href="publications.html" class="active">Publications</a>
-        <div class="dropdown">
-            <button class="dropbtn">Datasets
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
-            </div>
-        </div>
-        <a href="joinus.html">Join Us</a>
-        <a href="https://groupwiki.readthedocs.io/en/latest/" target="_blank">Group Wiki</a>
-        <a href="javascript:void(0);" class="hamburgerbutton" onclick="myFunction()">&#9776;</a>
-    </div>
-    <div class="dropdownnav" id="dropdownnav">
-        <a href="index.html" class="active">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">Research
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
-                <a href="remotesensing.html">Air Quality Remote Sensing</a>
-                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
-                <a href="wildfires.html">Wildfire Health Effects</a>
-                <a href="surfacepollution.html">Estimating Surface Pollution</a>
-            </div>
-        </div>
-        <a href="people.html">People</a>
-        <a href="publications.html">Publications</a>
-        <div class="dropdown">
-            <button class="dropbtn">Datasets
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
-            </div>
-        </div>
-        <a href="joinus.html">Join Us</a>
-        <a href="https://groupwiki.readthedocs.io/en/latest/" target="_blank">Group Wiki</a>
-    </div>
-    <div class="header-container">
-        <div class="header-title">Publications
-            <hr style="height: 5px; background-color: black; border: none;">
-        </div>
-        <ul style="list-style-type: none; padding-left: 0px; text-align: left; font-size: 20px;">
-            <h3 style="text-align: left; font-weight: bold; font-size: 24px; margin-top: 20px; margin-bottom: 10px;">
-                2026</h3>
-            <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
-            <li class="pub-list">25. Huber, D. E.; Kerr, G. H.; <b>Nawaz, M. O.</b>; Runkel, S.; Anenberg, S. C.;
-                Goldberg, D. L. TROPOMI NO<sub>2</sub> Trends for Urban and Polluted Areas Globally from 2019 to 2024.
-                <i>Atmos. Chem. Phys.</i> 2026, 26, 3783–3803. <a
-                    href="https://doi.org/10.5194/acp-26-3783-2026">10.5194/acp-26-3783-2026</a>.
-            </li>
-            <br>
-            <li class="pub-list">24. <b>Nawaz, M. O.</b>; Henze, D. K. National Climate Action Can Ameliorate,
-                Perpetuate, or Exacerbate International Air Pollution Inequalities. <i>Nature Communications</i> 2026.
-                <a href="https://doi.org/10.1038/s41467-026-68827-0">10.1038/s41467-026-68827-0</a>.
-            </li>
-            <br>
-            <h3 style="text-align: left; font-weight: bold; font-size: 24px; margin-top: 20px; margin-bottom: 10px;">
-                2025</h3>
-            <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
-            <li class="pub-list">23. Siu, T. K.; Goldberg, D. L.; Kerr, G. H.; Chen, L.; <b>Nawaz, M. O.</b>; Chang, R.
-                Y.-W.; Fong, K. C. Tropospheric NO2 Patterns in Eastern Canada Using the First Year of TEMPO
-                Observations. <i>Journal of Geophysical Research: Atmospheres</i> 2025, 130 (24), e2025JD044757. <a
-                    href="https://doi.org/10.1029/2025JD044757">10.1029/2025JD044757</a></li>
-            <br>
-            <li class="pub-list">22. Goldberg, D. L.; <b>Nawaz, M. O.</b>; Lyu, C.; He, J.; Carlton, A. G.; Kondragunta,
-                S.; Anenberg, S. C. Clear-Sky and Cloudy-Sky Differences in NO2 Concentrations over the United States:
-                Implications for Satellite Measurement Applications. <i>Atmospheric Chemistry and Physics</i> 2025, 25
-                (22),
-                16287–16302. <a href="https://doi.org/10.5194/acp-25-16287-2025">10.5194/acp-25-16287-2025</a></li>
-            <br>
-            <li class="pub-list">21. <b>Nawaz, M. O.</b>; Huber, D. E.; Kerr, G. H.; Judd, L. M.; Acker, S. J.;
-                Goldberg, D. L. A Comparative Analysis of TEMPO NO2 Remote Sensing With Surface-Level Monitoring Through
-                Diurnal and Seasonal Trends, Meteorology, and Monitor Characteristics. <i>Journal of Geophysical
-                    Research:
-                    Atmospheres</i> 2025, 130 (20), e2025JD043923. <a
-                    href="https://doi.org/10.1029/2025JD043923">10.1029/2025JD043923</a></li>
-            <br>
-            <li class="pub-list">20. Hay, S. I.; Ong, K. L.; Santomauro, D. F.; … <b>Nawaz, M. O.</b>; … et al. Burden
-                of 375 Diseases and Injuries, Risk-Attributable Burden of 88 Risk Factors, and Healthy Life Expectancy
-                in 204 Countries and Territories, Including 660 Subnational Locations, 1990–2023: A Systematic Analysis
-                for the Global Burden of Disease Study 2023. <i>The Lancet</i> 2025, 406 (10513), 1873–1922. <a
-                    href="https://doi.org/10.1016/S0140-6736(25)01637-X">10.1016/S0140-6736(25)01637-X</a></li>
-            <br>
-            <li class="pub-list">19. Jin, L.; Benoit, J.; <b>Nawaz, M. O.</b>; Rodrigues, P. F.; Wiecko, P.; Miller, J.;
-                Alvarez, G.; Henze, D. K.; Osipova, L.; Anenberg, S. C. Global Health Benefits of Policies to Reduce
-                On-Road Vehicle Pollution through 2040. <i>Environmental Research Letters</i> 2025. <a
-                    href="https://doi.org/10.1088/1748-9326/adcd87">10.1088/1748-9326/adcd87</a></li>
-            <br>
-            <li class="pub-list">18. Wiecko, P.; Henze, D. K.; <b>Nawaz, M. O.</b> Sector-, Season-, and
-                Country-Specific NO2-Associated Health Benefits from NOx Emission Reductions. <i>ACS EST Air</i> 2025, 2
-                (4),
-                700–709. <a href="https://doi.org/10.1021/acsestair.5c00012">10.1021/acsestair.5c00012</a></li>
-            <br>
-            <li class="pub-list">17. <b>Nawaz, M. O.</b>; Goldberg, D. L.; Kerr, G. H.; Anenberg, S. C. TROPOMI
-                Satellite Data Reshape NO2 Air Pollution Land-Use Regression Modeling Capabilities in the United States.
-                <i>ACS EST Air</i> 2025, 2 (2), 187–200. <a
-                    href="https://doi.org/10.1021/acsestair.4c00153">10.1021/acsestair.4c00153</a>
-            </li>
-            <br>
-            <h3 style="text-align: left; font-weight: bold; font-size: 24px; margin-top: 20px; margin-bottom: 10px;">
-                2024</h3>
-            <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
-            <li class="pub-list">16. Goldberg, D. L.; de Foy, B.; <b>Nawaz, M. O.</b>; Johnson, J.; Yarwood, G.; Judd,
-                L. Quantifying NOx Emission Sources in Houston, Texas Using Remote Sensing Aircraft Measurements and
-                Source Apportionment Regression Models. <i>ACS EST Air</i> 2024. <a
-                    href="https://doi.org/10.1021/acsestair.4c00097">10.1021/acsestair.4c00097</a></li>
-            <br>
-            <li class="pub-list">15. Dyer, G. M. C.; Khomenko, S.; Adlakha, D.; Anenberg, S.; Behnisch, M.; Boeing, G.;
-                <b>Nawaz, M. O.</b>; et al. Commentary: A Road Map for Future Data-Driven Urban Planning and
-                Environmental Health Research. <i>Cities</i> 2024, 155, 105340. <a
-                    href="https://doi.org/10.1016/j.cities.2024.105340">10.1016/j.cities.2024.105340</a>
-            </li>
-            <br>
-            <li class="pub-list">14. Dyer, G. M. C.; Khomenko, S.; Adlakha, D.; Anenberg, S.; Behnisch, M.; Boeing, G.;
-                <b>Nawaz, M. O.</b>; et al. Exploring the Nexus of Urban Form, Transport, Environment and Health in
-                Large-Scale Urban Studies: A State-of-the-Art Scoping Review. <i>Environmental Research</i> 2024, 257,
-                119324.
-                <a href="https://doi.org/10.1016/j.envres.2024.119324">10.1016/j.envres.2024.119324</a>
-            </li>
-            <br>
-            <li class="pub-list">13. Choi, J.; Henze, D. K.; <b>Nawaz, M.O.</b>; Malley, C. S. Source Attribution of
-                Health Burdens From Ambient PM2.5, O3, and NO2 Exposure for Assessment of South Korean National Emission
-                Control Scenarios by 2050. <i>GeoHealth</i> 2024, 8 (8), e2024GH001042. <a
-                    href="https://doi.org/10.1029/2024GH001042">10.1029/2024GH001042</a></li>
-            <br>
-            <li class="pub-list">12. <b>Nawaz, M. O.</b>; Johnson, J.; Yarwood, G.; de Foy, B.; Judd, L.; Goldberg, D.
-                L. An Intercomparison of Satellite, Airborne, and Ground-Level Observations with WRF–CAMx Simulations of
-                NO2 Columns over Houston, Texas, during the September 2021 TRACER-AQ Campaign. <i>Atmospheric Chemistry
-                    and
-                    Physics</i> 2024, 24 (11), 6719–6741. <a
-                    href="https://doi.org/10.5194/acp-24-6719-2024">10.5194/acp-24-6719-2024</a></li>
-            <br>
-            <h3 style="text-align: left; font-weight: bold; font-size: 24px; margin-top: 20px; margin-bottom: 10px;">
-                2023</h3>
-            <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
-            <li class="pub-list">11. Gu, Y.; Henze, D. K.; <b>Nawaz, M. O.</b>; Wagner, U. J. Response of the
-                Ozone-Related Health Burden in Europe to Changes in Local Anthropogenic Emissions of Ozone Precursors.
-                <i>Environmental Research Letters</i> 2023, 18 (11). <a
-                    href="https://doi.org/10.1088/1748-9326/ad0167">10.1088/1748-9326/ad0167</a>
-            </li>
-            <br>
-            <li class="pub-list">10. <b>Nawaz, M. O.</b>; Henze, D. K.; Huneeus, N. J.; Osses, M.; Álamos, N.; Opazo, M.
-                A.; Gallardo, L. Sources of Air Pollution Health Impacts and Co-Benefits of Carbon Neutrality in
-                Santiago, Chile. <i>Journal of Geophysical Research: Atmospheres</i> 2023, 128 (19), e2023JD038808. <a
-                    href="https://doi.org/10.1029/2023JD038808">10.1029/2023JD038808</a></li>
-            <br>
-            <li class="pub-list">9. Jo, D. S.; Nault, B. A.; Tilmes, S.; Gettelman, A.; McCluskey, C. S.; Hodzic, A.;
-                Henze, D. K.; <b>Nawaz, M. O.</b>; Fung, K. M.; Jimenez, J. L. Global Health and Climate Effects of
-                Organic Aerosols from Different Sources. <i>Environ. Sci. Technol.</i> 2023, 57 (37), 13793–13807. <a
-                    href="https://doi.org/10.1021/acs.est.3c02823">10.1021/acs.est.3c02823</a></li>
-            <br>
-            <li class="pub-list">8. Gu, Y.; Henze, D. K.; <b>Nawaz, M. O.</b>; Cao, H.; Wagner, U. J. Sources of
-                PM2.5-Associated Health Risks in Europe and Corresponding Emission-Induced Changes During 2005–2015.
-                <i>GeoHealth</i> 2023, 7 (3), e2022GH000767. <a
-                    href="https://doi.org/10.1029/2022GH000767">10.1029/2022GH000767</a>
-            </li>
-            <br>
-            <li class="pub-list">7. <b>Nawaz, M.O.</b>, Henze, D.K., Anenberg, S.C., Ahn, D.Y., Goldberg, D.L., Tessum,
-                C.W., Chafe, Z.A. Sources of Air Pollution-Related Health Impacts and Benefits of Radially Applied
-                Transportation Policies in 14 US Cities. <i>Front. Sustain. Cities</i> 2023, 5. <a
-                    href="https://doi.org/10.3389/frsc.2023.1102493">10.3389/frsc.2023.1102493</a></li>
-            <br>
-            <li class="pub-list">6. <b>Nawaz, M.O.</b>, Henze, D.K., Anenberg, S.C., Braun, C., Miller, J., Pronk, E. A.
-                A Source Apportionment and Emission Scenario Assessment of PM2.5- and O3-Related Health Impacts in G20
-                Countries. <i>GeoHealth</i> 2023, 7 (1), e2022GH000713. <a
-                    href="https://doi.org/10.1029/2022GH000713">10.1029/2022GH000713</a></li>
-            <br>
-            <h3 style="text-align: left; font-weight: bold; font-size: 24px; margin-top: 20px; margin-bottom: 10px;">
-                2021</h3>
-            <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
-            <li class="pub-list">5. <b>Nawaz, M. O.</b>; Henze, D. K.; Harkins, C.; Cao, H.; Nault, B.; Jo, D.; Jimenez,
-                J.; Anenberg, S. C.; Goldberg, D. L.; Qu, Z. Impacts of Sectoral, Regional, Species, and Day-Specific
-                Emissions on Air Pollution and Public Health in Washington, DC. <i>Elementa: Science of the
-                    Anthropocene</i>
-                2021, 9 (1), 00043. <a
-                    href="https://doi.org/10.1525/elementa.2021.00043">10.1525/elementa.2021.00043</a></li>
-            <br>
-            <li class="pub-list">4. Cao, H.; Henze, D. K.; Cady-Pereira, K.; McDonald, B. C.; Harkins, C.; Sun, K.;
-                Bowman, K. W.; Fu, T.-M.; <b>Nawaz, M. O.</b> COVID-19 Lockdowns Afford the First Satellite-Based
-                Confirmation That Vehicles Are an Under-Recognized Source of Urban NH3 Pollution in Los Angeles.
-                <i>Environ. Sci. Technol. Lett.</i> 2021, 9 (1), 3–9. <a
-                    href="https://doi.org/10.1021/acs.estlett.1c00730">10.1021/acs.estlett.1c00730</a>
-            </li>
-            <br>
-            <li class="pub-list">3. Nault, B. A.; Jo, D. S.; McDonald, B. C.; Campuzano-Jost, P.; Day, D. A.; Hu, W.;
-                Schroder, J. C.; Allan, J.; Blake, D. R.; Canagaratna, M. R.; Coe, H.; Coggon, M. M.; DeCarlo, P. F.;
-                Diskin, G. S.; Dunmore, R.; Flocke, F.; Fried, A.; Gilman, J. B.; Gkatzelis, G.; Hamilton, J. F.;
-                Hanisco, T. F.; Hayes, P. L.; Henze, D. K.; Hodzic, A.; Hopkins, J.; Hu, M.; Huey, L. G.; Jobson, B. T.;
-                Kuster, W. C.; Lewis, A.; Li, M.; Liao, J.; <b>Nawaz, M.O.</b>; Pollack, I. B.; Peischl, J.;
-                Rappenglück, B.; Reeves, C. E.; Richter, D.; Roberts, J. M.; Ryerson, T. B.; Shao, M.; Sommers, J. M.;
-                Walega, J.; Warneke, C.; Weibring, P.; Wolfe, G. M.; Young, D. E.; Yuan, B.; Zhang, Q.; de Gouw, J. A.;
-                Jimenez, J. L. Secondary Organic Aerosols from Anthropogenic Volatile Organic Compounds Contribute
-                Substantially to Air Pollution Mortality. <i>Atmospheric Chemistry and Physics</i> 2021, 21 (14),
-                11201–11224.
-                <a href="https://doi.org/10.5194/acp-21-11201-2021">10.5194/acp-21-11201-2021</a>
-            </li>
-            <br>
-            <li class="pub-list">2. Malley, C. S.; Hicks, W. K.; Kulyenstierna, J. C. I.; Michalopoulou, E.; Molotoks,
-                A.; Slater, J.; Heaps, C. G.; Ulloa, S.; Veysey, J.; Shindell, D. T.; Henze, D. K.; <b>Nawaz, M. O.</b>;
-                Anenberg, S. C.; Mantlana, B.; Robinson, T. P. Integrated Assessment of Global Climate, Air Pollution,
-                and Dietary, Malnutrition and Obesity Health Impacts of Food Production and Consumption between 2014 and
-                2018. <i>Environ. Res. Commun.</i> 2021, 3 (7), 075001. <a
-                    href="https://doi.org/10.1088/2515-7620/ac0af9">10.1088/2515-7620/ac0af9</a></li>
-            <br>
-            <h3 style="text-align: left; font-weight: bold; font-size: 24px; margin-top: 20px; margin-bottom: 10px;">
-                2020</h3>
-            <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
-            <li class="pub-list">1. <b>Nawaz, M.O.</b> & Henze, D.K. Premature Deaths in Brazil Associated With
-                Long-Term Exposure to PM2.5 From Amazon Fires Between 2016 and 2019. <i>GeoHealth</i> 2020, 4 (8),
-                e2020GH000268. <a href="https://doi.org/10.1029/2020GH000268">10.1029/2020GH000268</a></li>
-        </ul>
-        </p>
+<a class="skip" href="#main">Skip to content</a>
 
+<header class="top">
+  <div class="top__in">
+    <a class="top__mark" href="index.html">CASA</a>
+    <nav aria-label="Main">
+      <ul class="top__nav">
+        <li><a href="research.html" data-text="Research">Research</a></li>
+        <li><a href="publications.html" data-text="Publications" aria-current="page">Publications</a></li>
+        <li><a href="surface_no2.html" data-text="Data">Data</a></li>
+        <li><a href="people.html" data-text="People">People</a></li>
+        <li><a href="https://groupwiki.readthedocs.io/en/latest/" data-text="Wiki" target="_blank" rel="noopener">Wiki</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+
+<section class="hero hero--page" aria-labelledby="title">
+  <canvas class="hero__air" aria-hidden="true"></canvas>
+  <div class="hero__in">
+    <h1 class="hero__title" id="title" data-air="lines">Publications</h1>
+    <div class="hero__lead" data-air="block">
+      <p>This page lists my peer-reviewed publications, as lead author and as co&#8209;author.</p>
+      <p>A full record is also available on <a href="https://scholar.google.co.uk/citations?user=6_oxg9EAAAAJ">Google&nbsp;Scholar</a>.</p>
+    </div>
+  </div>
+</section>
+  <section class="band" aria-labelledby="start">
+    <div class="band__in">
+      <h2 class="band__title" id="start">Selected publications</h2>
+      <ul class="tiles pubs-picks">
+        <li class="tile tone-cobalt pubs-pick">
+          <div class="pubs-pick__paper">
+            <h3 id="pick-1">National climate action can ameliorate, perpetuate, or exacerbate international air pollution inequalities</h3>
+            <p class="pubs-pick__where"><i>Nature Communications</i>, 2026</p>
+          </div>
+          <div class="pubs-pick__words">
+            <p>This paper sets out a health modelling framework to quantify inequality in how air pollution health impacts are exchanged between countries under different climate futures, and assesses the resulting disparities between the Global North and South.</p>
+            <p class="tile__foot"><a class="more" href="https://doi.org/10.1038/s41467-026-68827-0" aria-describedby="pick-1">Read the paper</a></p>
+          </div>
+        </li>
+        <li class="tile tone-yellow pubs-pick">
+          <div class="pubs-pick__paper">
+            <h3 id="pick-2">Burden of 375 diseases and injuries, risk-attributable burden of 88 risk factors, and healthy life expectancy in 204 countries and territories: a systematic analysis for the Global Burden of Disease Study&nbsp;2023</h3>
+            <p class="pubs-pick__where"><i>The Lancet</i>, 2025</p>
+          </div>
+          <div class="pubs-pick__words">
+            <p>For the Global Burden of Disease Study 2023, I developed the nitrogen dioxide exposure dataset and worked with other public health experts to assess the years lived with disability from childhood asthma globally since 1990.</p>
+            <p class="tile__foot"><a class="more" href="https://doi.org/10.1016/S0140-6736(25)01637-X" aria-describedby="pick-2">Read the paper</a></p>
+          </div>
+        </li>
+        <li class="tile tone-pink pubs-pick">
+          <div class="pubs-pick__paper">
+            <h3 id="pick-3">A source apportionment and emission scenario assessment of PM<sub>2.5</sub>- and O<sub>3</sub>-related health impacts in G20 countries</h3>
+            <p class="pubs-pick__where"><i>GeoHealth</i>, 2023</p>
+          </div>
+          <div class="pubs-pick__words">
+            <p>This paper contrasts the contributions of domestic and transboundary sectoral sources to national air pollution health burdens in G20 countries, and projects the public health co-benefits of achieving net-zero CO<sub>2</sub> targets.</p>
+            <p class="tile__foot"><a class="more" href="https://doi.org/10.1029/2022GH000713" aria-describedby="pick-3">Read the paper</a></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band band--end" aria-labelledby="all">
+    <div class="band__in">
+      <h2 class="band__title" id="all">All papers</h2>
+
+      <div class="pubs-years" id="papers">
+        <div class="pubs-year">
+          <h3 class="pubs-year__num">2026</h3>
+          <ul class="pubs-list">
+            <li class="pubs-paper">
+              <h4 class="pubs-paper__title">Tropospheric Ozone Assessment Report, Phase II: changing health impacts of global ozone exposure</h4>
+              <p class="pubs-paper__authors"><span>TOAR-II Health Collaborators</span></p>
+              <p class="pubs-paper__where"><i>Philosophical Transactions of the Royal Society</i>. Accepted.</p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1029/2026JD046905">Contrasting the TEMPO and TROPOMI views of tropospheric NO<sub>2</sub>: implications for diurnal variability and model evaluation</a></h4>
+              <p class="pubs-paper__authors"><span>Goldberg, D. L.</span>; <span>Johnson, J.</span>; <span>Shah, T.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Kerr, G. H.</span>; <span>Chen, L.</span>; <span>Huber, D.</span>; <span>Judd, L.</span></p>
+              <p class="pubs-paper__where"><i>Journal of Geophysical Research: Atmospheres</i> 2026, 131&nbsp;(14), e2026JD046905.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1029/2026JD046905" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1029/2026JD046905</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.5194/acp-26-3783-2026">Global NO<sub>2</sub> changes between 2019 and 2024 as observed by TROPOMI in urban areas and emerging hotspots</a></h4>
+              <p class="pubs-paper__authors"><span>Huber, D. E.</span>; <span>Kerr, G. H.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Runkel, S.</span>; <span>Anenberg, S. C.</span>; <span>Goldberg, D. L.</span></p>
+              <p class="pubs-paper__where"><i>Atmospheric Chemistry and Physics</i> 2026, 26&nbsp;(5), 3783–3803.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.5194/acp-26-3783-2026" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.5194/acp-26-3783-2026</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1038/s41467-026-68827-0">National climate action can ameliorate, perpetuate, or exacerbate international air pollution inequalities</a></h4>
+              <p class="pubs-paper__authors"><span><b>Nawaz, M. O.</b></span>; <span>Henze, D. K.</span></p>
+              <p class="pubs-paper__where"><i>Nature Communications</i> 2026, 17, 1649.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1038/s41467-026-68827-0" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1038/s41467-026-68827-0</a></p>
+
+            </li>
+          </ul>
+        </div>
+        <div class="pubs-year">
+          <h3 class="pubs-year__num">2025</h3>
+          <ul class="pubs-list">
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1029/2025JD044757">Tropospheric NO<sub>2</sub> patterns in Eastern Canada using the first year of TEMPO observations</a></h4>
+              <p class="pubs-paper__authors"><span>Siu, T. K.</span>; <span>Goldberg, D. L.</span>; <span>Kerr, G. H.</span>; <span>Chen, L.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Chang, R. Y.-W.</span>; <span>Fong, K. C.</span></p>
+              <p class="pubs-paper__where"><i>Journal of Geophysical Research: Atmospheres</i> 2025, 130&nbsp;(24), e2025JD044757.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1029/2025JD044757" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1029/2025JD044757</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.5194/acp-25-16287-2025">Clear-sky and cloudy-sky differences in NO<sub>2</sub> concentrations over the United States: implications for satellite measurement applications</a></h4>
+              <p class="pubs-paper__authors"><span>Goldberg, D. L.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Lyu, C.</span>; <span>He, J.</span>; <span>Carlton, A. G.</span>; <span>Kondragunta, S.</span>; <span>Anenberg, S. C.</span></p>
+              <p class="pubs-paper__where"><i>Atmospheric Chemistry and Physics</i> 2025, 25&nbsp;(22), 16287–16302.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.5194/acp-25-16287-2025" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.5194/acp-25-16287-2025</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1029/2025JD043923">A comparative analysis of TEMPO NO<sub>2</sub> remote sensing with surface-level monitoring through diurnal and seasonal trends, meteorology, and monitor characteristics</a></h4>
+              <p class="pubs-paper__authors"><span><b>Nawaz, M. O.</b></span>; <span>Huber, D. E.</span>; <span>Kerr, G. H.</span>; <span>Judd, L. M.</span>; <span>Acker, S. J.</span>; <span>Goldberg, D. L.</span></p>
+              <p class="pubs-paper__where"><i>Journal of Geophysical Research: Atmospheres</i> 2025, 130&nbsp;(20), e2025JD043923.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1029/2025JD043923" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1029/2025JD043923</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1016/S0140-6736(25)01637-X">Burden of 375 diseases and injuries, risk-attributable burden of 88 risk factors, and healthy life expectancy in 204 countries and territories, including 660 subnational locations, 1990–2023: a systematic analysis for the Global Burden of Disease Study 2023</a></h4>
+              <p class="pubs-paper__authors"><span>Hay, S. I.</span>; <span>Ong, K. L.</span>; <span>Santomauro, D. F.</span>; <span>… <b>Nawaz, M. O.</b></span>; <span>… et al.</span></p>
+              <p class="pubs-paper__where"><i>The Lancet</i> 2025, 406&nbsp;(10513), 1873–1922.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1016/S0140-6736(25)01637-X" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1016/S0140-6736(25)01637-X</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1088/1748-9326/adcd87">Global health benefits of policies to reduce on-road vehicle pollution through 2040</a></h4>
+              <p class="pubs-paper__authors"><span>Jin, L.</span>; <span>Benoit, J.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Rodrigues, P. F.</span>; <span>Wiecko, P.</span>; <span>Miller, J.</span>; <span>Alvarez, G.</span>; <span>Henze, D. K.</span>; <span>Osipova, L.</span>; <span>Anenberg, S. C.</span></p>
+              <p class="pubs-paper__where"><i>Environmental Research Letters</i> 2025, 20&nbsp;(6), 064005.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1088/1748-9326/adcd87" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1088/1748-9326/adcd87</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1021/acsestair.5c00012">Sector-, season-, and country-specific NO<sub>2</sub>-associated health benefits from NO<sub>x</sub> emission reductions</a></h4>
+              <p class="pubs-paper__authors"><span>Wiecko, P.</span>; <span>Henze, D. K.</span>; <span><b>Nawaz, M. O.</b></span></p>
+              <p class="pubs-paper__where"><i>ACS ES&amp;T Air</i> 2025, 2&nbsp;(4), 700–709.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1021/acsestair.5c00012" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1021/acsestair.5c00012</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1021/acsestair.4c00153">TROPOMI satellite data reshape NO<sub>2</sub> air pollution land-use regression modeling capabilities in the United States</a></h4>
+              <p class="pubs-paper__authors"><span><b>Nawaz, M. O.</b></span>; <span>Goldberg, D. L.</span>; <span>Kerr, G. H.</span>; <span>Anenberg, S. C.</span></p>
+              <p class="pubs-paper__where"><i>ACS ES&amp;T Air</i> 2025, 2&nbsp;(2), 187–200.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1021/acsestair.4c00153" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1021/acsestair.4c00153</a></p>
+
+            </li>
+          </ul>
+        </div>
+        <div class="pubs-year">
+          <h3 class="pubs-year__num">2024</h3>
+          <ul class="pubs-list">
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1016/j.cities.2024.105340">Commentary: a road map for future data-driven urban planning and environmental health research</a></h4>
+              <p class="pubs-paper__authors"><span>Dyer, G. M. C.</span>; <span>Khomenko, S.</span>; <span>Adlakha, D.</span>; <span>… <b>Nawaz, M. O.</b></span>; <span>… et al.</span></p>
+              <details class="pubs-paper__all">
+                <summary>Show all authors<span class="pubs-paper__plus" aria-hidden="true"></span></summary>
+                <p><span>Dyer, G. M. C.</span>; <span>Khomenko, S.</span>; <span>Adlakha, D.</span>; <span>Anenberg, S.</span>; <span>Angelova, J.</span>; <span>Behnisch, M.</span>; <span>Boeing, G.</span>; <span>Chen, X.</span>; <span>Cirach, M.</span>; <span>de Hoogh, K.</span>; <span>Diez Roux, A. V.</span>; <span>Esperon-Rodriguez, M.</span>; <span>Flueckiger, B.</span>; <span>Gasparrini, A.</span>; <span>Iungman, T.</span>; <span>Khreis, H.</span>; <span>Kondo, M. C.</span>; <span>Masselot, P.</span>; <span>McDonald, R. I.</span>; <span>Montana, F.</span>; <span>Mitchell, R.</span>; <span>Mueller, N.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Pereira, E.</span>; <span>Pisoni, E.</span>; <span>Prieto-Curiel, R.</span>; <span>Rezaei, N.</span>; <span>Rybski, D.</span>; <span>Ramasco, J. J.</span>; <span>Schifanella, R.</span>; <span>Shabou, S.</span>; <span>Tatah, L.</span>; <span>Taubenböck, H.</span>; <span>Tonne, C.</span>; <span>Velázquez-Cortés, D.</span>; <span>Woodcock, J.</span>; <span>Zhang, Q.</span>; <span>Nieuwenhuijsen, M.</span></p>
+              </details>
+              <p class="pubs-paper__where"><i>Cities</i> 2024, 155, 105340.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1016/j.cities.2024.105340" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1016/j.cities.2024.105340</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1021/acsestair.4c00097">Quantifying NO<sub>x</sub> emission sources in Houston, Texas using remote sensing aircraft measurements and source apportionment regression models</a></h4>
+              <p class="pubs-paper__authors"><span>Goldberg, D. L.</span>; <span>de Foy, B.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Johnson, J.</span>; <span>Yarwood, G.</span>; <span>Judd, L.</span></p>
+              <p class="pubs-paper__where"><i>ACS ES&amp;T Air</i> 2024, 1&nbsp;(11), 1391–1401.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1021/acsestair.4c00097" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1021/acsestair.4c00097</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1016/j.envres.2024.119324">Exploring the nexus of urban form, transport, environment and health in large-scale urban studies: a state-of-the-art scoping review</a></h4>
+              <p class="pubs-paper__authors"><span>Dyer, G. M. C.</span>; <span>Khomenko, S.</span>; <span>Adlakha, D.</span>; <span>… <b>Nawaz, M. O.</b></span>; <span>… et al.</span></p>
+              <details class="pubs-paper__all">
+                <summary>Show all authors<span class="pubs-paper__plus" aria-hidden="true"></span></summary>
+                <p><span>Dyer, G. M. C.</span>; <span>Khomenko, S.</span>; <span>Adlakha, D.</span>; <span>Anenberg, S.</span>; <span>Behnisch, M.</span>; <span>Boeing, G.</span>; <span>Esperon-Rodriguez, M.</span>; <span>Gasparrini, A.</span>; <span>Khreis, H.</span>; <span>Kondo, M. C.</span>; <span>Masselot, P.</span>; <span>McDonald, R. I.</span>; <span>Montana, F.</span>; <span>Mitchell, R.</span>; <span>Mueller, N.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Pisoni, E.</span>; <span>Prieto-Curiel, R.</span>; <span>Rezaei, N.</span>; <span>Taubenböck, H.</span>; <span>Tonne, C.</span>; <span>Velázquez-Cortés, D.</span>; <span>Nieuwenhuijsen, M.</span></p>
+              </details>
+              <p class="pubs-paper__where"><i>Environmental Research</i> 2024, 257, 119324.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1016/j.envres.2024.119324" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1016/j.envres.2024.119324</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1029/2024GH001042">Source attribution of health burdens from ambient PM<sub>2.5</sub>, O<sub>3</sub>, and NO<sub>2</sub> exposure for assessment of South Korean national emission control scenarios by 2050</a></h4>
+              <p class="pubs-paper__authors"><span>Choi, J.</span>; <span>Henze, D. K.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Malley, C. S.</span></p>
+              <p class="pubs-paper__where"><i>GeoHealth</i> 2024, 8&nbsp;(8), e2024GH001042.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1029/2024GH001042" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1029/2024GH001042</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.5194/acp-24-6719-2024">An intercomparison of satellite, airborne, and ground-level observations with WRF–CAMx simulations of NO<sub>2</sub> columns over Houston, Texas, during the September 2021 TRACER-AQ campaign</a></h4>
+              <p class="pubs-paper__authors"><span><b>Nawaz, M. O.</b></span>; <span>Johnson, J.</span>; <span>Yarwood, G.</span>; <span>de Foy, B.</span>; <span>Judd, L.</span>; <span>Goldberg, D. L.</span></p>
+              <p class="pubs-paper__where"><i>Atmospheric Chemistry and Physics</i> 2024, 24&nbsp;(11), 6719–6741.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.5194/acp-24-6719-2024" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.5194/acp-24-6719-2024</a></p>
+
+            </li>
+          </ul>
+        </div>
+        <div class="pubs-year">
+          <h3 class="pubs-year__num">2023</h3>
+          <ul class="pubs-list">
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1088/1748-9326/ad0167">Response of the ozone-related health burden in Europe to changes in local anthropogenic emissions of ozone precursors</a></h4>
+              <p class="pubs-paper__authors"><span>Gu, Y.</span>; <span>Henze, D. K.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Wagner, U. J.</span></p>
+              <p class="pubs-paper__where"><i>Environmental Research Letters</i> 2023, 18&nbsp;(11), 114034.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1088/1748-9326/ad0167" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1088/1748-9326/ad0167</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1029/2023JD038808">Sources of air pollution health impacts and co-benefits of carbon neutrality in Santiago, Chile</a></h4>
+              <p class="pubs-paper__authors"><span><b>Nawaz, M. O.</b></span>; <span>Henze, D. K.</span>; <span>Huneeus, N. J.</span>; <span>Osses, M.</span>; <span>Álamos, N.</span>; <span>Opazo, M. A.</span>; <span>Gallardo, L.</span></p>
+              <p class="pubs-paper__where"><i>Journal of Geophysical Research: Atmospheres</i> 2023, 128&nbsp;(19), e2023JD038808.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1029/2023JD038808" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1029/2023JD038808</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1021/acs.est.3c02823">Global health and climate effects of organic aerosols from different sources</a></h4>
+              <p class="pubs-paper__authors"><span>Jo, D. S.</span>; <span>Nault, B. A.</span>; <span>Tilmes, S.</span>; <span>Gettelman, A.</span>; <span>McCluskey, C. S.</span>; <span>Hodzic, A.</span>; <span>Henze, D. K.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Fung, K. M.</span>; <span>Jimenez, J. L.</span></p>
+              <p class="pubs-paper__where"><i>Environmental Science &amp; Technology</i> 2023, 57&nbsp;(37), 13793–13807.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1021/acs.est.3c02823" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1021/acs.est.3c02823</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1029/2022GH000767">Sources of PM<sub>2.5</sub>-associated health risks in Europe and corresponding emission-induced changes during 2005–2015</a></h4>
+              <p class="pubs-paper__authors"><span>Gu, Y.</span>; <span>Henze, D. K.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Cao, H.</span>; <span>Wagner, U. J.</span></p>
+              <p class="pubs-paper__where"><i>GeoHealth</i> 2023, 7&nbsp;(3), e2022GH000767.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1029/2022GH000767" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1029/2022GH000767</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.3389/frsc.2023.1102493">Sources of air pollution-related health impacts and benefits of radially applied transportation policies in 14 US cities</a></h4>
+              <p class="pubs-paper__authors"><span><b>Nawaz, M. O.</b></span>; <span>Henze, D. K.</span>; <span>Anenberg, S. C.</span>; <span>Ahn, D. Y.</span>; <span>Goldberg, D. L.</span>; <span>Tessum, C. W.</span>; <span>Chafe, Z. A.</span></p>
+              <p class="pubs-paper__where"><i>Frontiers in Sustainable Cities</i> 2023, 5, 1102493.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.3389/frsc.2023.1102493" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.3389/frsc.2023.1102493</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1029/2022GH000713">A source apportionment and emission scenario assessment of PM<sub>2.5</sub>- and O<sub>3</sub>-related health impacts in G20 countries</a></h4>
+              <p class="pubs-paper__authors"><span><b>Nawaz, M. O.</b></span>; <span>Henze, D. K.</span>; <span>Anenberg, S. C.</span>; <span>Braun, C.</span>; <span>Miller, J.</span>; <span>Pronk, E.</span></p>
+              <p class="pubs-paper__where"><i>GeoHealth</i> 2023, 7&nbsp;(1), e2022GH000713.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1029/2022GH000713" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1029/2022GH000713</a></p>
+
+            </li>
+          </ul>
+        </div>
+        <div class="pubs-year">
+          <h3 class="pubs-year__num">2021</h3>
+          <ul class="pubs-list">
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1525/elementa.2021.00043">Impacts of sectoral, regional, species, and day-specific emissions on air pollution and public health in Washington, DC</a></h4>
+              <p class="pubs-paper__authors"><span><b>Nawaz, M. O.</b></span>; <span>Henze, D. K.</span>; <span>Harkins, C.</span>; <span>Cao, H.</span>; <span>Nault, B.</span>; <span>Jo, D.</span>; <span>Jimenez, J.</span>; <span>Anenberg, S. C.</span>; <span>Goldberg, D. L.</span>; <span>Qu, Z.</span></p>
+              <p class="pubs-paper__where"><i>Elementa: Science of the Anthropocene</i> 2021, 9&nbsp;(1), 00043.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1525/elementa.2021.00043" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1525/elementa.2021.00043</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1021/acs.estlett.1c00730">COVID-19 lockdowns afford the first satellite-based confirmation that vehicles are an under-recognized source of urban NH<sub>3</sub> pollution in Los Angeles</a></h4>
+              <p class="pubs-paper__authors"><span>Cao, H.</span>; <span>Henze, D. K.</span>; <span>Cady-Pereira, K.</span>; <span>McDonald, B. C.</span>; <span>Harkins, C.</span>; <span>Sun, K.</span>; <span>Bowman, K. W.</span>; <span>Fu, T.-M.</span>; <span><b>Nawaz, M. O.</b></span></p>
+              <p class="pubs-paper__where"><i>Environmental Science &amp; Technology Letters</i> 2021, 9&nbsp;(1), 3–9.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1021/acs.estlett.1c00730" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1021/acs.estlett.1c00730</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.5194/acp-21-11201-2021">Secondary organic aerosols from anthropogenic volatile organic compounds contribute substantially to air pollution mortality</a></h4>
+              <p class="pubs-paper__authors"><span>Nault, B. A.</span>; <span>Jo, D. S.</span>; <span>McDonald, B. C.</span>; <span>… <b>Nawaz, M. O.</b></span>; <span>… et al.</span></p>
+              <details class="pubs-paper__all">
+                <summary>Show all authors<span class="pubs-paper__plus" aria-hidden="true"></span></summary>
+                <p><span>Nault, B. A.</span>; <span>Jo, D. S.</span>; <span>McDonald, B. C.</span>; <span>Campuzano-Jost, P.</span>; <span>Day, D. A.</span>; <span>Hu, W.</span>; <span>Schroder, J. C.</span>; <span>Allan, J.</span>; <span>Blake, D. R.</span>; <span>Canagaratna, M. R.</span>; <span>Coe, H.</span>; <span>Coggon, M. M.</span>; <span>DeCarlo, P. F.</span>; <span>Diskin, G. S.</span>; <span>Dunmore, R.</span>; <span>Flocke, F.</span>; <span>Fried, A.</span>; <span>Gilman, J. B.</span>; <span>Gkatzelis, G.</span>; <span>Hamilton, J. F.</span>; <span>Hanisco, T. F.</span>; <span>Hayes, P. L.</span>; <span>Henze, D. K.</span>; <span>Hodzic, A.</span>; <span>Hopkins, J.</span>; <span>Hu, M.</span>; <span>Huey, L. G.</span>; <span>Jobson, B. T.</span>; <span>Kuster, W. C.</span>; <span>Lewis, A.</span>; <span>Li, M.</span>; <span>Liao, J.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Pollack, I. B.</span>; <span>Peischl, J.</span>; <span>Rappenglück, B.</span>; <span>Reeves, C. E.</span>; <span>Richter, D.</span>; <span>Roberts, J. M.</span>; <span>Ryerson, T. B.</span>; <span>Shao, M.</span>; <span>Sommers, J. M.</span>; <span>Walega, J.</span>; <span>Warneke, C.</span>; <span>Weibring, P.</span>; <span>Wolfe, G. M.</span>; <span>Young, D. E.</span>; <span>Yuan, B.</span>; <span>Zhang, Q.</span>; <span>de Gouw, J. A.</span>; <span>Jimenez, J. L.</span></p>
+              </details>
+              <p class="pubs-paper__where"><i>Atmospheric Chemistry and Physics</i> 2021, 21&nbsp;(14), 11201–11224.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.5194/acp-21-11201-2021" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.5194/acp-21-11201-2021</a></p>
+
+            </li>
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1088/2515-7620/ac0af9">Integrated assessment of global climate, air pollution, and dietary, malnutrition and obesity health impacts of food production and consumption between 2014 and 2018</a></h4>
+              <p class="pubs-paper__authors"><span>Malley, C. S.</span>; <span>Hicks, W. K.</span>; <span>Kuylenstierna, J. C. I.</span>; <span>… <b>Nawaz, M. O.</b></span>; <span>… et al.</span></p>
+              <details class="pubs-paper__all">
+                <summary>Show all authors<span class="pubs-paper__plus" aria-hidden="true"></span></summary>
+                <p><span>Malley, C. S.</span>; <span>Hicks, W. K.</span>; <span>Kuylenstierna, J. C. I.</span>; <span>Michalopoulou, E.</span>; <span>Molotoks, A.</span>; <span>Slater, J.</span>; <span>Heaps, C. G.</span>; <span>Ulloa, S.</span>; <span>Veysey, J.</span>; <span>Shindell, D. T.</span>; <span>Henze, D. K.</span>; <span><b>Nawaz, M. O.</b></span>; <span>Anenberg, S. C.</span>; <span>Mantlana, B.</span>; <span>Robinson, T. P.</span></p>
+              </details>
+              <p class="pubs-paper__where"><i>Environmental Research Communications</i> 2021, 3&nbsp;(7), 075001.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1088/2515-7620/ac0af9" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1088/2515-7620/ac0af9</a></p>
+
+            </li>
+          </ul>
+        </div>
+        <div class="pubs-year">
+          <h3 class="pubs-year__num">2020</h3>
+          <ul class="pubs-list">
+            <li class="pubs-paper pubs-paper--linked">
+              <h4 class="pubs-paper__title"><a href="https://doi.org/10.1029/2020GH000268">Premature deaths in Brazil associated with long-term exposure to PM<sub>2.5</sub> from Amazon fires between 2016 and 2019</a></h4>
+              <p class="pubs-paper__authors"><span><b>Nawaz, M. O.</b></span>; <span>Henze, D. K.</span></p>
+              <p class="pubs-paper__where"><i>GeoHealth</i> 2020, 4&nbsp;(8), e2020GH000268.</p>
+              <p class="pubs-paper__doi"><a href="https://doi.org/10.1029/2020GH000268" tabindex="-1"><span class="sr-only">Read this paper at doi.org/</span>10.1029/2020GH000268</a></p>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot__in">
+    <div class="foot__id">
+      <a class="foot__mark" href="index.html">CASA</a>
+      <p>Climate and Atmospheric Science for Action</p>
+    </div>
+    <ul class="foot__links" aria-label="Links">
+      <li><a href="mailto:nawazm3@cardiff.ac.uk"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 4.5h18A1.5 1.5 0 0 1 22.5 6v12a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 18V6A1.5 1.5 0 0 1 3 4.5Zm.9 2.1 8.1 6.3 8.1-6.3H3.900ZM20.400 8.250l-8.400 6.540-8.400-6.540V17.400h16.800V8.250Z"/></svg>Email</a></li>
+      <li><a href="https://www.linkedin.com/in/omar-nawaz-65660b397"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></li>
+      <li><a href="https://scholar.google.co.uk/citations?user=6_oxg9EAAAAJ"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>Google Scholar</a></li>
+      <li><a href="https://github.com/OmarNawaz"><svg class="icon" viewBox="0 0 16 16" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></li>
+      <li><a href="public.curriculum_vitae.monawaz.pdf"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M5 1h9.500L20 6.500V22a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Zm1 2v18h12V7.500h-4.500V3H6Zm2 8h8v1.800H8V11Zm0 3.600h8v1.800H8v-1.800Zm0-7.200h3.500v1.800H8V7.400Z"/></svg>CV</a></li>
+      <li><a href="https://groupwiki.readthedocs.io/en/latest/">Group wiki</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
 </body>
-
 </html>

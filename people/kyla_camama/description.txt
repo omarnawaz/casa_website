@@ -1,1 +1,0 @@
-Feichi's PhD project explores methods for high-precision estimation method of methane concentration by integrating remote sensing and machine learning. She is co-supervised by Dr. Lu Zhuo (https://profiles.cardiff.ac.uk/staff/zhuol) and Omar.

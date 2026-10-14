@@ -1,307 +1,219 @@
-<!DOCTYPE html>
-<html>
-<script>
-    function myFunction() {
-        var x = document.getElementById("dropdownnav");
-        if (x.className === "dropdownnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "dropdownnav";
-        }
-    }
-
-    // Highlight Research/Datasets buttons when on their sub-pages
-    document.addEventListener('DOMContentLoaded', function () {
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-
-        const researchPages = ['cobenefits.html', 'remotesensing.html', 'sourceapportionment.html', 'wildfires.html', 'surfacepollution.html'];
-        const datasetPages = ['surface_no2.html'];
-
-        const dropdowns = document.querySelectorAll('.dropdown');
-
-        dropdowns.forEach(dropdown => {
-            const button = dropdown.querySelector('.dropbtn');
-            if (researchPages.includes(currentPage) && button.textContent.includes('Research')) {
-                dropdown.classList.add('active');
-                button.classList.add('active');
-            } else if (datasetPages.includes(currentPage) && button.textContent.includes('Datasets')) {
-                dropdown.classList.add('active');
-                button.classList.add('active');
-            }
-        });
-
-        // Click-to-toggle dropdown functionality
-        dropdowns.forEach(dropdown => {
-            const button = dropdown.querySelector('.dropbtn');
-            button.addEventListener('click', function (e) {
-                e.stopPropagation();
-                dropdowns.forEach(other => {
-                    if (other !== dropdown) {
-                        other.classList.remove('open');
-                    }
-                });
-                dropdown.classList.toggle('open');
-            });
-        });
-
-        document.addEventListener('click', function () {
-            dropdowns.forEach(dropdown => {
-                dropdown.classList.remove('open');
-            });
-        });
-
-        // Initialize gallery
-        initGallery();
-    });
-
-    // Gallery data and functions
-    const galleryItems = [
-        {
-            image: 'gallery/port_talbot_radio/image.png',
-            description: '<b>From BBC News Radio:</b><br>Listen about the closure of the blast furnace in Port Talbot featuring an interview by Omar',
-            link: 'https://www.bbc.co.uk/sounds/play/p0mq8hsb'
-        },
-        {
-            image: 'gallery/cloud_bias/image.png',
-            description: '<b>From Goldberg et al. 2025 published in <i>Atmospheric Chemistry and Physics</i>:</b><br>This study characterizes the TROPOMI bias from missing observations on cloudy days',
-            link: 'https://acp.copernicus.org/articles/25/16287/2025/#&gid=1&pid=1'
-        },
-        {
-            image: 'gallery/port_talbot/image.png',
-            description: '<b>From BBC News:</b><br>Read about the closure of the blast furnace in Port Talbot featuring commentary by Omar',
-            link: 'https://www.bbc.co.uk/news/articles/cjdr0zp273vo'
-        },
-        {
-            image: 'gallery/tempo_canada/image.jpg',
-            description: '<b>From Siu et al. 2025 published in <i>JGR-Atmospheres</i>:</b><br>This study explores tropospheric nitrogen dioxide in Canada using TEMPO',
-            link: 'https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JD044757'
-        }
-    ];
-
-    let currentSlide = 0;
-
-    function initGallery() {
-        if (galleryItems.length > 0) {
-            showSlide(currentSlide);
-        }
-    }
-
-    function showSlide(index) {
-        const imageEl = document.getElementById('gallery-image');
-        const descEl = document.getElementById('gallery-description');
-        const linkEl = document.getElementById('gallery-link');
-        const descLinkEl = document.getElementById('gallery-description-link');
-
-        if (imageEl && descEl && linkEl && descLinkEl) {
-            imageEl.src = galleryItems[index].image;
-            descEl.innerHTML = galleryItems[index].description;
-            linkEl.href = galleryItems[index].link;
-            descLinkEl.href = galleryItems[index].link;
-        }
-    }
-
-    function changeSlide(direction) {
-        currentSlide += direction;
-        if (currentSlide >= galleryItems.length) {
-            currentSlide = 0;
-        } else if (currentSlide < 0) {
-            currentSlide = galleryItems.length - 1;
-        }
-        showSlide(currentSlide);
-    }
-</script>
-
+<!doctype html>
+<html lang="en-GB" class="no-js">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Climate and Atmospheric Science for Action Group</title>
-    <link rel="shortcut icon" type="image/jpg" sizes="16x16" href="cardiffuniversity.png" />
-    <link rel="stylesheet" href="styles.css?v=20">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Omar Nawaz and the CASA group</title>
+<meta name="description" content="Omar Nawaz and the CASA group at Cardiff University study where air pollution comes from, whose health it harms, and what climate policies would change.">
+<link rel="canonical" href="https://omarnawaz.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Omar Nawaz and the CASA group">
+<meta property="og:title" content="Omar Nawaz and the CASA group">
+<meta property="og:description" content="Omar Nawaz and the CASA group at Cardiff University study where air pollution comes from, whose health it harms, and what climate policies would change.">
+<meta property="og:url" content="https://omarnawaz.com/">
+<meta property="og:image" content="https://omarnawaz.com/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2337e6">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>document.documentElement.className = 'js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "affiliation": {"@type": "CollegeOrUniversity", "department": {"@type": "Organization", "name": "School of Physical, Chemical and Environmental Sciences"}, "name": "Cardiff University"}, "email": "mailto:nawazm3@cardiff.ac.uk", "jobTitle": "Lecturer in Climate Change Science", "name": "Omar Nawaz", "sameAs": ["https://www.linkedin.com/in/omar-nawaz-65660b397", "https://scholar.google.co.uk/citations?user=6_oxg9EAAAAJ", "https://github.com/OmarNawaz", "https://orcid.org/0000-0001-7706-7287", "https://profiles.cardiff.ac.uk/staff/nawazm3"], "url": "https://omarnawaz.com/"}</script>
 </head>
+<body class="page-home hero-cobalt">
 
-<body>
-    <div class="topnav" id="myTopnav">
-        <img class="cardifflogo" src="cardiffuniversity.png" alt="Cardiff University Logo">
-        <a href="index.html" class="active">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">Research
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
-                <a href="remotesensing.html">Air Quality Remote Sensing</a>
-                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
-                <a href="wildfires.html">Wildfire Health Effects</a>
-                <a href="surfacepollution.html">Estimating Surface Pollution</a>
-            </div>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top__in">
+    <a class="top__mark" href="index.html" aria-current="page">CASA</a>
+    <nav aria-label="Main">
+      <ul class="top__nav">
+        <li><a href="research.html" data-text="Research">Research</a></li>
+        <li><a href="publications.html" data-text="Publications">Publications</a></li>
+        <li><a href="surface_no2.html" data-text="Data">Data</a></li>
+        <li><a href="people.html" data-text="People">People</a></li>
+        <li><a href="https://groupwiki.readthedocs.io/en/latest/" data-text="Wiki" target="_blank" rel="noopener">Wiki</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <svg class="inks" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="blue-ink" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%">
+      <feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0"/>
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="0.082 0.220 0.541 0.862 1"/>
+        <feFuncG type="table" tableValues="0.118 0.251 0.541 0.831 0.961"/>
+        <feFuncB type="table" tableValues="0.620 0.663 0.757 0.847 0.890"/>
+      </feComponentTransfer>
+    </filter>
+  </svg>
+
+  <section class="hero hero--home" aria-labelledby="question">
+    <canvas class="hero__air" aria-hidden="true"></canvas>
+    <div class="hero__in">
+      <div class="lead">
+        <h1 class="question" id="question" data-air="lines">How are <em>we</em> affecting our atmosphere, and how can <em>we</em> take action to protect air quality, our climate and health for&nbsp;everyone?</h1>
+
+        <div class="answer" data-air="block">
+          <p>These are the two questions that are a common thread in the research that my group and I&nbsp;do.</p>
+          <p>We apply high performance computing, remote sensing data analysis, and public health impact assessment methods for cities and countries around the&nbsp;world.</p>
         </div>
-        <a href="people.html">People</a>
-        <a href="publications.html">Publications</a>
-        <div class="dropdown">
-            <button class="dropbtn">Datasets
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
-            </div>
+
+        <div class="me" data-air="block">
+          <div class="me__card">
+            <span class="person__photo"><img src="people/omar_nawaz.jpg" alt="Omar Nawaz, smiling, in a jacket and tie." width="800" height="800" style="--fx: 45.45%; --fy: 44.58%; --zoom: 1.1638; --tone: contrast(1.05);"></span>
+          </div>
+          <p>Hi! I’m Omar Nawaz, PhD, FHEA. I am a Lecturer in Climate Change Science and a research group leader at Cardiff&nbsp;University.</p>
+          <ul class="pills" aria-label="Omar’s links">
+            <li><a class="pill" href="mailto:nawazm3@cardiff.ac.uk"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 4.5h18A1.5 1.5 0 0 1 22.5 6v12a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 18V6A1.5 1.5 0 0 1 3 4.5Zm.9 2.1 8.1 6.3 8.1-6.3H3.900ZM20.400 8.250l-8.400 6.540-8.400-6.540V17.400h16.800V8.250Z"/></svg>Email</a></li>
+            <li><a class="pill" href="https://www.linkedin.com/in/omar-nawaz-65660b397"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></li>
+            <li><a class="pill" href="https://scholar.google.co.uk/citations?user=6_oxg9EAAAAJ"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>Google Scholar</a></li>
+            <li><a class="pill" href="https://github.com/OmarNawaz"><svg class="icon" viewBox="0 0 16 16" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></li>
+            <li><a class="pill" href="public.curriculum_vitae.monawaz.pdf"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M5 1h9.500L20 6.500V22a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Zm1 2v18h12V7.500h-4.500V3H6Zm2 8h8v1.800H8V11Zm0 3.600h8v1.800H8v-1.800Zm0-7.200h3.500v1.800H8V7.400Z"/></svg>CV</a></li>
+          </ul>
         </div>
-        <a href="joinus.html">Join Us</a>
-        <a href="https://groupwiki.readthedocs.io/en/latest/" target="_blank">Group Wiki</a>
-        <a href="javascript:void(0);" class="hamburgerbutton" onclick="myFunction()">&#9776;</a>
+      </div>
+
+      <figure class="plate" data-air="solid">
+        <div class="plate__map">
+          <img src="img/no2_new_york.jpg" alt="Map of New York and the states around it, shaded from pale to dark orange." width="1802" height="1588">
+        </div>
+        <figcaption class="plate__words">
+          <p id="caption-no2_new_york">Surface-level nitrogen dioxide concentrations around New&nbsp;York, estimated from satellite observations. Darker colours indicate higher&nbsp;concentrations.</p>
+          <a class="plate__link" href="https://doi.org/10.1021/acsestair.4c00153" aria-describedby="caption-no2_new_york">Read the paper</a>
+        </figcaption>
+      </figure>
     </div>
-    <div class="dropdownnav" id="dropdownnav">
-        <a href="index.html" class="active">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">Research
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="cobenefits.html">Co-Benefits of Climate Action</a>
-                <a href="remotesensing.html">Air Quality Remote Sensing</a>
-                <a href="sourceapportionment.html">Pollution Source Apportionment</a>
-                <a href="wildfires.html">Wildfire Health Effects</a>
-                <a href="surfacepollution.html">Estimating Surface Pollution</a>
-            </div>
+  </section>
+
+  <section class="atlas" id="atlas" aria-labelledby="atlas-title">
+    <div class="atlas__in">
+      <h2 class="atlas__title" id="atlas-title">Where has our research taken&nbsp;us?</h2>
+      <div class="atlas__lead">
+        <p>From Cardiff, our research and collaborations extend to cities and countries across the world.</p>
+        <p class="atlas__cue">Select a location to read about our work there.</p>
+      </div>
+
+      <div class="globe">
+        <div class="index-wrap">
+          <ol class="index">
+            <li><h3>Cardiff, Wales</h3><p>Our group is based in the School of Physical, Chemical and Environmental Sciences at Cardiff University in Cardiff, Wales, UK.</p></li>
+            <li><h3>Port Talbot, Wales</h3><p>Omar spoke to BBC News about how air pollution in Port Talbot has changed since traditional steelmaking ended there.</p><p><a href="https://www.bbc.co.uk/news/articles/cjdr0zp273vo">Read the BBC article</a></p></li>
+            <li><h3>Thailand</h3><p>Omar is a technical panel member for the Comprehensive Assessment of Co-Benefits and Maladaptation of Solarisation in Thailand (CAST Solar) projected supported by the Wellcome Trust and Thailand Science Research and Innovation.</p><p><a href="https://wellcome.org/research-funding/funding-portfolio/funded-grants/comprehensive-assessment-co-benefits-and">Learn more about the project here</a></p></li>
+            <li><h3>Shipping</h3><p>Omar contributed to a policy brief by the International Council on Clean Transportation (ICCT) on the health and air pollution benefits of a global 0.1% fuel sulfur limit on marine fuels.</p><p><a href="https://theicct.org/publication/health-and-air-pollution-benefits-of-a-global-fuel-sulfur-limit-on-marine-fuels-jul25/">Read the ICCT policy brief</a></p></li>
+            <li><h3>London, England</h3><p>Kyla Camama’s MSci dissertation project assessed the impact of London’s Ultra Low Emission Zone on surface-level nitrogen dioxide concentrations by developing a machine learning approach for integrating remote sensing data.</p></li>
+            <li><h3>York, England</h3><p>At the 2025 UK Atmospheric Chemistry Conference in York, Omar presented a poster on what low-earth-orbit, geostationary and airborne remote sensing can reveal about surface nitrogen dioxide.</p></li>
+            <li><h3>Leiden, Netherlands</h3><p>In 2026, Omar gave an invited virtual talk on the added benefit of TEMPO remote sensing of nitrogen dioxide for exposure and health impact assessment for the CEOS conference in Leiden.</p></li>
+            <li><h3>Europe</h3><p>With collaborators, we quantified the sources of health risks associated with fine particulate matter in Europe, and how air pollution has changed in Europe between 2005 and 2015.</p><p><a href="https://doi.org/10.1029/2022GH000767">Read the paper</a></p></li>
+            <li><h3>Vienna, Austria</h3><p>Omar regularly convenes a session on air quality, climate, health and equity at the European Geosciences Union General Assembly in Vienna and has attended and presented there since 2024.</p></li>
+            <li><h3>Riyadh, Saudi Arabia</h3><p>Mohammed Alsuwayh’s MSc project examined how rising temperatures are affecting drought risk in Riyadh, and whether current drought governance is equipped to respond.</p></li>
+            <li><h3>South Korea</h3><p>With collaborators, we attributed the health burdens of fine particulate matter, ozone and nitrogen dioxide in South Korea to their sources, to assess national emission control scenarios for 2050.</p><p><a href="https://doi.org/10.1029/2024GH001042">Read the paper</a></p></li>
+            <li><h3>Eastern Canada</h3><p>With collaborators, we used the first year of TEMPO observations to characterise tropospheric nitrogen dioxide patterns over eastern Canada.</p><p><a href="https://doi.org/10.1029/2025JD044757">Read the paper</a></p></li>
+            <li><h3>Washington, DC</h3><p>We quantified the contributions of sectoral, regional and species-specific emissions to air pollution and its health impacts in Washington, DC.</p><p><a href="https://doi.org/10.1525/elementa.2021.00043">Read the paper</a></p></li>
+            <li><h3>United States</h3><p>We developed a surface-level nitrogen dioxide exposure dataset for the continental United States using TROPOMI satellite observations.</p><p><a href="https://doi.org/10.1021/acsestair.4c00153">Read the paper</a></p></li>
+            <li><h3>Houston, Texas</h3><p>We compared satellite, airborne and ground-level observations of nitrogen dioxide with model simulations over Houston during the September 2021 TRACER-AQ campaign.</p><p><a href="https://doi.org/10.5194/acp-24-6719-2024">Read the paper</a></p></li>
+            <li><h3>New Orleans, Louisiana</h3><p>At the 2025 American Geophysical Union meeting in New Orleans, Omar gave an invited talk on applying machine learning and statistical modelling to remote sensing observations to infer surface-level nitrogen dioxide.</p></li>
+            <li><h3>Los Angeles, California</h3><p>With collaborators, we used satellite observations during the COVID-19 lockdowns to show that vehicles are an under-recognised source of urban ammonia pollution in Los Angeles.</p><p><a href="https://doi.org/10.1021/acs.estlett.1c00730">Read the paper</a></p></li>
+            <li><h3>Mexico</h3><p>In collaboration with the Environmental Defense Fund and the Instituto Nacional de Salud Pública de México, we are studying the health impacts of oil and gas air pollution in Mexico.</p><p><a href="https://wellcome.org/research-funding/funding-portfolio/funded-grants/maximizing-health-benefits-reducing-oil-and-gas">Learn more about the project here.</a></p></li>
+            <li><h3>Bogotá, Colombia</h3><p>In 2023, Omar gave an invited talk in Bogotá, Colombia at a UNEP, EDF, and CCAC organised workshop on clean air solutions for Latin America and the Caribbean, on using satellite data to characterise air pollution and health in cities and countries.</p><p><a href="https://www.ccacoalition.org/news/latin-american-countries-plan-together-mitigate-slcps">Read more about the event here.</a></p></li>
+            <li><h3>The Amazon, Brazil</h3><p>We estimated the premature deaths in Brazil associated with long-term exposure to fine particulate matter from Amazon fires between 2016 and 2019.</p><p><a href="https://doi.org/10.1029/2020GH000268">Read the paper</a></p></li>
+            <li><h3>Barcelona, Spain</h3><p>Omar attended the Workshop on Cities, form, environmental exposures and health impacts organised by UBD Policy.</p><p><a href="https://www.sciencedirect.com/science/article/pii/S0264275124005547?via%3Dihub">Read the commentary from this workshop here.</a></p></li>
+            <li><h3>Santiago, Chile</h3><p>We identified the sources of air pollution health impacts in Santiago, and estimated the co-benefits of Chile’s carbon neutrality plans for the city.</p><p><a href="https://doi.org/10.1029/2023JD038808">Read the paper</a></p></li>
+          </ol>
         </div>
-        <a href="people.html">People</a>
-        <a href="publications.html">Publications</a>
-        <div class="dropdown">
-            <button class="dropbtn">Datasets
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="surface_no2.html">US Surface NO<sub>2</sub> from TROPOMI</a>
-            </div>
+
+        <div class="world" aria-hidden="true"></div>
+        <div class="inset" aria-hidden="true"></div>
+
+        <ul class="legend" aria-label="Key to the map">
+          <li><i class="dot dot--solid" aria-hidden="true"></i>Our research</li>
+          <li><i class="dot dot--ring" aria-hidden="true"></i>Talks and events</li>
+        </ul>
+
+        <div class="card">
+          <div class="stories"></div>
         </div>
-        <a href="joinus.html">Join Us</a>
-        <a href="https://groupwiki.readthedocs.io/en/latest/" target="_blank">Group Wiki</a>
+      </div>
     </div>
-    <main class="homepage">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-title">
-                <div style="display: flex; align-items: center; gap: 16px; justify-content: center;">
-                    <div style="width: 5px; height: 80px; background: #DC3545; border-radius: 2px;"></div>
-                    <h1
-                        style="font-family: 'Poppins', sans-serif; font-size: 80px; font-weight: 800; letter-spacing: -2px; color: #DC3545; text-transform: uppercase; margin: 0; line-height: 1;">
-                        CASA</h1>
-                </div>
-                <p class="hero-subtitle" style="font-size: 38px; margin: 20px auto;"> <span class="casa-letter">
-                        C</span>limate and <span class="casa-letter">A</span>tmospheric <span
-                        class="casa-letter">S</span>cience for <span class="casa-letter">A</span>ction
-                </p>
-            </div>
-            <p class="hero-tagline">
-                Interdisciplinary research at the intersection of
-                <span class="keyword">climate change</span>,
-                <span class="keyword">air pollution</span>,
-                <span class="keyword">health</span>,
-                <span class="keyword">equity</span>, and
-                <span class="keyword">policy</span>.
-            </p>
-            <p class="hero-affiliation" style="margin-bottom: 0px;">
-                School of Earth and Environmental Sciences, Cardiff University
-            </p>
-        </section>
+  </section>
 
-        <!-- Card Grid -->
-        <section class="card-grid">
-            <!-- Row 1: About Us + Group Leader (stacked) | Recent News -->
-            <div class="card-stack">
-                <article class="card card-about">
-                    <h2 class="card-title">About Us</h2>
-                    <p class="card-content">
-                        Our research investigates how atmospheric composition, public health, and equity are affected
-                        by human activities and decision-making. We explore topics ranging from the influence of
-                        present-day
-                        fossil-fuel combustion to the future co-benefits of climate mitigation policy through
-                        earth-system modeling, remote sensing, and risk assessment.
-                    </p>
-                </article>
+  <section class="asks" aria-labelledby="asks-title">
+    <div class="asks__in">
+      <h2 class="asks__title" id="asks-title">The questions we ask</h2>
+      <div class="asks__tiles">
+        <details class="ask tone-cobalt" name="asks">
+          <summary><h3>What are the unique sources of pollution in a city or country?</h3><span class="ask__plus" aria-hidden="true"></span></summary>
+          <p>Air pollution in a city or country originates from many sectors, chemical species and regions, both local and transboundary. We use adjoint sensitivity modelling to attribute pollutant exposure and its health burden to each of these sources, so that the people developing policy know which matter most for health.</p>
+        </details>
+        <details class="ask tone-yellow" name="asks">
+          <summary><h3>How can climate action benefit air quality and public health?</h3><span class="ask__plus" aria-hidden="true"></span></summary>
+          <p>Sources of greenhouse gases often co-emit air pollutants and their chemical precursors, so climate mitigation can deliver co-benefits for air quality and public health. We combine GEOS-Chem adjoint sensitivities with emission projections for different climate futures to quantify the resulting changes in pollutant exposure and premature deaths, for individual cities and countries. Our recent work shows that national climate action can ameliorate, perpetuate or exacerbate international air pollution inequalities.</p>
+        </details>
+        <details class="ask tone-pink" name="asks">
+          <summary><h3>What does wildfire smoke do to our health?</h3><span class="ask__plus" aria-hidden="true"></span></summary>
+          <p>Wildfires are a major source of fine particulate matter, and their smoke is transported far from where it is emitted. We combine atmospheric modelling, remote sensing and health impact assessment to quantify the health burden of wildfire smoke, including the premature deaths in Brazil associated with fires in the Amazon between 2016 and 2019. Wildfires are expected to become more frequent and more severe as the climate warms.</p>
+        </details>
+        <details class="ask tone-ink" name="asks">
+          <summary><h3>What can a satellite tell us about the air at street level?</h3><span class="ask__plus" aria-hidden="true"></span></summary>
+          <p>Satellite instruments such as TROPOMI and TEMPO observe pollutants in the atmospheric column, including over regions with few surface monitors. We integrate these observations with chemical transport modelling, land-use regression and machine learning to estimate surface-level concentrations for exposure and health studies. Our estimates of surface-level nitrogen dioxide across the continental United States are <a href="surface_no2.html">freely available to download</a>.</p>
+        </details>
+      </div>
+    </div>
+  </section>
 
-                <article class="card card-contact">
-                    <h2 class="card-title">Group Leader</h2>
-                    <div class="contact-mini">
-                        <img class="contact-mini-photo" src="profile_photo.jpg" alt="M. Omar Nawaz">
-                        <div class="contact-mini-info">
-                            <strong>M. Omar Nawaz, PhD</strong>
-                            <span class="title">Lecturer in Climate Change</span>
-                            <span>Cardiff University</span>
-                        </div>
-                    </div>
-                    <div class="contact-mini-icons">
-                        <a href="mailto:nawazm3@cardiff.ac.uk" target="_blank">
-                            <img src="email_icon.svg" alt="Email">
-                        </a>
-                        <a href="https://www.linkedin.com/in/omar-nawaz-65660b397" target="_blank">
-                            <img src="linkedin.svg" alt="LinkedIn" style="filter: grayscale(100%);">
-                        </a>
-                        <a href="https://scholar.google.co.uk/citations?user=6_oxg9EAAAAJ&hl=en&oi=ao" target="_blank">
-                            <img src="googlescholar_icon.svg" alt="Google Scholar">
-                        </a>
-                        <a href="https://github.com/OmarNawaz" target="_blank">
-                            <img src="github_icon.svg" alt="GitHub">
-                        </a>
-                        <a href="public.curriculum_vitae.monawaz.pdf" target="_blank" class="cv-link-mini">CV</a>
-                    </div>
-                    <a href="people.html" class="card-link">Meet the Team</a>
-                </article>
-            </div>
 
-            <article class="card card-news">
-                <h2 class="card-title">Recent News</h2>
-                <div class="gallery-container">
-                    <button class="gallery-arrow gallery-arrow-left" onclick="changeSlide(-1)">&#10094;</button>
-                    <div class="gallery-content">
-                        <div class="gallery-image-wrapper">
-                            <a id="gallery-link" href="#" target="_blank">
-                                <img id="gallery-image" class="gallery-image" src="" alt="News image">
-                            </a>
-                        </div>
-                        <a id="gallery-description-link" href="#" target="_blank" class="gallery-description-link">
-                            <div class="gallery-description" id="gallery-description"></div>
-                        </a>
-                    </div>
-                    <button class="gallery-arrow gallery-arrow-right" onclick="changeSlide(1)">&#10095;</button>
-                </div>
-            </article>
+  <section class="door door--welcome" aria-labelledby="door-title">
+    <div class="door__in">
+      <h2 class="door__title door__title--line" id="door-title">If you are curious about how climate and air quality policymaking can contribute to a sustainable, healthy, and equitable future, write to&nbsp;me.</h2>
+      <div class="door__more">
+        <p>That goes whether you are interested in collaborating, joining the group, or want guidance on environmental policymaking or air pollution exposure datasets. I am always glad to&nbsp;talk!</p>
+        <div class="door__actions">
+          <a class="door__button" href="mailto:nawazm3@cardiff.ac.uk">Write to me</a>
+          <a class="door__second" href="people.html">Meet the group</a>
+        </div>
+      </div>
+      <div class="welcome">
+        <p class="welcome__line">Everyone is welcome in CASA.</p>
+        <p>I am committed to maintaining an inclusive and respectful research environment within CASA and within the School of Physical, Chemical and Environmental Sciences at Cardiff University, where I serve as Equality, Diversity, Inclusion and Anti&#8209;Racism&nbsp;Lead.</p>
+        <ul class="welcome__badges">
+          <li><img src="img/urge.png" alt="URGE: Unlearning Racism in Geoscience" width="600" height="181"></li>
+          <li><img src="img/youbelonghere.png" alt="The intersex-inclusive Progress Pride flag" width="233" height="148"></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-            <!-- Row 2: Research Spotlight (full width) -->
-            <article class="card card-spotlight">
-                <h2 class="card-title">Research Spotlight</h2>
-                <div class="spotlight-images">
-                    <img src="fwd_sim.gif" alt="Forward simulation">
-                    <img src="adj_sim.gif" alt="Adjoint simulation">
-                </div>
-                <p class="spotlight-caption">
-                    Forward and adjoint simulations of the GEOS-Chem chemical transport model.
-                    <a href="https://doi.org/10.1029/2023JD038808" target="_blank">Nawaz et al. 2023</a>
-                </p>
-            </article>
+</main>
 
-            <!-- Row 3: Join Our Team | Explore -->
-            <article class="card card-cta">
-                <h2 class="card-title">Join Our Team</h2>
-                <p class="card-content">
-                    Interested in climate science, air quality, or health impacts research? We're always looking for
-                    motivated researchers.
-                </p>
-                <a href="joinus.html" class="card-link">View Opportunities</a>
-            </article>
+<footer class="foot">
+  <div class="foot__in">
+    <div class="foot__id">
+      <a class="foot__mark" href="index.html">CASA</a>
+      <p>Climate and Atmospheric Science for Action</p>
+    </div>
+    <ul class="foot__links" aria-label="Links">
+      <li><a href="mailto:nawazm3@cardiff.ac.uk"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 4.5h18A1.5 1.5 0 0 1 22.5 6v12a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 18V6A1.5 1.5 0 0 1 3 4.5Zm.9 2.1 8.1 6.3 8.1-6.3H3.900ZM20.400 8.250l-8.400 6.540-8.400-6.540V17.400h16.800V8.250Z"/></svg>Email</a></li>
+      <li><a href="https://www.linkedin.com/in/omar-nawaz-65660b397"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></li>
+      <li><a href="https://scholar.google.co.uk/citations?user=6_oxg9EAAAAJ"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>Google Scholar</a></li>
+      <li><a href="https://github.com/OmarNawaz"><svg class="icon" viewBox="0 0 16 16" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></li>
+      <li><a href="public.curriculum_vitae.monawaz.pdf"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M5 1h9.500L20 6.500V22a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Zm1 2v18h12V7.500h-4.500V3H6Zm2 8h8v1.800H8V11Zm0 3.600h8v1.800H8v-1.800Zm0-7.200h3.500v1.800H8V7.400Z"/></svg>CV</a></li>
+      <li><a href="https://groupwiki.readthedocs.io/en/latest/">Group wiki</a></li>
+    </ul>
+  </div>
+</footer>
 
-            <article class="card card-links">
-                <h2 class="card-title">Explore</h2>
-                <ul class="quick-links-list">
-                    <li><a href="cobenefits.html">Co-Benefits of Climate Action</a></li>
-                    <li><a href="remotesensing.html">Air Quality Remote Sensing</a></li>
-                    <li><a href="publications.html">Publications</a></li>
-                    <li><a href="https://groupwiki.readthedocs.io/en/latest/" target="_blank">Group Wiki</a></li>
-                </ul>
-            </article>
-        </section>
-    </main>
-
+<script src="js/site.js" defer></script>
+<script src="js/atlas-data.js" defer></script>
+<script src="js/atlas.js" defer onerror="document.querySelector('.globe').classList.add('is-plain')"></script>
 </body>
-
 </html>

@@ -1,0 +1,235 @@
+/* The Publications page. Loaded after site.css, and only on this page.
+
+   1. Selected publications       the first tile has the full width, the others share a row
+   2. All papers                   the years, and one paper
+
+   One grid of twelve columns runs down the page. The tiles are cut seven and five. The years take
+   five columns and the papers seven.
+   The tiles are the shared .tile from site.css, and use its --pad. */
+
+.page-publications { --grid-gap: 16px; }
+
+/* the link in the opening sentences: a taller place to tap, without moving the line */
+.page-publications .hero__lead a { padding-block: 7px; }
+
+
+/* ==================== 1. Selected publications ==================== */
+
+.pubs-picks { grid-template-columns: minmax(0, 1fr); }
+
+.pubs-pick { gap: clamp(22px, 2.6vw, 38px); }
+.pubs-pick h3 {                /* the titles of papers are long: set smaller than a tile's few words elsewhere */
+  font-size: clamp(21px, 2.05vw, 29px);
+  line-height: 1.08;
+}
+.pubs-pick__words {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: auto;            /* the sentence and its link sit at the foot of the tile */
+}
+.pubs-pick__words > :first-child { margin-top: 0; }
+.pubs-pick__words .tile__foot { padding-top: 6px; }
+.pubs-pick .more { margin-bottom: -9px; }                  /* the link's own padding is not added to the tile's */
+
+@media (min-width: 760px) {
+  .pubs-picks { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .pubs-pick:nth-child(1) { grid-column: 1 / -1; }
+  .pubs-pick:nth-child(2) { grid-column: span 7; }
+  .pubs-pick:nth-child(3) { grid-column: span 5; }
+}
+
+/* The first tile, from a tablet up: the title large on the left, Omar's sentence at the foot on the right.
+   Its two columns are cut so that the sentence starts on the same line as the tile beneath it. */
+@media (min-width: 760px) {
+  .pubs-pick:first-child {
+    display: grid;
+    grid-template-columns:
+      calc((100% + 2 * var(--pad) - 11 * var(--grid-gap)) / 12 * 7 + 6 * var(--grid-gap) - 2 * var(--pad))
+      minmax(0, 1fr);
+    column-gap: calc(2 * var(--pad) + var(--grid-gap));
+    align-items: stretch;
+    min-height: clamp(240px, 27vw, 390px);
+  }
+  .pubs-pick:first-child h3 {
+    max-width: 13.5em;
+    font-size: var(--t-tile);
+    line-height: 1;
+    letter-spacing: -.022em;
+  }
+  .pubs-pick:first-child .pubs-pick__paper {
+    display: flex;
+    flex-direction: column;
+  }
+  .pubs-pick:first-child .pubs-pick__where {
+    margin-top: auto;
+    padding-top: 1.2em;
+  }
+  .pubs-pick:first-child .pubs-pick__words {
+    align-self: end;
+    margin-top: 0;
+  }
+}
+@media (min-width: 960px) {
+  .pubs-pick:first-child .pubs-pick__words p:not(.tile__foot) {
+    font-size: var(--t-lead);
+    line-height: 1.32;
+  }
+}
+
+
+/* ==================== 2. All papers ==================== */
+
+/* ---------- a year and its papers ---------- */
+
+.pubs-years {
+  display: grid;
+  gap: clamp(34px, 5vw, 76px);
+}
+.pubs-year {
+  --bleed: 12px;               /* how far a paper's highlight reaches beyond its words */
+  display: grid;
+  gap: 4px var(--grid-gap);
+}
+.pubs-year__num {
+  margin: 0;
+  color: var(--cobalt);
+  font-size: calc(var(--t-title) * .8);    /* one step under "All papers" at every width */
+  font-weight: 800;
+  font-variation-settings: "opsz" 96;
+  line-height: .8;
+  letter-spacing: -.04em;
+}
+.pubs-list {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- one paper: title, authors, journal, DOI ---------- */
+
+.pubs-paper {
+  margin-inline: calc(-1 * var(--bleed, 0px));
+  padding: 14px var(--bleed, 0px);
+  border-radius: clamp(14px, 1.7vw, 24px);
+  font-size: 17px;
+  line-height: 1.4;
+}
+.pubs-paper__title {
+  max-width: 31em;
+  margin: 0;
+  font-size: clamp(20px, 1.75vw, 25px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -.015em;
+  text-wrap: pretty;
+}
+.pubs-paper__title a {         /* the title is the link to the paper */
+  border-radius: 6px;
+  color: inherit;
+  text-decoration: none;
+}
+.pubs-paper__title a:focus-visible { outline-color: var(--ink); }
+.pubs-paper p {
+  max-width: 44em;
+  margin: 0;
+  overflow-wrap: break-word;
+}
+.pubs-paper .pubs-paper__authors { margin-top: 9px; }
+.pubs-paper .pubs-paper__where { margin-top: 3px; }
+.pubs-paper b { font-weight: 800; }
+.pubs-paper__authors span,
+.pubs-paper__all span { white-space: nowrap; }             /* a line never breaks inside a name */
+
+.pubs-paper .pubs-paper__doi { margin-bottom: -9px; }      /* the link's own padding is not added to the paper's */
+.pubs-paper__doi a {
+  display: inline-block;
+  margin-inline: -5px;         /* room for the focus ring, without moving the words */
+  padding: 9px 5px;
+  border-radius: 8px;
+  color: inherit;
+  font-size: 16px;
+  font-weight: 500;            /* quieter than the title above it, which leads to the same place */
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 5px;
+  overflow-wrap: anywhere;
+}
+.pubs-paper__doi a:hover { color: var(--cobalt); }
+.pubs-paper__doi a:focus-visible {
+  outline-color: var(--ink);
+  outline-offset: -3px;
+}
+
+/* A paper with a link, under the pointer or holding the keyboard's place, stands on white paper and its
+   title turns cobalt. It happens at once, and nothing changes size or place. A paper without a link stays still. */
+.pubs-year .pubs-paper--linked:focus-within { background: #fff; }
+.pubs-year .pubs-paper--linked:focus-within .pubs-paper__title { color: var(--cobalt); }
+@media (hover: hover) {
+  .pubs-year .pubs-paper--linked:hover { background: #fff; }
+  .pubs-year .pubs-paper--linked:hover .pubs-paper__title { color: var(--cobalt); }
+}
+
+/* ---------- "Show all authors": the full list, for a paper with a great many ---------- */
+
+.pubs-paper__all summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 40px;
+  margin-inline: -5px;
+  padding-inline: 5px 7px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+.pubs-paper__all summary::-webkit-details-marker { display: none; }
+.pubs-paper__plus {                       /* the same plus as on the tiles that open; it turns to a cross */
+  position: relative;
+  width: 13px;
+  height: 13px;
+  transition: rotate .3s var(--ease);
+}
+.pubs-paper__plus::before,
+.pubs-paper__plus::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - 1.5px);
+  height: 3px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.pubs-paper__plus::after { rotate: 90deg; }
+.pubs-paper__all[open] .pubs-paper__plus { rotate: 45deg; }
+.pubs-paper__all summary:hover { color: var(--cobalt); }
+.pubs-paper__all summary:focus-visible {
+  outline-color: var(--ink);
+  outline-offset: -3px;
+}
+.pubs-paper__all p { padding-bottom: 6px; }
+
+/* ---------- from a tablet up: the year stands at the side, and stays in view while its papers pass ---------- */
+
+@media (min-width: 760px) {
+  .pubs-year { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .pubs-year__num { grid-column: span 4; }
+  .pubs-list { grid-column: span 8; }
+  .pubs-year { --bleed: clamp(14px, 1.7vw, 24px); }
+  .pubs-year__num {
+    align-self: start;
+    position: sticky;
+    top: clamp(20px, 4vh, 40px);
+    margin-top: 14px;          /* its figures stand level with the capitals of the first title */
+  }
+}
+/* from a small laptop up: the years take five columns and the papers seven */
+@media (min-width: 1000px) {
+  .pubs-year__num { grid-column: span 5; }
+  .pubs-list { grid-column: span 7; }
+}
