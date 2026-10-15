@@ -434,11 +434,25 @@
       });
       box.addEventListener('click', function (event) {
         var id = nearest(box, among, event.clientX, event.clientY, 32);
-        if (id) choose(id);
+        if (!id) return;
+        choose(id);
+        bringStoryUp();
       });
     }
     live(worldBox, worldMarks);
     live(insetBox, insetMarks);
+
+    // Below 1200px wide the story stands under the maps and the names. When a place is chosen on a map
+    // and its story starts low on the screen, the page moves up so that the Previous and Next buttons and
+    // the story are in view (the next place is a tap away there). Where the story is already in view,
+    // and beside the maps on a wide screen, nothing moves.
+    var stacked = window.matchMedia('(max-width: 1199.98px)');
+    function bringStoryUp() {
+      if (!stacked.matches) return;
+      if (card.getBoundingClientRect().top < window.innerHeight * 0.55) return;
+      var top = stepper.getBoundingClientRect().top + window.pageYOffset - 12;
+      window.scrollTo({ top: top, behavior: calm.matches ? 'auto' : 'smooth' });
+    }
 
 
     /* ----- sizes ----- */

@@ -130,7 +130,6 @@ sub {                     /* the 2 of NO2: small, and without pushing its line a
   white-space: nowrap;
 }
 
-.inks { position: absolute; }
 .icon { display: block; flex: none; }
 
 .top__in,
@@ -1318,7 +1317,7 @@ html:has(.viewer[open]) { overflow: hidden; }      /* the page behind stays wher
 .answer p + p { margin-top: .5em; }
 
 /* Who is asking: a small portrait, one sentence and the links. The portrait is the block of colour,
-   arched window and blue ink of the people on the People page, at a fraction of the size. */
+   arched window of the people on the People page, at a fraction of the size. */
 .me {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1341,6 +1340,27 @@ html:has(.viewer[open]) { overflow: hidden; }      /* the page behind stays wher
   line-height: 1.4;
 }
 .me .pills { grid-column: 1 / -1; }
+/* On a phone the five links take two rows: Email, LinkedIn and CV, then Google Scholar and GitHub
+   (in the page's own order they would take three) */
+@media (max-width: 559.98px) {
+  .me .pills__scholar,
+  .me .pills__github { order: 1; }
+}
+@media (max-width: 379.98px) {          /* a narrow phone: the buttons a little smaller, so they still take two rows */
+  .me .pills { gap: 6px; }
+  .me .pill {
+    gap: 7px;
+    padding: 0 13px 0 11px;
+    font-size: 15.5px;
+  }
+}
+@media (max-width: 339.98px) {
+  .me .pill {
+    gap: 6px;
+    padding: 0 10px 0 9px;
+    font-size: 14.5px;
+  }
+}
 
 @media (min-width: 620px) {
   .hero--home .hero__in { padding-top: 100px; }
@@ -1416,7 +1436,7 @@ html:has(.viewer[open]) { overflow: hidden; }      /* the page behind stays wher
   --key: var(--ink);
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.28fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, .62fr) minmax(0, 1fr);   /* on a phone the inset is about two fifths of the width, no taller than the map */
   grid-template-areas:
     "world world"
     "inset legend"
@@ -1835,7 +1855,7 @@ html:has(.viewer[open]) { overflow: hidden; }      /* the page behind stays wher
 @media (min-width: 620px) {
   .globe {
     --row: 40px;
-    grid-template-columns: minmax(0, 310px) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
     column-gap: 22px;
   }
   .name--long {
@@ -2157,9 +2177,10 @@ html:has(.viewer[open]) { overflow: hidden; }      /* the page behind stays wher
 .person__back p { margin: 0; }
 .person__back p + p { margin-top: .5em; }
 
-/* portraits: an arched window, every photograph printed in the same blue ink.
+/* portraits: an arched window, each photograph in its own colours.
    The photograph fills the window. --fx and --fy say where the face is, and --zoom how far to move in on it;
-   they come from photo_focus and photo_zoom in data/people.yaml, and --tone from photo_tone. */
+   they come from photo_focus and photo_zoom in data/people.yaml, and --tone (a filter, such as
+   brightness(1.1)) from photo_tone. */
 
 .person__photo {
   position: relative;
@@ -2178,7 +2199,7 @@ html:has(.viewer[open]) { overflow: hidden; }      /* the page behind stays wher
   height: calc(100% * var(--zoom, 1));
   object-fit: cover;
   object-position: var(--fx, 50%) var(--fy, 30%);
-  filter: var(--tone, contrast(1)) url(#blue-ink);
+  filter: var(--tone, none);
 }
 
 /* The one button that turns a block over. It lies over the portrait and the name, and stops
